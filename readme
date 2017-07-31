@@ -1,0 +1,53 @@
+操作实现：
+    1、手动对集群进行维护时需先对该集群设置白名单（white）,操作完成后直接设置白名单任务（task）让server获取新master并监听
+    2、如master监听丢失但重试连接mysql成功，server不会发生切换操作，会在watch-down节点写写入该集群信息，以供报警作用
+    3、添加空集群直接使用add参数即可，自动选举master并同步
+    4、宕机恢复的master如需恢复到集群中提供业务支持，执行my_mha中的setha以增加信息到路由端，如不恢复到集群中在下次master
+       宕机切换时也可以自动作为活跃主机添加
+
+功能：
+    1、宕机切换，同步mysqlrouter配置文件
+    2、宕机节点半自动恢复到集群中，需人为判断宕机恢复之后的节点是否能合理的提供业务查询，避免查询出错误的数据
+    3、前端使用mysqlrouter作为路由，实时监听配置修改并同步于配置文件，实现业务透明化并提供读的负载
+    4、因网络波动造成的心跳丢失会连续尝试数据库服务连接，如正常将不会发生切换并发出告警信息通知管理员
+    5、管理端集群化，避免单节点故障
+    6、mysqlrouter路由配置需使用附加文件(-a)，附加配置文件名和groupname一样，read_write模块命名规范为[routing:rw],read_only模块命名规范为[routing:ro]
+        只会对该两个模块的destinations做修改，其他配置项请按需配置，配置文件必须在/etc/mysqlrouter目录下
+
+不支持项：
+    1、不支持多通道复制
+    2、不支持多点写入
+    3、宕机binlog追加及恢复数据回滚操作，需人为判断
+
+注意事项：
+    1、第一次启动需先启动server初始化zookeeper信息，再启动每个mysql端的心跳线程，最后执行my_mha相关项
+    2、无论是手动修改、自动切换、初始化添加都会对路由信息进行同步，所以在初始化集群原始信息时务必先增加路由信息到zookeeper中,并把路由节点上的router.py启动
+    3、mysqlrouter配置文件使用默认配置、集群名称命名的配置文件作为组合启动(groupname.conf)
+        可以在单个节点上启动多个mysqlrouter，只需启动一个router.py，会自动判断组名并重启
+    4、路由节点可以为多个以避免单节点故障，格式为host:port,host:port.....
+	5、如果修改zk存储节点位置，涉及到route、client端的一定要对应
+
+
+介绍：
+    zookeeper：
+        white_path ： 手动维护集群时如不需要切换需设置的项，利用my_mha().setwhite设置
+        lock_path  ： 在server多节点运行的模式下用于控制master宕机任务只能一个节点进行维护，创建节点名与任务名相同
+        task_path  ： 记录所有任务数据，宕机任务以集群名称创建，其余手动设置的任务以task建立序列
+        meta_host  ： 该节点下记录所有IP的元数据，格式['group':a,'port':123]
+        meta_group ： 记录所有集群组信息，格式为(host,host....)
+        meta_router： 记录每个集群路由所在地，以集群组名称命名内容格式为(host:port,host:port),port为router.py配置的端口
+        online_path： 记录所有在线的节点
+        master_path： 记录每个组当前的master所在，以集群组名称命名
+        haproxy_path：记录路由配置文件，以机群组名称命名，记录格式{'read':[host:port,host:port...],'write':'host:port'},单节点写入多节点读取
+        watch_down ： 记录两种情况，一种是因网络波动或客户端原因导致心跳丢失但mysql却正常的情况，以集群名称创建一个空节点，另一种为同步路由配置文件
+                      失败的情况，以集群名称加send后缀命名
+
+
+部署流程：
+    1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install psutil kazoo
+    2、部署zookeeper集群
+    3、启动server端初始化数据
+    4、在所有mysql节点部署mha_client创建心跳
+    5、部署mysqlrouter并开启router.py打开端口
+    6、执行my_mha中的各项
+
