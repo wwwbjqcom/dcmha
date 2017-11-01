@@ -6,16 +6,19 @@ import psutil,time,MySQLdb
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 import logging
-logging.basicConfig(filename='/var/log/zk_client.log', level=logging.INFO)
+logging.basicConfig(filename='zk_client.log',
+                    level=logging.INFO,
+                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt='%Y-%m-%d %A %H:%M:%S')
 
-mysql_user='root'
-mysql_password = ''
+mysql_user='login_test'
+mysql_password = 'xswert123'
 socke_dir = '/usr/local/mysql/mysql.sock'
 mysql_port = 3306
 
 retry_num = 10
 
-zk_host = '192.168.1.1:2181，192.168.1.2:2181，192.168.1.3:2181'
+zk_host = ''
 zk = KazooClient(hosts=zk_host)
 zk.start()
 retry_tate = ''
@@ -25,7 +28,7 @@ def get_netcard():
     info = psutil.net_if_addrs()
     for k,v in info.items():
         for item in v:
-            if item[0] == 2 and not item[1]=='127.0.0.1' and ':' not in k:
+            if item[0] == 2 and not item[1]=='127.0.0.1' and ':' not in k and '10.' in item[1]:
                 netcard_info = item[1]
     return netcard_info.replace('.','-')
 
@@ -62,7 +65,7 @@ def retry_create():
 
 def checkdb():
     try:
-        local_conn = MySQLdb.connect(host='127.0.0.1', user=mysql_user, passwd=mysql_password, port=mysql_port, db='',
+        local_conn = MySQLdb.connect(host='localhost', user=mysql_user, passwd=mysql_password, port=mysql_port, db='',
                                      charset="utf8",unix_socket=socke_dir)
         local_cur = local_conn.cursor()
         return True

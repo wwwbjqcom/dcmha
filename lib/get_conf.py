@@ -14,6 +14,7 @@ class GetConf(object):
         self.keys_path = path.replace('\\','/')+'/config/keys/'
         self.section = 'nodepath'
         self.mysqlsection = 'mysqldb'
+        self.addition = 'addition'
         self.conf = ConfigParser.ConfigParser()
         self.conf.read(conf_path)
         self.root_dir = self.conf.get(self.section,'root_path')
@@ -61,10 +62,13 @@ class GetConf(object):
         passwd = self.conf.get(self.mysqlsection, 'mysqlpasswd').replace('\'','')
         return user,passwd
 
-    def GetReplAcount(self):
-        repluser = self.conf.get(self.mysqlsection, 'repluser').replace('\'','')
-        replpasswd = self.conf.get(self.mysqlsection, 'replpasswd').replace('\'','')
-        return repluser,replpasswd
+    def GetReplAcount(self,rg=None):
+        repluser = self.conf.get(self.addition, 'repluser').replace('\'','') if rg else  self.conf.get(self.mysqlsection, 'repluser').replace('\'','')
+        replpasswd = self.conf.get(self.addition, 'replpasswd').replace('\'','') if rg else self.conf.get(self.mysqlsection, 'replpasswd').replace('\'','')
+        ssl_ca = self.conf.get(self.mysqlsection, 'ssl_ca').replace('\'','')
+        ssl_cert = self.conf.get(self.mysqlsection, 'ssl_cert').replace('\'','')
+        ssl_key = self.conf.get(self.mysqlsection, 'ssl_key').replace('\'','')
+        return repluser,replpasswd,ssl_ca,ssl_cert,ssl_key
 
     def GetSSLPath(self,name,slave=None):
         if slave:
@@ -86,6 +90,15 @@ class GetConf(object):
         return self.GetSSLPath('ssl_cert',slave=True)
     def GetSlaveSSLKey(self):
         return self.GetSSLPath('ssl_key',slave=True)
+
+    '''获取附加任务类型'''
+    def GetAdditionRPL(self):
+        repl = self.conf.get('addition','replication').replace('\'','')
+        return self.root_dir.replace('\'','') + '/addition/' + repl
+    def GetAdditionRegion(self):
+        reg = self.conf.get('addition','region').replace('\'','')
+        return self.root_dir.replace('\'','') + '/addition/' + reg
+
 
 #print GetConf().GetSlaveSSLCa()
 #print GetConf().GetZKHosts()

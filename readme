@@ -4,6 +4,7 @@
     3、添加空集群直接使用add参数即可，自动选举master并同步
     4、宕机恢复的master如需恢复到集群中提供业务支持，执行my_mha中的setha以增加信息到路由端，如不恢复到集群中在下次master
        宕机切换时也可以自动作为活跃主机添加
+    5、当前mysql有多个同步线程，需添加附加任务，在addition节点下先插入对应数据
 
 功能：
     1、宕机切换，同步mysqlrouter配置文件
@@ -15,7 +16,7 @@
         只会对该两个模块的destinations做修改，其他配置项请按需配置，配置文件必须在/etc/mysqlrouter目录下
 
 不支持项：
-    1、不支持多通道复制
+    1、不支持多通道复制，只能以附加业务的方式指定
     2、不支持多点写入
     3、宕机binlog追加及恢复数据回滚操作，需人为判断
 
@@ -25,7 +26,6 @@
     3、mysqlrouter配置文件使用默认配置、集群名称命名的配置文件作为组合启动(groupname.conf)
         可以在单个节点上启动多个mysqlrouter，只需启动一个router.py，会自动判断组名并重启
     4、路由节点可以为多个以避免单节点故障，格式为host:port,host:port.....
-	5、如果修改zk存储节点位置，涉及到route、client端的一定要对应
 
 
 介绍：
@@ -41,7 +41,11 @@
         haproxy_path：记录路由配置文件，以机群组名称命名，记录格式{'read':[host:port,host:port...],'write':'host:port'},单节点写入多节点读取
         watch_down ： 记录两种情况，一种是因网络波动或客户端原因导致心跳丢失但mysql却正常的情况，以集群名称创建一个空节点，另一种为同步路由配置文件
                       失败的情况，以集群名称加send后缀命名
-
+        addition   ： 节点下有replication、region两个节点
+            replication/groupanme/regionname：如果集群组有附加的主从同步任务将在groupname创建对应节点，需要同步到那些位置的regionname会创建对应节点
+                                              regionname下记录当前指向的IP信息，格式如{'host':'192.168.212.127','port':3316,'ssl':1/0}
+            region/regionname: region节点下记录所有分区同步接口元数据，每个regionname下记录元数据，元数据可以为多个供高可用随机选择，记录格式如下
+                               {'192-168-212-127':{'prot':3316,'ssl':1/0},'192-168-212-128':{}........}
 
 部署流程：
     1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install psutil kazoo

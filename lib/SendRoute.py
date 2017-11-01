@@ -8,7 +8,10 @@ sys.path.append("..")
 from socket import *
 from zk_handle.zkHandler import zkHander
 import logging
-logging.basicConfig(filename='zk_client.log', level=logging.INFO)
+logging.basicConfig(filename='zk_client.log',
+                    level=logging.INFO,
+                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt='%Y-%m-%d %A %H:%M:%S')
 
 
 def SendRoute(group_name):

@@ -8,7 +8,10 @@ from zk_handle.zkHandler import zkHander
 from contextlib import closing
 from TaskOb import TaskCh
 import logging
-logging.basicConfig(filename='zk_client.log', level=logging.INFO)
+logging.basicConfig(filename='zk_client.log',
+                    level=logging.INFO,
+                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt='%Y-%m-%d %A %H:%M:%S')
 
 class Watch:
     def __init__(self):
@@ -20,6 +23,8 @@ class Watch:
             with closing(zkHander()) as zkhander:
                 host = zkhander.GetMasterMeta(group_name)
             zkHander().CreateWatch(host)
+
+
 
 
 

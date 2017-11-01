@@ -10,7 +10,10 @@ from SendRoute import SendRoute
 from contextlib import closing
 from lib.get_conf import GetConf
 import logging
-logging.basicConfig(filename='zk_client.log', level=logging.INFO)
+logging.basicConfig(filename='zk_client.log',
+                    level=logging.INFO,
+                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt='%Y-%m-%d %A %H:%M:%S')
 
 
 
@@ -79,7 +82,7 @@ class TaskClassify:
 
                 zkHander().CreateWatch(master_host)
                 with closing(dbHandle(master_host.replace('-','.'),master_port)) as resetmaster:
-                    resetmaster.ResetMaster()
+                    resetmaster.ResetMaster(groupname)
                 return True
             else:
                 return False
@@ -94,7 +97,7 @@ class TaskClassify:
         zkHander().CreateWatch(master_host)                                     # 对master创建watch
         with closing(zkHander()) as zkhander:
             zkhander.SetMasterHost(group_name, master_host)                       # 修改集群master指向
-            zkhander.DeleteWatchDown(group_name)                                  # 删除改集群未处理的宕机信息
+            zkhander.DeleteWatchDown(group_name)                                  # 删除该集群未处理的宕机信息
             zkhander.SetHaproxyMeta(group_name,None, master_host)      # 修改haproxy配置信息
             if 'onlywatch' not in _task_value:
                 SendRoute(group_name)
@@ -112,6 +115,7 @@ class TaskClassify:
                 host_port = eval(host_meta)['port']
                 with closing(dbHandle(cur_master.replace('-','.'),host_port)) as dbhandle:
                     mysqlstate = dbhandle.RetryConn()                               #检测mysql是否能正常连接
+            time.sleep(1)
         if mysqlstate:
             zkHander().CreateWatch(cur_master)                                  #重新创建master检测
             return True
@@ -176,6 +180,10 @@ def TaskOb(task_name):
                     return True
                 else:
                     return TaskClassify().TaskDown(_task_value[0])
+        elif 'append' in _task_value:
+            '''附加任务'''
+            from db_handle import AdditionTask
+            return AdditionTask.Addition().ChangeRepl(_task_value)
 
         else:
             logging.error('task failed  state: type error')

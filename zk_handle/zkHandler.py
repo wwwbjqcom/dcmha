@@ -7,7 +7,10 @@ import sys,traceback,time,random
 sys.path.append("..")
 from lib.get_conf import GetConf
 import logging
-logging.basicConfig(filename='zk_client.log', level=logging.INFO)
+logging.basicConfig(filename='zk_client.log',
+                    level=logging.INFO,
+                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt='%Y-%m-%d %A %H:%M:%S')
 
 
 class zkHander(object):
@@ -25,13 +28,14 @@ class zkHander(object):
     def Exists(self,path):
         return self.zk.exists(path=path)
     def Create(self,**kwargs):
-        return self.zk.create(path=kwargs["path"],value=kwargs["value"],sequence=kwargs['seq'])
+        return self.zk.create(path=kwargs["path"],value=kwargs["value"],sequence=kwargs['seq'],
+                              makepath=(kwargs['mp'] if 'mp' in kwargs else False))
     def Set(self,path,value):
         return self.zk.set(path=path,value=value)
 
     def init_node(self,object):
         node_list = {'mysql': ['lock', 'white', 'meta/host', 'meta/group', 'meta/router', 'online-list', 'master', 'task',
-                               'haproxy','watch-down']}
+                               'haproxy','watch-down','addition','addition/replication','addition/region','readbinlog-status']}
         for server in node_list:
             for i in node_list[server]:
                 node_path = server + '/' + i
@@ -45,36 +49,46 @@ class zkHander(object):
         def _init_node(node_path):
             self.zk.ensure_path(node_path)
 
-    def CreateDownTask(self,groupname):
+    def SetReadBinlog(self,master_host,value):
+        _path = '/mysql/readbinlog-status/{}'.format(master_host.replace('.','-'))
+        self.Create(path=_path,value=value,seq=False) if not self.Exists(_path) else None
+
+    def CreateDownTask(self,groupname,addition=None,region=None):
         task_path = GetConf().GetTaskPath() + '/' + groupname
         if self.Exists(task_path) is None:
             time.sleep(random.uniform(0, 1))
             try:
-                self.Create(path=task_path,value=str([groupname,'down']),seq=False)
+                if addition:
+                    task_path += '_'+region
+                    self.Create(path=task_path, value=str([groupname, region,'append','dow']), seq=False)   #跨区域同步主机宕机
+                else:
+                    self.Create(path=task_path,value=str([groupname,'down']),seq=False)
             except:
                 logging.info('Existing outage task for  %s' % groupname)
         else:
             logging.info('Existing outage task for  %s' % groupname)
 
-    def CreateWatch(self,host):
+    def CreateWatch(self,host,addition=None,region=None,region_for_groupname=None):
         '''创建watch,触发时写入task节点'''
         online_host_path = GetConf().GetOnlinePath()
         _group_name = self.GetMeta(type='host', name=host)
-        group_name = eval(_group_name)['group']
+        group_name = eval(_group_name)['group'] if _group_name else  region_for_groupname
         online_state = self.zk.exists(online_host_path + '/' + host)
         if online_state is not None:
             @self.zk.DataWatch(online_host_path + '/' + host)
             def my_func(data, stat):
                 if data is None:
-                    self.CreateDownTask(group_name)
+                    self.CreateDownTask(group_name,addition=addition,region=region)
                     logging.error('master(%s) has been down!' % (host))
                     self.zk.stop()
                     sys.exit()
         else:
+            _name = group_name + '_' + region if region else group_name
             logging.error("this master %s node not exists" % host)
-            state = self.Exists(GetConf().GetWatchDown()+'/'+group_name)
-            self.Create(path=GetConf().GetWatchDown()+'/'+group_name,value="master not online",seq=False) if state is None else None
+            state = self.Exists(GetConf().GetWatchDown()+'/'+_name)
+            self.Create(path=GetConf().GetWatchDown()+'/'+_name,value="master not online",seq=False) if state is None else None
             self.zk.stop()
+
 
     def CreateLockWatch(self,taskname):
         '''用于任务在其他节点执行，本节点对锁监听，当删除时获取新master启动watch'''
