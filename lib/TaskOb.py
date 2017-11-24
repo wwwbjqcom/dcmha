@@ -146,18 +146,21 @@ class TaskCh:
     def TaskFunc(self,taskname):
         with closing(zkHander()) as zkhander:                                               #检查其他server是否在执行
             task_stat = zkhander.SetLockTask(taskname)
-            if task_stat:
+        if task_stat:
+            with closing(zkHander()) as zkhander:
                 state = TaskOb(taskname)
                 if state:
                     zkhander.DeleteTask(taskname)                                             #删除已执行的任务
                 else:
                     now_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                     logging.error(' %s : this task %s failed' % (now_time,taskname))
-                time.sleep(2)
+                logging.info('sleep time 3S ,waiting other server create watch')
+                time.sleep(3)
                 zkhander.DeleteLockTask(taskname)
-            else:
-                zkhander.CreateLockWatch(taskname)
-                logging.info('task : %s  elsewhere in the execution' % taskname)
+        else:
+            logging.info('task : %s  elsewhere in the execution' % taskname)
+            zkHander().CreateLockWatch(taskname)
+
 
 
 def TaskOb(task_name):

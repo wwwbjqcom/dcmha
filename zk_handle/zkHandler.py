@@ -74,6 +74,7 @@ class zkHander(object):
         _group_name = self.GetMeta(type='host', name=host)
         group_name = eval(_group_name)['group'] if _group_name else  region_for_groupname
         online_state = self.zk.exists(online_host_path + '/' + host)
+        logging.info("master watch : %s" % host)
         if online_state is not None:
             @self.zk.DataWatch(online_host_path + '/' + host)
             def my_func(data, stat):
@@ -89,12 +90,23 @@ class zkHander(object):
             self.Create(path=GetConf().GetWatchDown()+'/'+_name,value="master not online",seq=False) if state is None else None
             self.zk.stop()
 
+    def __checklock(self,taskname):
+        """循环检查lock是否存在，当不存在时对新master建立监听"""
+        import time
+        path = GetConf().GetLockPath() + '/' + taskname
+        while True:
+            state = self.Exists(path)
+            if state is None:
+                return True
+                break
+            time.sleep(0.5)
 
-    def CreateLockWatch(self,taskname):
+    def CreateLockWatch(self, taskname):
         '''用于任务在其他节点执行，本节点对锁监听，当删除时获取新master启动watch'''
-        path = GetConf().GetLockPath()+'/'+taskname
+        path = GetConf().GetLockPath() + '/' + taskname
+
         @self.zk.DataWatch(path)
-        def my_func(data,stat):
+        def my_func(data, stat):
             if data is None:
                 masterhost = self.GetMasterMeta(taskname)
                 self.CreateWatch(masterhost)
@@ -245,7 +257,7 @@ class zkHander(object):
         if self.Exists(path=path + '/' + taskname) is None:
             try:
                 time.sleep(random.uniform(0, 1))
-                self.zk.create(path=path+'/'+taskname,value=b'',ephemeral=True)
+                self.zk.create(path=path+'/'+taskname,value=b'',ephemeral=False)
                 return True
             except Exception,e:
                 logging.error(traceback.format_exc())
