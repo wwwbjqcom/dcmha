@@ -280,11 +280,13 @@ class zkHander(object):
         return eval(self.Get(path=path))
 
     def DeleteSlaveDown(self,host):
-        path = "{}/{}".format(GetConf.GetSlaveDown(),host)
+        path = "{}/{}".format(GetConf().GetSlaveDown(),host)
         return self.zk.delete(path=path) if self.Exists(path=path) else None
 
-    def AlterHaproxyValue(self,groupname,write,read):
-        value = '{"read":%s,"write":"%s"}' % (read,write)
+    def GetDownSlaveList(self):
+        down_path = GetConf().GetSlaveDown()
+        down_list = self.GetChildren(path=down_path)
+        return down_list if down_list is not None else False
 
     """==================================="""
 

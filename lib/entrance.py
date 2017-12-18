@@ -7,6 +7,7 @@ sys.path.append("..")
 from zk_handle.zkHandler import zkHander
 from contextlib import closing
 from TaskOb import TaskCh
+from lib.SlaveNodeCheck import Run as SlaveCheckRun
 import logging
 logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
@@ -43,6 +44,7 @@ class Entrance:
 
         TaskCh().TaskCheck()
 
-        #扫描slave节点状态
-        #------
-
+        '''扫描slave节点状态'''
+        '''===================='''
+        SlaveCheckRun()
+        '''===================='''
