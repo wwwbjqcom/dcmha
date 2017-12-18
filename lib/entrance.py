@@ -8,7 +8,7 @@ from zk_handle.zkHandler import zkHander
 from contextlib import closing
 from TaskOb import TaskCh
 import logging
-logging.basicConfig(filename='zk_client.log',
+logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
                     format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')
@@ -42,4 +42,7 @@ class Entrance:
             Watch().StartWatch(master_hosts=master_hosts)
 
         TaskCh().TaskCheck()
+
+        #扫描slave节点状态
+        #------
 

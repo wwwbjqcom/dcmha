@@ -18,12 +18,14 @@
     <SUITE FILE_PATH="coverage/DC_MHA$dbHandle.coverage" NAME="dbHandle Coverage Results" MODIFIED="1506653482963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_handle" />
     <SUITE FILE_PATH="coverage/DC_MHA$t1__1_.coverage" NAME="t1 (1) Coverage Results" MODIFIED="1504663384389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$t2__1_.coverage" NAME="t2 (1) Coverage Results" MODIFIED="1506669091010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$ttt.coverage" NAME="ttt Coverage Results" MODIFIED="1511494941883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$mysql_to_pg.coverage" NAME="mysql_to_pg Coverage Results" MODIFIED="1511177684017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/mha_server$t5.coverage" NAME="t5 Coverage Results" MODIFIED="1500343303728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
-    <SUITE FILE_PATH="coverage/DC_MHA$t1.coverage" NAME="t1 Coverage Results" MODIFIED="1504751659396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/redis_scripts" />
+    <SUITE FILE_PATH="coverage/DC_MHA$t1.coverage" NAME="t1 Coverage Results" MODIFIED="1511851292888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/redis_scripts" />
     <SUITE FILE_PATH="coverage/mha_server$HaProxy.coverage" NAME="HaProxy Coverage Results" MODIFIED="1500876876360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/mha_server$dbHandle.coverage" NAME="dbHandle Coverage Results" MODIFIED="1501052540938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_handle" />
     <SUITE FILE_PATH="coverage/DC_MHA$Unittests_for_t1_Test_run.coverage" NAME="Unittests for t1.Test.run Coverage Results" MODIFIED="1504511383428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
-    <SUITE FILE_PATH="coverage/DC_MHA$test.coverage" NAME="test Coverage Results" MODIFIED="1509071513622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$test.coverage" NAME="test Coverage Results" MODIFIED="1511490910301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$Unittests_in_t1_py.coverage" NAME="Unittests in t1.py Coverage Results" MODIFIED="1504511699849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$main.coverage" NAME="main Coverage Results" MODIFIED="1504856713137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mha_server$t1__1_.coverage" NAME="t1 (1) Coverage Results" MODIFIED="1500542663242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -31,6 +33,7 @@
     <SUITE FILE_PATH="coverage/DC_MHA$tidb_select.coverage" NAME="tidb_select Coverage Results" MODIFIED="1507964806816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/redis_scripts" />
     <SUITE FILE_PATH="coverage/mha_server$get_conf.coverage" NAME="get_conf Coverage Results" MODIFIED="1501052466324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" />
     <SUITE FILE_PATH="coverage/mha_server$t1.coverage" NAME="t1 Coverage Results" MODIFIED="1500531184439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$binlogstream.coverage" NAME="binlogstream Coverage Results" MODIFIED="1511851287665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27/Lib/site-packages/pymysqlreplication" />
     <SUITE FILE_PATH="coverage/mha_server$Unittests_in_t1_py.coverage" NAME="Unittests in t1.py Coverage Results" MODIFIED="1500275665853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$Unittests_in_t2_py.coverage" NAME="Unittests in t2.py Coverage Results" MODIFIED="1506668916819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$t2.coverage" NAME="t2 Coverage Results" MODIFIED="1503995778449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
@@ -38,30 +41,22 @@
     <SUITE FILE_PATH="coverage/mha_server$zkHandler.coverage" NAME="zkHandler Coverage Results" MODIFIED="1500949635314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zk_handle" />
     <SUITE FILE_PATH="coverage/mha_server$t2.coverage" NAME="t2 Coverage Results" MODIFIED="1501053758646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$read_binlog.coverage" NAME="read_binlog Coverage Results" MODIFIED="1503909946933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
-    <SUITE FILE_PATH="coverage/DC_MHA$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1508918060980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
+    <SUITE FILE_PATH="coverage/DC_MHA$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1513494734554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/redis_scripts" />
     <SUITE FILE_PATH="coverage/mha_server$main.coverage" NAME="main Coverage Results" MODIFIED="1501037389021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mha_server$my_mha.coverage" NAME="my_mha Coverage Results" MODIFIED="1501059880519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/mha_server$Unittests_for_t1_Test_say_bad.coverage" NAME="Unittests for t1.Test.say_bad Coverage Results" MODIFIED="1500275844561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$t3.coverage" NAME="t3 Coverage Results" MODIFIED="1511418648481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$tt.coverage" NAME="tt Coverage Results" MODIFIED="1506594353172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
+    <SUITE FILE_PATH="coverage/DC_MHA$run.coverage" NAME="run Coverage Results" MODIFIED="1512359117473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/BaiduNetdiskDownload/db_manager" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="entrance.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/entrance.py">
+      <file leaf-file-name="router.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/router.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_conf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/get_conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-960">
-              <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+            <state relative-caret-position="171">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="13" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -70,28 +65,8 @@
       <file leaf-file-name="SendRoute.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/SendRoute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="30" column="67" lean-forward="true" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="router.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/router.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="System.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/System.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="152">
+              <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -100,49 +75,87 @@
       <file leaf-file-name="TaskOb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/TaskOb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="185" column="49" lean-forward="false" selection-start-line="185" selection-start-column="49" selection-end-line="185" selection-end-column="49" />
+            <state relative-caret-position="228">
+              <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ha_client.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/ha_client.log">
+      <file leaf-file-name="System.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/System.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="684">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="get_conf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/get_conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="931">
+              <caret line="50" column="8" lean-forward="false" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mha_client.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/mha_client.py">
+      <file leaf-file-name="entrance.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/entrance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="190">
+              <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_mha.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/my_mha.py">
+      <file leaf-file-name="Replication.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db_handle/Replication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4408">
-              <caret line="232" column="24" lean-forward="false" selection-start-line="232" selection-start-column="14" selection-end-line="232" selection-end-column="24" />
+            <state relative-caret-position="9747">
+              <caret line="514" column="28" lean-forward="false" selection-start-line="514" selection-start-column="28" selection-end-line="514" selection-end-column="28" />
+              <folding>
+                <marker date="1511835094282" expanded="true" signature="12471:12494" ph="delete from " />
+                <marker date="1511835094282" expanded="true" signature="13057:13086" ph="insert into missing_value.missing_value... " />
+                <marker date="1511835094282" expanded="true" signature="14283:14309" ph="update missi... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbHandle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+              <folding>
+                <marker date="1513585169300" expanded="true" signature="3767:3867" ph="select Maste... slave_master_info" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdditionTask.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db_handle/AdditionTask.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlaveNodeCheck.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/SlaveNodeCheck.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+              <folding>
+                <element signature="e#53#64#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,21 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_gtid_status</find>
-      <find>GetTaskList</find>
-      <find>_pos</find>
-      <find>self._pos</find>
-      <find>_next_pos</find>
-      <find>bina</find>
-      <find>arr</find>
-      <find>+=</find>
-      <find>MYSQL_TYPE_NEWDECIMAL</find>
-      <find>print</find>
-      <find>DB_TYPE_</find>
-      <find>charset_info</find>
-      <find>interval_nr</find>
-      <find>CreateChildrenWatch</find>
-      <find>ResetMaster</find>
       <find>seq</find>
       <find>py</find>
       <find>global</find>
@@ -188,62 +186,77 @@
       <find>_rollback.table</find>
       <find>_rollback.table_filed</find>
       <find>_rollback._gtid</find>
+      <find>flag</find>
+      <find>readbinlog</find>
+      <find>logging</find>
+      <find>self._sock</find>
+      <find>self.client_flag</find>
+      <find>GetZKHosts</find>
+      <find>Listener</find>
+      <find>listen_port</find>
+      <find>Reader</find>
+      <find>BUFSIZE</find>
+      <find>zabbix_sender</find>
+      <find>GetChildren</find>
+      <find>SetHa</find>
+      <find>Create</find>
+      <find>CreateChildrenWatch</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/meta.txt" />
-        <option value="D:/zookeeper/t5.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/db_handle/dbHandler.py" />
-        <option value="D:/zookeeper/mha_client.py" />
-        <option value="D:/zookeeper/t1.py" />
-        <option value="$PROJECT_DIR$/t1.py" />
-        <option value="$PROJECT_DIR$/ha_handle/HaProxy.py" />
-        <option value="C:/Python27/Lib/site-packages/kazoo/handlers/utils.py" />
-        <option value="$PROJECT_DIR$/scripts/test-2.conf" />
-        <option value="$PROJECT_DIR$/scripts/HaProxy.py" />
-        <option value="D:/redis_scripts/load_data.py" />
-        <option value="D:/scripts/mysql_install/my.cnf" />
-        <option value="D:/scripts/mysql_install/mysql_install.py" />
-        <option value="C:/Python27/Lib/site-packages/pymysqlreplication/event.py" />
-        <option value="C:/Python27/Lib/json/encoder.py" />
-        <option value="D:/scripts/runoob.txt" />
         <option value="D:/scripts/abc.txt" />
-        <option value="D:/redis_scripts/test.py" />
         <option value="D:/scripts/t2.py" />
-        <option value="D:/scripts/t1.py" />
         <option value="$PROJECT_DIR$/readme" />
         <option value="$PROJECT_DIR$/readme" />
-        <option value="D:/redis_scripts/t1.py" />
         <option value="C:/Python27/Lib/site-packages/pymysqlreplication/row_event.py" />
         <option value="$PROJECT_DIR$/zk_client.log" />
         <option value="D:/scripts/redis/redis_install.py" />
         <option value="D:/scripts/redis/devops.py" />
         <option value="D:/scripts/read_frm.py" />
-        <option value="$PROJECT_DIR$/config/zk.conf" />
-        <option value="$PROJECT_DIR$/lib/get_conf.py" />
         <option value="D:/zookeeper/tt.py" />
         <option value="$PROJECT_DIR$/scripts/my_mha.py" />
         <option value="D:/zookeeper/t2.py" />
-        <option value="$PROJECT_DIR$/db_handle/dbHandle.py" />
-        <option value="$PROJECT_DIR$/lib/entrance.py" />
-        <option value="$PROJECT_DIR$/lib/SendRoute.py" />
-        <option value="$PROJECT_DIR$/lib/TaskOb.py" />
-        <option value="$PROJECT_DIR$/zk_handle/zkHandler.py" />
-        <option value="$PROJECT_DIR$/db_handle/AdditionTask.py" />
         <option value="D:/redis_scripts/t2.py" />
         <option value="D:/redis_scripts/tidb_select.py" />
-        <option value="D:/scripts/read_ibd.py" />
         <option value="D:/scripts/check_page.py" />
         <option value="D:/redis_scripts/read_binlog.py" />
-        <option value="D:/scripts/read_binlog.py" />
-        <option value="D:/zookeeper/test.py" />
         <option value="D:/scripts/test.py" />
         <option value="D:/redis_scripts/mysql_zabbix.py" />
         <option value="$PROJECT_DIR$/scripts/router.py" />
         <option value="$PROJECT_DIR$/scripts/mha_client.py" />
+        <option value="D:/scripts/read_ibd.py" />
+        <option value="D:/scripts/read_binlog.py" />
+        <option value="D:/redis_scripts/load_data.py" />
+        <option value="D:/scripts/mysql_to_pg.py" />
+        <option value="D:/zookeeper/test.py" />
+        <option value="D:/zookeeper/ttt.py" />
+        <option value="$PROJECT_DIR$/scripts/recovery_repl.py" />
+        <option value="$PROJECT_DIR$/db_handle/Replication.py" />
+        <option value="D:/redis_scripts/t1.py" />
+        <option value="D:/redis_scripts/pg_zabbix.py" />
+        <option value="D:/redis_scripts/check_thread.py" />
+        <option value="D:/scripts/t1.py" />
+        <option value="$PROJECT_DIR$/client/config.py" />
+        <option value="$PROJECT_DIR$/client/mha_client.py" />
+        <option value="$PROJECT_DIR$/client/client.conf" />
+        <option value="$PROJECT_DIR$/client/get_config.py" />
+        <option value="$PROJECT_DIR$/client/test.py" />
+        <option value="D:/scripts/SendWeixin.py" />
+        <option value="D:/redis_scripts/test.py" />
+        <option value="D:/redis_scripts/zabbix_api.py" />
+        <option value="$PROJECT_DIR$/client/zk_handle.py" />
+        <option value="$PROJECT_DIR$/config/zk.conf" />
+        <option value="$PROJECT_DIR$/lib/get_conf.py" />
+        <option value="$PROJECT_DIR$/lib/System.py" />
+        <option value="$PROJECT_DIR$/lib/SlaveNodeCheck.py" />
+        <option value="$PROJECT_DIR$/zk_handle/zkHandler.py" />
+        <option value="$PROJECT_DIR$/lib/TaskOb.py" />
+        <option value="$PROJECT_DIR$/lib/SendRoute.py" />
+        <option value="$PROJECT_DIR$/lib/entrance.py" />
+        <option value="$PROJECT_DIR$/db_handle/dbHandle.py" />
+        <option value="$PROJECT_DIR$/db_handle/AdditionTask.py" />
       </list>
     </option>
   </component>
@@ -274,19 +287,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zookeeper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="DC_MHA" />
@@ -303,7 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="redis_scripts" />
+              <option name="myItemId" value="DC_MHA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,6 +316,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DC_MHA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zk_handle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -383,22 +389,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="keys" />
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/dcmha" />
+    <property name="last_opened_file_path" value="D:/BaiduNetdiskDownload/db_manager" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -423,43 +427,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration default="false" name="t2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="D:/zookeeper" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="zookeeper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:/zookeeper/t2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in t2.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="D:/zookeeper" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="mha_server" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;D:/zookeeper/t2.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
-    </configuration>
-    <configuration default="false" name="tidb_select" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.test (1)">
+    <configuration default="false" name="t1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -472,13 +441,13 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="redis_scripts" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:/redis_scripts/tidb_select.py" />
+      <option name="SCRIPT_NAME" value="D:/redis_scripts/t1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="ttt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -491,7 +460,45 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="zookeeper" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:/zookeeper/test.py" />
+      <option name="SCRIPT_NAME" value="D:/zookeeper/ttt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="binlogstream" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="C:/Python27/Lib/site-packages/pymysqlreplication" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="zookeeper" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:/Python27/Lib/site-packages/pymysqlreplication/binlogstream.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/BaiduNetdiskDownload/db_manager" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="db_manager" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:/BaiduNetdiskDownload/db_manager/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -504,13 +511,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="D:/scripts" />
+      <option name="WORKING_DIRECTORY" value="D:/redis_scripts" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="scripts" />
+      <module name="redis_scripts" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:/scripts/test.py" />
+      <option name="SCRIPT_NAME" value="D:\redis_scripts\zabbix_api.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -665,19 +672,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.t2 (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in t2.py" />
-      <item index="2" class="java.lang.String" itemvalue="Python.tidb_select" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test" />
+      <item index="0" class="java.lang.String" itemvalue="Python.t1" />
+      <item index="1" class="java.lang.String" itemvalue="Python.ttt" />
+      <item index="2" class="java.lang.String" itemvalue="Python.binlogstream" />
+      <item index="3" class="java.lang.String" itemvalue="Python.run" />
       <item index="4" class="java.lang.String" itemvalue="Python.test (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.tidb_select" />
-        <item index="3" class="java.lang.String" itemvalue="Python.t2 (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in t2.py" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.run" />
+        <item index="2" class="java.lang.String" itemvalue="Python.t1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.binlogstream" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ttt" />
       </list>
     </recent_temporary>
   </component>
@@ -733,16 +740,15 @@
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16822916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25891182" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075047" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19324578" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.100520834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17448406" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20075047" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29174483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -751,6 +757,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17448406" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
@@ -782,87 +789,126 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/pymysqlreplication/packet.py">
+    <entry file="file://C:/Python27/Lib/SocketServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="109" column="64" lean-forward="false" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="64" />
+        <state relative-caret-position="461">
+          <caret line="702" column="13" lean-forward="false" selection-start-line="702" selection-start-column="13" selection-end-line="702" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymysqlreplication/gtid.py">
+    <entry file="file://C:/Python27/Lib/site-packages/pymysql/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4408">
-          <caret line="235" column="34" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="235" selection-end-column="34" />
+        <state relative-caret-position="1482">
+          <caret line="89" column="17" lean-forward="false" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/redis_scripts/test.py">
+    <entry file="file://C:/Python27/Lib/socket.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="38" />
+        <state relative-caret-position="195">
+          <caret line="540" column="4" lean-forward="false" selection-start-line="540" selection-start-column="4" selection-end-line="540" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/redis_scripts/load_data.py">
+    <entry file="file://D:/redis_scripts/pg_zabbix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="49" lean-forward="true" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+        <state relative-caret-position="38">
+          <caret line="172" column="15" lean-forward="false" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymysqlreplication/binlogstream.py">
+    <entry file="file://D:/BaiduNetdiskDownload/db_manager/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="128" column="8" lean-forward="false" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
-          <folding>
-            <marker date="1501827320622" expanded="true" signature="22222:22529" ph="SELECT COLUM... columns" />
-          </folding>
+        <state relative-caret-position="228">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymysqlreplication/row_event.py">
+    <entry file="file://C:/Python27/Lib/site-packages/pymysql/charset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="152" column="54" lean-forward="false" selection-start-line="152" selection-start-column="54" selection-end-line="152" selection-end-column="54" />
+        <state relative-caret-position="342">
+          <caret line="252" column="21" lean-forward="false" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zk_client.log">
+    <entry file="file://D:/redis_scripts/check_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="48" column="45" lean-forward="true" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
+        <state relative-caret-position="152">
+          <caret line="8" column="57" lean-forward="true" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/kazoo/client.py">
+    <entry file="file://D:/redis_scripts/qwe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/read_frm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2071">
+          <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/zookeeper/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/pymysql/connections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13965">
+          <caret line="755" column="8" lean-forward="false" selection-start-line="755" selection-start-column="8" selection-end-line="755" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/read_ibd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="83" column="65" lean-forward="false" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/t1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="88" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/t2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
-          <caret line="786" column="39" lean-forward="false" selection-start-line="786" selection-start-column="31" selection-end-line="786" selection-end-column="39" />
+          <caret line="85" column="35" lean-forward="false" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/fabric/state.py">
+    <entry file="file://D:/zookeeper/tt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7011">
-          <caret line="375" column="14" lean-forward="false" selection-start-line="375" selection-start-column="5" selection-end-line="375" selection-end-column="14" />
+        <state relative-caret-position="380">
+          <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/fabric/tasks.py">
+    <entry file="file://D:/zookeeper/ttt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5092">
-          <caret line="280" column="16" lean-forward="false" selection-start-line="280" selection-start-column="12" selection-end-line="280" selection-end-column="16" />
+        <state relative-caret-position="408">
+          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/redis/devops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="57" column="54" lean-forward="false" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/zookeeper/t3.py">
+    <entry file="file://D:/zookeeper/t5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -876,80 +922,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/zookeeper/t5.py">
+    <entry file="file://D:/zookeeper/t3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="973">
-          <caret line="716" column="8" lean-forward="false" selection-start-line="716" selection-start-column="8" selection-end-line="716" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/ConfigParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="589" column="8" lean-forward="false" selection-start-line="589" selection-start-column="8" selection-end-line="589" selection-end-column="8" />
+        <state relative-caret-position="551">
+          <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/zookeeper/t2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zk_handle/zkHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymysql/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="570" column="45" lean-forward="true" selection-start-line="570" selection-start-column="20" selection-end-line="570" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pymysql/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/redis_scripts/tidb_select.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/t2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1002">
-          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/t1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        <state relative-caret-position="342">
+          <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/redis_scripts/t1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="51" column="55" lean-forward="false" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+        <state relative-caret-position="247">
+          <caret line="36" column="109" lean-forward="false" selection-start-line="36" selection-start-column="105" selection-end-line="36" selection-end-column="109" />
         </state>
       </provider>
     </entry>
@@ -960,228 +950,242 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/redis_scripts/codb_select.py">
+    <entry file="file://D:/redis_scripts/mysql_zabbix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="21" column="49" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="49" />
+        <state relative-caret-position="-10">
+          <caret line="117" column="18" lean-forward="false" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/zookeeper/tt.py">
+    <entry file="file://$PROJECT_DIR$/scripts/recovery_repl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state relative-caret-position="95">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/read_frm.py">
+    <entry file="file://$PROJECT_DIR$/client/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8504">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="92" selection-end-column="15" />
+        <state relative-caret-position="570">
+          <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/read_ibd.py">
+    <entry file="file://$PROJECT_DIR$/client/get_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1083">
-          <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/redis_scripts/read_binlog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="783" column="35" lean-forward="false" selection-start-line="783" selection-start-column="27" selection-end-line="783" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/zookeeper/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="532">
+          <caret line="28" column="49" lean-forward="true" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/scripts/read_binlog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="1427" column="26" lean-forward="true" selection-start-line="1427" selection-start-column="26" selection-end-line="1427" selection-end-column="26" />
+        <state relative-caret-position="2387">
+          <caret line="1543" column="54" lean-forward="false" selection-start-line="1543" selection-start-column="42" selection-end-line="1543" selection-end-column="54" />
           <folding>
-            <marker date="1509014488791" expanded="true" signature="11967:11982" ph="delete from " />
-            <marker date="1509014488791" expanded="true" signature="11967:11990" ph="delete from " />
-            <marker date="1509014488791" expanded="true" signature="12546:12561" ph="insert into missing_value.missing_value... " />
-            <marker date="1509014488791" expanded="true" signature="12546:12567" ph="insert into missing_value.missing_value... " />
-            <marker date="1509014488791" expanded="true" signature="12546:12574" ph="insert into missing_value.missing_value... " />
-            <marker date="1509014488791" expanded="true" signature="12546:12575" ph="insert into missing_value.missing_value... " />
-            <marker date="1509014488791" expanded="true" signature="13708:13733" ph="update missi... " />
-            <marker date="1509014488791" expanded="true" signature="13708:13734" ph="update missi... " />
+            <element signature="e#76#106#0" expanded="false" />
+            <marker date="1510815730053" expanded="true" signature="11967:11982" ph="delete from " />
+            <marker date="1510815730053" expanded="true" signature="11967:11990" ph="delete from " />
+            <marker date="1510815730053" expanded="true" signature="12546:12561" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12567" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12574" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12575" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="13708:13733" ph="update missi... " />
+            <marker date="1510815730053" expanded="true" signature="13708:13734" ph="update missi... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/check_page.py">
+    <entry file="file://D:/redis_scripts/redis_zabbix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="40" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="1368">
+          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/redis_scripts/mysql_zabbix.py">
+    <entry file="file://D:/scripts/SendWeixin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="78" column="4" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="95" selection-end-column="68" />
+        <state relative-caret-position="171">
+          <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/redis_scripts/zabbix_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+          <folding>
+            <element signature="e#71#94#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/mha_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/zk_handle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/mha_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/client.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="15" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/kazoo/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="785" column="8" lean-forward="false" selection-start-line="785" selection-start-column="8" selection-end-line="785" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="40" column="49" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/zk.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_handle/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_handle/zk_client.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1767">
-          <caret line="94" column="26" lean-forward="false" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_handle/AdditionTask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1933">
-          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <element signature="e#54#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="50" column="52" lean-forward="false" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="247" column="129" lean-forward="false" selection-start-line="247" selection-start-column="129" selection-end-line="247" selection-end-column="129" />
-          <folding>
-            <element signature="e#54#77#0" expanded="true" />
-            <marker date="1509082521604" expanded="true" signature="877:899" ph="select missi... missing_value" />
-            <marker date="1509082521604" expanded="true" signature="877:951" ph="select missi... missing_value" />
-            <marker date="1509082521604" expanded="true" signature="1018:1040" ph="select missi... missing_value" />
-            <marker date="1509082521604" expanded="true" signature="1018:1042" ph="select {} fr... " />
-            <marker date="1509082521604" expanded="true" signature="2194:2267" ph="insert into missing_value... " />
-            <marker date="1509082521604" expanded="true" signature="2347:2372" ph="insert into " />
-            <marker date="1509082521604" expanded="true" signature="2347:2373" ph="insert into missing_value... " />
-            <marker date="1509082521604" expanded="true" signature="2347:2376" ph="insert into missing_value... " />
-            <marker date="1509082521604" expanded="true" signature="2640:2695" ph="update user_... " />
-            <marker date="1509082521604" expanded="true" signature="3142:3178" ph="update missi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/entrance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/get_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-960">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/SendRoute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="30" column="67" lean-forward="true" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/System.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/TaskOb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="185" column="49" lean-forward="false" selection-start-line="185" selection-start-column="49" selection-end-line="185" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/router.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state relative-caret-position="494">
+          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/my_mha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4408">
-          <caret line="232" column="24" lean-forward="false" selection-start-line="232" selection-start-column="14" selection-end-line="232" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/mha_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/ha_client.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="484">
+          <caret line="53" column="50" lean-forward="false" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#53#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zk_handle/zkHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/router.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="13" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/TaskOb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/System.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/SlaveNodeCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+          <folding>
+            <element signature="e#53#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/SendRoute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/get_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="50" column="8" lean-forward="false" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/entrance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_handle/Replication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9747">
+          <caret line="514" column="28" lean-forward="false" selection-start-line="514" selection-start-column="28" selection-end-line="514" selection-end-column="28" />
+          <folding>
+            <marker date="1511835094282" expanded="true" signature="12471:12494" ph="delete from " />
+            <marker date="1511835094282" expanded="true" signature="13057:13086" ph="insert into missing_value.missing_value... " />
+            <marker date="1511835094282" expanded="true" signature="14283:14309" ph="update missi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <marker date="1513585169300" expanded="true" signature="3767:3867" ph="select Maste... slave_master_info" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_handle/AdditionTask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -33,3 +33,12 @@ def UsePlatform():
         return "Linux"
     else:
         print ("Other System tasks")
+
+"""IP地址字符替换"""
+def Replace(value):
+    if '.' in value:
+        return value.replace('.','-')
+    elif '-' in value:
+        return value.replace('-','.')
+    else:
+        return None

@@ -7,7 +7,7 @@ import MySQLdb,sys,traceback
 sys.path.append("..")
 from lib.get_conf import GetConf
 import logging
-logging.basicConfig(filename='zk_client.log',
+logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
                     format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')

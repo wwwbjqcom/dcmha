@@ -9,7 +9,7 @@ from zk_handle.zkHandler import zkHander
 from lib.get_conf import GetConf
 import logging,time,traceback
 import MySQLdb
-logging.basicConfig(filename='zk_client.log',
+logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
                     format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')

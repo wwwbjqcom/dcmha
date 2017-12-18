@@ -57,6 +57,12 @@ class GetConf(object):
     def GetRouter(self):
         return self.GetPath('meta_router')
 
+    def GetOnlineClientPath(self):
+        return self.GetPath('online_client_path')
+
+    def GetSlaveDown(self):
+        return self.GetPath('slave_down')
+
     def GetMysqlAcount(self):
         user = self.conf.get(self.mysqlsection, 'mysqluser').replace('\'','')
         passwd = self.conf.get(self.mysqlsection, 'mysqlpasswd').replace('\'','')

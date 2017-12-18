@@ -7,7 +7,7 @@ import sys,traceback,time,random
 sys.path.append("..")
 from lib.get_conf import GetConf
 import logging
-logging.basicConfig(filename='zk_client.log',
+logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
                     format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')
@@ -35,7 +35,7 @@ class zkHander(object):
 
     def init_node(self,object):
         node_list = {'mysql': ['lock', 'white', 'meta/host', 'meta/group', 'meta/router', 'online-list', 'master', 'task',
-                               'haproxy','watch-down','addition','addition/replication','addition/region','readbinlog-status']}
+                               'haproxy','watch-down','addition','addition/replication','addition/region','readbinlog-status','slavedown']}
         for server in node_list:
             for i in node_list[server]:
                 node_path = server + '/' + i
@@ -268,6 +268,26 @@ class zkHander(object):
     def DeleteLockTask(self,taskname):
         path = GetConf().GetLockPath()
         self.zk.delete(path=path+'/'+taskname) if self.Exists(path=path+'/'+taskname) else None
+
+    '''用于slave node循环检查的函数'''
+    """==================================="""
+    def GetHaChildren(self):
+        ha_node_path = GetConf().GetHaproxy()
+        return self.GetChildren(ha_node_path)
+
+    def GetHaproxy(self,groupname):
+        path = "{}/{}".format(GetConf().GetHaproxy(),groupname)
+        return eval(self.Get(path=path))
+
+    def DeleteSlaveDown(self,host):
+        path = "{}/{}".format(GetConf.GetSlaveDown(),host)
+        return self.zk.delete(path=path) if self.Exists(path=path) else None
+
+    def AlterHaproxyValue(self,groupname,write,read):
+        value = '{"read":%s,"write":"%s"}' % (read,write)
+
+    """==================================="""
+
 
     def close(self):
         self.zk.stop()

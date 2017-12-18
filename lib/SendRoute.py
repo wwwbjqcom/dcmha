@@ -8,13 +8,13 @@ sys.path.append("..")
 from socket import *
 from zk_handle.zkHandler import zkHander
 import logging
-logging.basicConfig(filename='zk_client.log',
+logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
                     format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')
 
 
-def SendRoute(group_name):
+def SendRoute(group_name,slavedown=None):
     with closing(zkHander()) as zkhander:
         route_content = zkhander.GetRouter(group_name)  # 传递路由配置修改信息
         if route_content:
@@ -27,8 +27,12 @@ def SendRoute(group_name):
                     logging.ERROR(traceback.format_exc())
 
                 if not send_stat:
-                    with closing(zkHander()) as zkhander:
-                        zkhander.SetWatchDown(group_name, 'failed')
+                    if slavedown:
+                        return False
+                    else:
+                        with closing(zkHander()) as zkhander:
+                            zkhander.SetWatchDown(group_name, 'failed')
+    return True
 
 
 class TcpClient:
