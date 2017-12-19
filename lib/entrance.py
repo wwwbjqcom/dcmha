@@ -44,7 +44,7 @@ class Entrance:
 
         TaskCh().TaskCheck()
 
-        '''扫描slave节点状态'''
+        '''扫描slave节点状态,用于一主多从,每隔3S检测所有slave节点在线状态，如宕机及时从路由节点删除'''
         '''===================='''
         import multiprocessing
         p = multiprocessing.Process(target=SlaveCheckRun, args=())
