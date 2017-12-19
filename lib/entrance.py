@@ -46,5 +46,7 @@ class Entrance:
 
         '''扫描slave节点状态'''
         '''===================='''
-        SlaveCheckRun()
+        import multiprocessing
+        p = multiprocessing.Process(target=SlaveCheckRun, args=())
+        p.start()
         '''===================='''

@@ -2,7 +2,7 @@
 '''
 @author: xiaozhong
 '''
-import time
+import time,random
 from zk_handle.zkHandler import zkHander
 from contextlib import closing
 from lib.get_conf import GetConf
@@ -29,6 +29,7 @@ class SlaveCheck:
                 __host,__port = h.split(':')[0],h.split(':')[1]
                 status = self.zkhander.Exists('{}/{}'.format(self.online_node,Replace(__host)))
                 if status is None:
+                    time.sleep(random.uniform(0, 0.5))
                     logging.warning('This Group Server {} has slave node:{} is down '.format(groupname, __host))
                     __status = self.zkhander.Exists('{}/{}'.format(self.slave_down_path,Replace(__host)))
                     if __status is None:
@@ -46,29 +47,30 @@ class SlaveCheck:
     """操作slave节点的状态信息"""
     def StaticInfo(self,result,host):
         with closing(zkHander()) as zkhander:
-            online_state = zkhander.Exists('{}/{}'.format(self.online_node,host))
-            if online_state is None:
-                port,groupname = result['port'],result['groupname']
-                for i in range(0,3):
-                    with closing(dbHandle(Replace(host), port)) as dbhandle:
-                        mysqlstate = dbhandle.RetryConn()  # 检测mysql是否能正常连接
-                    time.sleep(1)
-                if mysqlstate:
-                    zkhander.DeleteSlaveDown(host)
-                    logging.warning('Groupname:{} slave host:{} is online,but python client server is not online!'.format(groupname,Replace(host)))
-                else:
-                    lock_state = zkhander.SetLockTask(host)
-                    if lock_state:
+            lock_state = zkhander.SetLockTask(host)
+            if lock_state:
+                online_state = zkhander.Exists('{}/{}'.format(self.online_node,host))
+                if online_state is None:
+                    port,groupname = result['port'],result['groupname']
+                    for i in range(0,3):
+                        with closing(dbHandle(Replace(host), port)) as dbhandle:
+                            mysqlstate = dbhandle.RetryConn()  # 检测mysql是否能正常连接
+                        time.sleep(1)
+                    if mysqlstate:
+                        zkhander.DeleteSlaveDown(host)
+                        logging.warning('Groupname:{} slave host:{} is online,but python client server is not online!'.format(groupname,Replace(host)))
+                    else:
                         alter_state = self.AlterHaproxy(groupname=groupname,delete_host=Replace(host),port=port)
                         if alter_state:
                             zkhander.DeleteSlaveDown(host)
                             zkhander.DeleteLockTask(host)
                         else:
                             zkhander.DeleteLockTask(host)
-                    else:
-                        logging.warning('slave:{} outage task  elsewhere in the execution'.format(Replace(host)))
+
+                else:
+                    zkhander.DeleteSlaveDown(host)
             else:
-                zkhander.DeleteSlaveDown(host)
+                logging.warning('slave:{} outage task  elsewhere in the execution'.format(Replace(host)))
 
     """修改路由状态"""
     def AlterHaproxy(self,groupname,delete_host,port):
