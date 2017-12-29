@@ -34,6 +34,9 @@ class Entrance(Metadata.TableMetadata):
         p.start()
 
         '''先注释掉'''
-        #with zkhandle.ZkHandle():
-        #    pass
+        with zkhandle.ZkHandle():
+            pass
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
 

@@ -7,5 +7,5 @@ from lib import entrance
 
 
 if __name__ == "__main__":
-    with entrance():
+    with entrance.Entrance():
         pass

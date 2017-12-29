@@ -13,6 +13,7 @@ class ZkHandle:
     def __init__(self):
         zk_host = GetConf().GetZKHosts()
         self.zk = KazooClient(hosts=zk_host)
+        self.zk.start()
         self.retry_state = None
 
     def listener(self):
@@ -65,8 +66,9 @@ class ZkHandle:
 
     def GetReplStatus(self):
         '''获取宕机切换时slave执行到的binlog位置'''
-        binlog_status_node = '{}/{}'.format(GetConf().GetPath('readbinlog-status'),self.__get_netcard())
-        gtid_status_node = '{}/{}'.format(GetConf().GetPath('execute-gtid'),self.__get_netcard())
+        binlog_status_node = '{}/{}/{}'.format(GetConf().root_dir,'readbinlog-status',self.__get_netcard())
+        gtid_status_node = '{}/{}/{}'.format(GetConf().root_dir,'execute-gtid',self.__get_netcard())
+        self.zk.state
         if self.zk.exists(binlog_status_node):
             binlog_value,stat = self.zk.get(binlog_status_node)
             gtid_value,stat = self.zk.get(gtid_status_node)
@@ -86,3 +88,6 @@ class ZkHandle:
                 self.retry_create('server')
                 self.retry_tate = ""
             time.sleep(1)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.zk.close()

@@ -5,13 +5,15 @@
 import datetime
 import decimal
 import struct
+import sys
+sys.path.append("..")
+from Binlog import  Metadata
 
-from . import Metadata
 
-
-class Read:
+class Read(object):
     def __init__(self,pack=None,filename=None,startposition=None):
-        self.__packet = pack
+        self.a = 123
+        self.packet = pack
         self.file_data = open(filename, 'rb') if filename else None
         self.startposition = startposition if filename and startposition else None
 
@@ -96,7 +98,7 @@ class Read:
 
     def read_bytes(self, count):
         try:
-            return self.file_data.read(count) if self.__packet is None else self.__packet.read(count)
+            return self.file_data.read(count) if self.packet is None else self.packet.read(count)
         except:
             return None
 
@@ -325,7 +327,7 @@ class Read:
 
         return decimal.Decimal(res), _read_bytes
 
-    def __is_null(self, null_bitmap, position):
+    def is_null(self, null_bitmap, position):
         bit = null_bitmap[int(position / 8)]
         if type(bit) is str:
             bit = ord(bit)

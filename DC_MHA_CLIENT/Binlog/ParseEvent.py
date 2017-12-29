@@ -4,14 +4,16 @@
 '''
 import datetime
 import struct
-import time
+import time,sys
+sys.path.append("..")
+from Binlog import Metadata,ReadPacket
 
-from . import Metadata, ReadPacket
 
 
 class ParseEvent(ReadPacket.Read):
-    def __init__(self,packet=None,filename=None,startpostion=None):
-        super(ReadPacket.Read, self).__init__(packet, filename, startpostion)
+    def __init__(self,packet=None,filename=None,startpostion=None,remote=None):
+        self.remote = remote
+        super(ParseEvent, self).__init__(packet, filename, startpostion)
 
     def read_header(self):
         '''binlog_event_header_len = 19
@@ -22,14 +24,21 @@ class ParseEvent(ReadPacket.Read):
         next_position : 4bytes
         flags : 2bytes
         '''
-        read_byte = self.read_bytes(19)
-        if read_byte:
-            result = struct.unpack('=IBIIIH', read_byte)
-            type_code, event_length, timestamp, next_pos = result[1], result[3], result[0], result[4]
-
-            return type_code, event_length, time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
+        if self.remote:
+            read_byte = self.read_bytes(20)
         else:
-            return None, None, None
+            read_byte = self.read_bytes(19)
+        if read_byte:
+            if self.remote:
+                result = struct.unpack('<cIcIIIH', read_byte)
+                type_code,event_length = result[2],result[4]
+            else:
+                result = struct.unpack('=IBIIIH', read_byte)
+                type_code, event_length = result[1], result[3]
+
+            return type_code, event_length
+        else:
+            return None, None
 
     def read_query_event(self, event_length=None):
         '''fix_part = 13:
@@ -125,7 +134,7 @@ class ParseEvent(ReadPacket.Read):
                 metadata_dict[idex] = metadata
                 bytes += 2
 
-        if self.__packet is None:
+        if self.packet is None:
             self.file_data.seek(
                 event_length - Metadata.binlog_event_header_len - Metadata.table_map_event_fix_length - 5 - database_name_length
                 - table_name_length - colums - bytes, 1)
@@ -161,7 +170,7 @@ class ParseEvent(ReadPacket.Read):
                tuple("{0:02x}".format(ord(c)) for c in uuid)
         gno_id = self.read_uint64()
         gtid += ":{}".format(gno_id)
-        if self.__packet is None:
+        if self.packet is None:
             self.file_data.seek(event_length - 1 - 16 - 8 - Metadata.binlog_event_header_len, 1)
         return gtid
 
@@ -191,6 +200,7 @@ class ParseEvent(ReadPacket.Read):
 
         The The data first length of the varchar type more than 255 are 2 bytes
         '''
+        print self.read_header()
         self.read_bytes(Metadata.fix_length + Metadata.binlog_row_event_extra_headers)
         columns = self.read_uint8()
         columns_length = (columns + 7) / 8
@@ -206,7 +216,7 @@ class ParseEvent(ReadPacket.Read):
             null_bit = self.read_bytes(columns_length)
             bytes += columns_length
             for idex in range(len(colums_type_id_list)):
-                if self.__is_null(null_bit, idex):
+                if self.is_null(null_bit, idex):
                     values.append('Null')
                 elif colums_type_id_list[idex] == Metadata.column_type_dict.MYSQL_TYPE_TINY:
                     try:
@@ -314,7 +324,9 @@ class ParseEvent(ReadPacket.Read):
 
             if type == Metadata.binlog_events.UPDATE_ROWS_EVENT:
                 __values.append(values)
-        return __values
+                return __values
+            else:
+                return values
 
     def write_row_event(self, event_length, colums_type_id_list, metadata_dict, type):
         __values = self.read_row_event(event_length, colums_type_id_list, metadata_dict, type)
@@ -329,17 +341,18 @@ class ParseEvent(ReadPacket.Read):
     def row_event(self,event_length, colums_type_id_list, metadata_dict, type):
         pass
 
-    def GetValue(self,cloums_type_id_list=None, metadata_dict=None):
+    def GetValue(self,cloums_type_id_list=None, metadata_dict=None,type_code=None,event_length=None):
         database_name, table_name,values = None,None,[]
 
-        type_code, event_length,_ = self.read_header()
         if type_code == Metadata.binlog_events.TABLE_MAP_EVENT:
             database_name, table_name, cloums_type_id_list, metadata_dict = self.read_table_map_event(
                 event_length)
+            return database_name, table_name, cloums_type_id_list, metadata_dict
         elif type_code in (Metadata.binlog_events.WRITE_ROWS_EVENT,Metadata.binlog_events.DELETE_ROWS_EVENT,
                            Metadata.binlog_events.UPDATE_ROWS_EVENT):
             values = self.read_row_event(event_length=event_length,colums_type_id_list=cloums_type_id_list,
                                          metadata_dict=metadata_dict,type=type_code)
+            return values
         elif type_code == Metadata.binlog_events.UPDATE_ROWS_EVENT:
             pass
         elif type_code == Metadata.binlog_events.GTID_LOG_EVENT:
@@ -349,10 +362,9 @@ class ParseEvent(ReadPacket.Read):
         elif type_code == Metadata.binlog_events.XID_EVENT:
             pass
 
-        return database_name, table_name, cloums_type_id_list, metadata_dict,values
 
 
 
-
+#ParseEvent(packet='',filename='',startpostion='').read_header()
 
 

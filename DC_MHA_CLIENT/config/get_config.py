@@ -16,7 +16,7 @@ class GetConf(object):
         self.general = 'global'
         self.conf = ConfigParser.ConfigParser()
         self.conf.read(conf_path)
-        self.root_dir = self.conf.get(self.section,'root_path')
+        self.root_dir = self.conf.get(self.section,'root_path').replace('\'','')
 
     def Replace(self,value):
         return value.replace('\'','')
@@ -32,7 +32,7 @@ class GetConf(object):
         return self.GetPath('online_client_path')
 
     def GetSocketDir(self):
-        return self.conf.get(self.mysqlsection,'sockedir')
+        return self.Replace(self.conf.get(self.mysqlsection,'sockedir'))
 
     def GetMysqlUser(self):
         return self.Replace(self.conf.get(self.mysqlsection,'mysqluser'))
@@ -50,7 +50,7 @@ class GetConf(object):
         return self.Replace(self.conf.get(self.mysqlsection, 'mysqlpasswd'))
 
     def GetZKHosts(self):
-        return self.conf.get(self.zookeeper,'hosts')
+        return self.Replace(self.conf.get(self.zookeeper,'hosts'))
 
     def GetServerRetryNum(self):
         return int(self.conf.get(self.general,'mysql_check_retry'))
