@@ -34,7 +34,7 @@ class DBHandle(InitMyDB):
 def RollBbinlog():
     with closing(ZkHandle()) as zkhandle:
         binlog_stat,gtid_stat = zkhandle.GetReplStatus()
-
+    Logging(msg='binlog_stat: {} gtid_stat: {}'.format(binlog_stat,gtid_stat),level='info')
     if binlog_stat and gtid_stat:
         if DBHandle().check():
             transaction_sql_list, rollback_sql_list = Operation(binlog_stat=binlog_stat)    #获取回滚sql及当时执行的sql
@@ -50,15 +50,23 @@ def RollBbinlog():
 def CheckDB():
     __retry_num = 0
     downed_state = None
+    delete_sate = None
     '''第一次启动检查是否为宕机恢复的master，如果是检查是否有需要回滚的数据'''
     RollBbinlog()
 
 
     while True:
         __retry_num += 1 if DBHandle().check() is None else 0
-        if __retry_num >= GetConf().GetServerRetryNum():
-            ZkHandle().delete('server')
-            ZkHandle.Closing()
+        if __retry_num == GetConf().GetServerRetryNum():
+            #with closing(ZkHandle()) as zkhandle:
+            delete_sate = ZkHandle().delete('server')
+            while True:
+                if delete_sate:
+                    break
+                else:
+                    delete_sate = ZkHandle().delete('server')
+
+            ZkHandle().close()
             downed_state = True
 
         time.sleep(1)

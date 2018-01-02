@@ -33,26 +33,32 @@ def GetSQL(_values=None,event_code=None):
         column_list, pk_idex = GetStruct().GetColumn(tmepdata.database_name,tmepdata.table_name)
         tmepdata.table_struct_list[table_struce_key] = column_list
         tmepdata.table_pk_idex_list[table_struce_key] = pk_idex
-    '''获取sql语句'''
-    if event_code == binlog_events.WRITE_ROWS_EVENT:
-        '''delete'''
-        if table_struce_key in tmepdata.table_pk_idex_list:
-            __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
-            pk,pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx],_values[__pk_idx]
-            rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
-        else:
-            rollback_sql = 'DELETE FROM {}.{} WHERE {}'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(_values,table_struce_key))
-        cur_sql = 'INSERT INTO {}.{} VALUES{}'.format(tmepdata.database_name,tmepdata.table_name,tuple(_values))
-    elif event_code == binlog_events.DELETE_ROWS_EVENT:
-        '''insert'''
-        sql = 'insert into {}.{} values{}'.format(tmepdata.database_name,tmepdata.table_name,tuple(_values))
-        print sql
-    elif event_code == binlog_events.UPDATE_ROWS_EVENT:
-        '''update'''
-        __values = [_values[i:i + 2] for i in xrange(0, len(_values), 2)]
-        print __values
-    tmepdata.rollback_sql_list.append(rollback_sql)
-    tmepdata.transaction_sql_list.append(cur_sql)
+    for value in _values:
+        '''获取sql语句'''
+        if event_code == binlog_events.WRITE_ROWS_EVENT:
+            '''delete'''
+            if table_struce_key in tmepdata.table_pk_idex_list:
+                __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
+                pk,pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx],value[__pk_idx]
+                rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+            else:
+                rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
+            cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+        elif event_code == binlog_events.DELETE_ROWS_EVENT:
+            '''insert'''
+            rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+            if table_struce_key in tmepdata.table_pk_idex_list:
+                __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
+                pk, pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], value[__pk_idx]
+                cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+            else:
+                cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
+        elif event_code == binlog_events.UPDATE_ROWS_EVENT:
+            '''update'''
+            __values = [_values[i:i + 2] for i in xrange(0, len(value), 2)]
+            print __values
+        tmepdata.rollback_sql_list.append(rollback_sql)
+        tmepdata.transaction_sql_list.append(cur_sql)
 
 def Operation(binlog_stat):
     Logging(msg='this master is old master,rollback transactions now', level='info')
@@ -69,6 +75,9 @@ def Operation(binlog_stat):
                     pkt = ReplConn._read_packet()
                 _parse_event = ParseEvent(packet=pkt,remote=True)
                 event_code, event_length = _parse_event.read_header()
+                if event_code is None:
+                    ReplConn.close()
+                    break
                 if event_code in (binlog_events.WRITE_ROWS_EVENT,binlog_events.UPDATE_ROWS_EVENT,binlog_events.DELETE_ROWS_EVENT):
                      _values = _parse_event.GetValue(type_code=event_code, event_length=event_length,cloums_type_id_list=tmepdata.cloums_type_id_list,metadata_dict=tmepdata.metadata_dict)
                      GetSQL(_values=_values,event_code=event_code)

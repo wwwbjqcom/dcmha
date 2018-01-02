@@ -9,25 +9,40 @@ from config.get_config import GetConf
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 
+retry_state = None
+
 class ZkHandle:
     def __init__(self):
         zk_host = GetConf().GetZKHosts()
         self.zk = KazooClient(hosts=zk_host)
         self.zk.start()
-        self.retry_state = None
+        self.retry_state = ""
 
     def listener(self):
         '''创建监听'''
-        @self.zk.add_listener
-        def my_listener(state):
-            if state == KazooState.LOST:
-                Logging(msg="LOST", level='error')
-            elif state == KazooState.SUSPENDED:
-                Logging(msg="SUSPENDED", level='info')
+        #@self.zk.add_listener
+        retry_create_stat = None
+        while True:
+            state = self.zk.state
+            #def my_listener(state):
+            if state.upper() != self.retry_state.upper():
+                if state == KazooState.LOST:
+                    #Logging(msg="LOST", level='error')
+                    self.retry_state = ""
+                elif state == KazooState.SUSPENDED:
+                    #Logging(msg="SUSPENDED", level='info')
+                    self.retry_state = ""
+                else:
+                    #Logging(msg="Connected", level='info')
+                    self.retry_state = "Connected"
+
+            if self.retry_state == "Connected" and retry_create_stat is None:
+                self.retry_create('client')
+                self.retry_create('server')
+                retry_create_stat = True
             else:
-                Logging(msg="Connected", level='info')
-                self.retry_tate = "Connected"
-                return self.retry_state
+                retry_create_stat = None
+            time.sleep(1)
 
     def retry_create(self,type=None):
         '''创建临时node'''
@@ -51,9 +66,16 @@ class ZkHandle:
             online_node = GetConf().GetOnlinePath()
         else:
             Logging(msg='not suport this type {},create node if failed '.format(type), level='error')
+        Logging(msg='server {} is down, now deleted this server node on zk'.format(self.__get_netcard()), level='info')
         self.zk.delete(path='{}/{}'.format(online_node,self.__get_netcard()))
-        Logging(msg='server {} is down, now deleted this server node on zk'.format(self.__get_netcard()),level='info')
 
+        delete_stat = self.zk.exists(path='{}/{}'.format(online_node,self.__get_netcard()))
+        if delete_stat is None:
+            Logging(msg='delete successful',level='info')
+            return False
+        else:
+            Logging(msg='delete failed', level='info')
+            return True
 
     def __get_netcard(self):
         '''获取IP地址'''
@@ -68,7 +90,7 @@ class ZkHandle:
         '''获取宕机切换时slave执行到的binlog位置'''
         binlog_status_node = '{}/{}/{}'.format(GetConf().root_dir,'readbinlog-status',self.__get_netcard())
         gtid_status_node = '{}/{}/{}'.format(GetConf().root_dir,'execute-gtid',self.__get_netcard())
-        self.zk.state
+        #self.zk.state
         if self.zk.exists(binlog_status_node):
             binlog_value,stat = self.zk.get(binlog_status_node)
             gtid_value,stat = self.zk.get(gtid_status_node)
@@ -77,17 +99,5 @@ class ZkHandle:
         return eval(binlog_value),gtid_value
 
 
-    def Closing(self):
-        self.zk.close()
-
-    def __enter__(self):
-        self.listener()
-        while True:
-            if self.retry_tate == "Connected":
-                self.retry_create('client')
-                self.retry_create('server')
-                self.retry_tate = ""
-            time.sleep(1)
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.zk.close()
+    def close(self):
+        self.zk.stop()

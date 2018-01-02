@@ -36,7 +36,7 @@ class InitMyDB(object):
         connection = self.Init()
         with closing(connection.cursor()) as cur:
             try:
-                for sql in sql_list.reverse():
+                for sql in sql_list[::-1]:
                     Logging(msg='Rollback statement: {}'.format(sql),level='info')
                     cur.execute(sql)
             except pymysql.Error:

@@ -31,11 +31,14 @@ class ParseEvent(ReadPacket.Read):
         if read_byte:
             if self.remote:
                 result = struct.unpack('<cIcIIIH', read_byte)
-                type_code,event_length = result[2],result[4]
+                if isinstance(result[2], int):
+                    type_code = result[2]
+                else:
+                    type_code = struct.unpack("!B", result[2])[0]
+                event_length = result[4]
             else:
                 result = struct.unpack('=IBIIIH', read_byte)
                 type_code, event_length = result[1], result[3]
-
             return type_code, event_length
         else:
             return None, None
@@ -200,7 +203,6 @@ class ParseEvent(ReadPacket.Read):
 
         The The data first length of the varchar type more than 255 are 2 bytes
         '''
-        print self.read_header()
         self.read_bytes(Metadata.fix_length + Metadata.binlog_row_event_extra_headers)
         columns = self.read_uint8()
         columns_length = (columns + 7) / 8
@@ -322,11 +324,11 @@ class ParseEvent(ReadPacket.Read):
                         values.append(self.read_uint16())
                     bytes += _metadata
 
-            if type == Metadata.binlog_events.UPDATE_ROWS_EVENT:
-                __values.append(values)
-                return __values
-            else:
-                return values
+            #if type == Metadata.binlog_events.UPDATE_ROWS_EVENT:
+            __values.append(values)
+
+            #else:
+        return __values
 
     def write_row_event(self, event_length, colums_type_id_list, metadata_dict, type):
         __values = self.read_row_event(event_length, colums_type_id_list, metadata_dict, type)
