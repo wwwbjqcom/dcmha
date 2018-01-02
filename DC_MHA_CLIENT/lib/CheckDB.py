@@ -9,6 +9,7 @@ from Loging import Logging
 from InitDB import InitMyDB
 from SaveSql import SaveSql
 from OperationDB import Operation
+from OperationDB import ChangeMaster
 from contextlib import closing
 sys.path.append("..")
 from config.get_config import GetConf
@@ -44,19 +45,29 @@ def RollBbinlog():
         else:
             Logging(msg='mysql server is not running,plase checking your mysql server',level='error')
 
-
+    if roll_stat:
+        with closing(ZkHandle()) as zkhandle:
+            master_host,my_ip = zkhandle.GetMasterHost(groupname=binlog_stat[0])
+        connction = DBHandle().Init()
+        change_stat = ChangeMaster(mysqlconn=connction,master_host=master_host,gtid=gtid_stat)
+        if change_stat:
+            Logging(msg='Change to new master succeed..............')
+            with closing(ZkHandle()) as zkhandle:
+                zkhandle.retry_create(type='server')
+            return True
+        else:
+            Logging(msg='Change to new master failed, exit now..............')
 
 
 def CheckDB():
     __retry_num = 0
     downed_state = None
-    delete_sate = None
     '''第一次启动检查是否为宕机恢复的master，如果是检查是否有需要回滚的数据'''
     RollBbinlog()
 
 
     while True:
-        __retry_num += 1 if DBHandle().check() is None else 0
+        __retry_num = __retry_num + 1 if DBHandle().check() is None else 0
         if __retry_num == GetConf().GetServerRetryNum():
             #with closing(ZkHandle()) as zkhandle:
             delete_sate = ZkHandle().delete('server')

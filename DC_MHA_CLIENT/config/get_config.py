@@ -49,6 +49,9 @@ class GetConf(object):
     def GetPeplPassowd(self):
         return self.Replace(self.conf.get(self.mysqlsection, 'mysqlpasswd'))
 
+    def GetReplPort(self):
+        return int(self.conf.get(self.mysqlsection,'replport'))
+
     def GetZKHosts(self):
         return self.Replace(self.conf.get(self.zookeeper,'hosts'))
 

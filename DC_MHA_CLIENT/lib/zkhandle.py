@@ -5,7 +5,10 @@
 import sys,psutil,time
 sys.path.append("..")
 from Loging import Logging
+from lib.CheckDB import RollBbinlog
+from lib.CheckDB import DBHandle
 from config.get_config import GetConf
+from CheckDB import CheckDB
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 
@@ -17,10 +20,32 @@ class ZkHandle:
         self.zk = KazooClient(hosts=zk_host)
         self.zk.start()
         self.retry_state = ""
+        self.__retry_num = 0
+        self.downed_state = None
+
+    def __checkdb(self):
+        '''mysql服务检查'''
+        self.__retry_num = self.__retry_num + 1 if DBHandle().check() is None else 0
+        if self.__retry_num == GetConf().GetServerRetryNum():
+            # with closing(ZkHandle()) as zkhandle:
+            delete_sate = self.delete('server')
+            while True:
+                if delete_sate:
+                    break
+                else:
+                    delete_sate = self.delete('server')
+
+            self.downed_state = True
+
+        if self.downed_state and self.__retry_num == 0:
+            RollBbinlog()
+            self.downed_state = None
+
 
     def listener(self):
         '''创建监听'''
         #@self.zk.add_listener
+        RollBbinlog()               #首次启动进行检查
         retry_create_stat = None
         while True:
             state = self.zk.state
@@ -40,8 +65,12 @@ class ZkHandle:
                 self.retry_create('client')
                 self.retry_create('server')
                 retry_create_stat = True
+            elif self.retry_state == "Connected" and retry_create_stat:
+                pass
             else:
                 retry_create_stat = None
+
+            self.__checkdb()
             time.sleep(1)
 
     def retry_create(self,type=None):
@@ -67,15 +96,17 @@ class ZkHandle:
         else:
             Logging(msg='not suport this type {},create node if failed '.format(type), level='error')
         Logging(msg='server {} is down, now deleted this server node on zk'.format(self.__get_netcard()), level='info')
-        self.zk.delete(path='{}/{}'.format(online_node,self.__get_netcard()))
+        stat = self.zk.exists(path='{}/{}'.format(online_node, self.__get_netcard()))
+        if stat:
+            self.zk.delete(path='{}/{}'.format(online_node,self.__get_netcard()))
 
         delete_stat = self.zk.exists(path='{}/{}'.format(online_node,self.__get_netcard()))
         if delete_stat is None:
             Logging(msg='delete successful',level='info')
-            return False
+            return True
         else:
             Logging(msg='delete failed', level='info')
-            return True
+            return False
 
     def __get_netcard(self):
         '''获取IP地址'''
@@ -97,6 +128,11 @@ class ZkHandle:
         else:
             return None,None
         return eval(binlog_value),gtid_value
+
+    def GetMasterHost(self,groupname=None):
+        '''返回当前master IP，本身所在系统的IP'''
+        value,_ = self.zk.get(path='/mysql/master/{}'.format(groupname))
+        return value,self.__get_netcard()
 
 
     def close(self):

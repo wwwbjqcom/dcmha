@@ -28,8 +28,8 @@ class Entrance(Metadata.TableMetadata):
 
     def __enter__(self):
 
-        p = multiprocessing.Process(target=CheckDB, args=())
-        p.start()
+        #p = multiprocessing.Process(target=CheckDB, args=())
+        #p.start()
 
         '''先注释掉'''
         zkhandle.ZkHandle().listener()

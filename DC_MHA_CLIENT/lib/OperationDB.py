@@ -5,6 +5,7 @@
 import sys,pymysql,traceback
 from Loging import Logging
 sys.path.append("..")
+from config.get_config import GetConf
 from Binlog.Replication import ReplicationMysql
 from Binlog.ParseEvent import ParseEvent
 from Binlog.PrepareStructure import GetStruct
@@ -91,3 +92,19 @@ def Operation(binlog_stat):
         return tmepdata.transaction_sql_list,tmepdata.rollback_sql_list
     else:
         Logging(msg='replication failed................', level='error')
+
+
+def ChangeMaster(mysqlconn=None,master_host=None,gtid=None):
+    repl_user,repl_passwd,repl_port = GetConf().GetReplUser(),GetConf().GetPeplPassowd(),GetConf().GetReplPort()
+    sql = 'CHANGE MASTER TO MASTER_HOST="{}",MASTER_PORT={},MASTER_USER="{}",MASTER_PASSWORD="{}",' \
+          'MASTER_AUTO_POSITION=1 FOR CHANNEL "default";'.format(master_host.replace('-','.'),repl_port,repl_user,repl_passwd)
+    with mysqlconn.cursor() as cur:
+        try:
+            cur.execute('reset master;')
+            cur.execute('set gtid_purged="{}"'.format(gtid))
+            cur.execute(sql)
+            cur.execute('start slave;')
+            return True
+        except Exception, e:
+            Logging(msg=traceback.format_exc(), level='error')
+            return False
