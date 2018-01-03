@@ -82,6 +82,17 @@ class ZkHandle(object):
         value,_ = self.zk.get(path='/mysql/master/{}'.format(groupname))
         return value,self.__get_netcard()
 
+    def DeleteDownStatus(self):
+        '''回滚完成后删除binlog及gtid信息'''
+        binlog_status_node = '{}/{}/{}'.format(GetConf().root_dir, 'readbinlog-status', self.__get_netcard())
+        gtid_status_node = '{}/{}/{}'.format(GetConf().root_dir, 'execute-gtid', self.__get_netcard())
+        binlog_stat = self.zk.exists(path=binlog_status_node)
+        if binlog_stat:
+            self.zk.delete(path=binlog_status_node)
+
+        gtid_stat = self.zk.exists(path=gtid_status_node)
+        if gtid_stat:
+            self.zk.delete(path=gtid_status_node)
 
     def close(self):
         self.zk.stop()

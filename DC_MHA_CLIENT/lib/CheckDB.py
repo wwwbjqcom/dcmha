@@ -51,12 +51,13 @@ def RollBbinlog():
         connction = DBHandle().Init()
         change_stat = ChangeMaster(mysqlconn=connction,master_host=master_host,gtid=gtid_stat)
         if change_stat:
-            Logging(msg='Change to new master succeed..............')
+            Logging(msg='Change to new master succeed..............',level='info')
             with closing(ZkHandle()) as zkhandle:
                 zkhandle.retry_create(type='server')
+                zkhandle.DeleteDownStatus()
             return True
         else:
-            Logging(msg='Change to new master failed, exit now..............')
+            Logging(msg='Change to new master failed, exit now..............',level='error')
 
 
 def CheckDB():

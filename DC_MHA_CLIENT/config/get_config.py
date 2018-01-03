@@ -47,7 +47,7 @@ class GetConf(object):
         return self.Replace(self.conf.get(self.mysqlsection, 'repluser'))
 
     def GetPeplPassowd(self):
-        return self.Replace(self.conf.get(self.mysqlsection, 'mysqlpasswd'))
+        return self.Replace(self.conf.get(self.mysqlsection, 'replpasswd'))
 
     def GetReplPort(self):
         return int(self.conf.get(self.mysqlsection,'replport'))

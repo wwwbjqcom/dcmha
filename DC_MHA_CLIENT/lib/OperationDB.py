@@ -101,10 +101,13 @@ def ChangeMaster(mysqlconn=None,master_host=None,gtid=None):
     with mysqlconn.cursor() as cur:
         try:
             cur.execute('reset master;')
-            cur.execute('set gtid_purged="{}"'.format(gtid))
+            cur.execute('set global gtid_purged="{}"'.format(gtid))
             cur.execute(sql)
             cur.execute('start slave;')
+        except pymysql.Warning,e:
+            Logging(msg=traceback.format_exc(), level='warning')
             return True
-        except Exception, e:
+        except pymysql.Error, e:
             Logging(msg=traceback.format_exc(), level='error')
             return False
+        return True
