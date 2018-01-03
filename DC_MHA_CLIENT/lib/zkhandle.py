@@ -2,19 +2,16 @@
 '''
 @author: xiaozhong
 '''
-import sys,psutil,time
+import sys,psutil
 sys.path.append("..")
 from Loging import Logging
-from lib.CheckDB import RollBbinlog
-from lib.CheckDB import DBHandle
 from config.get_config import GetConf
-from CheckDB import CheckDB
 from kazoo.client import KazooClient
-from kazoo.client import KazooState
+
 
 retry_state = None
 
-class ZkHandle:
+class ZkHandle(object):
     def __init__(self):
         zk_host = GetConf().GetZKHosts()
         self.zk = KazooClient(hosts=zk_host)
@@ -23,55 +20,6 @@ class ZkHandle:
         self.__retry_num = 0
         self.downed_state = None
 
-    def __checkdb(self):
-        '''mysql服务检查'''
-        self.__retry_num = self.__retry_num + 1 if DBHandle().check() is None else 0
-        if self.__retry_num == GetConf().GetServerRetryNum():
-            # with closing(ZkHandle()) as zkhandle:
-            delete_sate = self.delete('server')
-            while True:
-                if delete_sate:
-                    break
-                else:
-                    delete_sate = self.delete('server')
-
-            self.downed_state = True
-
-        if self.downed_state and self.__retry_num == 0:
-            RollBbinlog()
-            self.downed_state = None
-
-
-    def listener(self):
-        '''创建监听'''
-        #@self.zk.add_listener
-        RollBbinlog()               #首次启动进行检查
-        retry_create_stat = None
-        while True:
-            state = self.zk.state
-            #def my_listener(state):
-            if state.upper() != self.retry_state.upper():
-                if state == KazooState.LOST:
-                    #Logging(msg="LOST", level='error')
-                    self.retry_state = ""
-                elif state == KazooState.SUSPENDED:
-                    #Logging(msg="SUSPENDED", level='info')
-                    self.retry_state = ""
-                else:
-                    #Logging(msg="Connected", level='info')
-                    self.retry_state = "Connected"
-
-            if self.retry_state == "Connected" and retry_create_stat is None:
-                self.retry_create('client')
-                self.retry_create('server')
-                retry_create_stat = True
-            elif self.retry_state == "Connected" and retry_create_stat:
-                pass
-            else:
-                retry_create_stat = None
-
-            self.__checkdb()
-            time.sleep(1)
 
     def retry_create(self,type=None):
         '''创建临时node'''

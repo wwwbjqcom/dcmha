@@ -2,15 +2,11 @@
 '''
 @author: xiaozhong
 '''
-import sys,time
+import sys
+
 sys.path.append("..")
-import zkhandle
-from Loging import Logging
-from config import get_config
-from contextlib import closing
+from heart import CreateHear
 from Binlog import Metadata
-from CheckDB import CheckDB
-import multiprocessing
 
 
 class Entrance(Metadata.TableMetadata):
@@ -32,7 +28,7 @@ class Entrance(Metadata.TableMetadata):
         #p.start()
 
         '''先注释掉'''
-        zkhandle.ZkHandle().listener()
+        CreateHear().listener()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         pass
