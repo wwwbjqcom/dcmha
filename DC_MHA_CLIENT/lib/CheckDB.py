@@ -32,10 +32,12 @@ class DBHandle(InitMyDB):
     def closing(self):
         self.closing()
 
+
 def RollBbinlog():
     with closing(ZkHandle()) as zkhandle:
         binlog_stat,gtid_stat = zkhandle.GetReplStatus()
     Logging(msg='binlog_stat: {} gtid_stat: {}'.format(binlog_stat,gtid_stat),level='info')
+    roll_stat = None
     if binlog_stat and gtid_stat:
         if DBHandle().check():
             transaction_sql_list, rollback_sql_list = Operation(binlog_stat=binlog_stat)    #获取回滚sql及当时执行的sql
@@ -45,19 +47,26 @@ def RollBbinlog():
         else:
             Logging(msg='mysql server is not running,plase checking your mysql server',level='error')
 
+    elif gtid_stat:
+        Change(binlog_stat=binlog_stat, gtid_stat=gtid_stat)
+
     if roll_stat:
+        Change(binlog_stat=binlog_stat,gtid_stat=gtid_stat)
+
+def Change(binlog_stat=None,gtid_stat=None):
+    groupname = binlog_stat[0] if binlog_stat else gtid_stat[0]
+    with closing(ZkHandle()) as zkhandle:
+        master_host, my_ip = zkhandle.GetMasterHost(groupname=groupname)
+    connction = DBHandle().Init()
+    change_stat = ChangeMaster(mysqlconn=connction, master_host=master_host, gtid=gtid_stat[1])
+    if change_stat:
+        Logging(msg='Change to new master succeed..............', level='info')
         with closing(ZkHandle()) as zkhandle:
-            master_host,my_ip = zkhandle.GetMasterHost(groupname=binlog_stat[0])
-        connction = DBHandle().Init()
-        change_stat = ChangeMaster(mysqlconn=connction,master_host=master_host,gtid=gtid_stat)
-        if change_stat:
-            Logging(msg='Change to new master succeed..............',level='info')
-            with closing(ZkHandle()) as zkhandle:
-                zkhandle.retry_create(type='server')
-                zkhandle.DeleteDownStatus()
-            return True
-        else:
-            Logging(msg='Change to new master failed, exit now..............',level='error')
+            zkhandle.retry_create(type='server')
+            zkhandle.DeleteDownStatus()
+        return True
+    else:
+        Logging(msg='Change to new master failed, exit now..............', level='error')
 
 
 def CheckDB():
