@@ -14,6 +14,7 @@ class GetConf(object):
         self.mysqlsection = 'mysqldb'
         self.zookeeper = 'zookeeper'
         self.general = 'global'
+        self.socket = 'socket'
         self.conf = ConfigParser.ConfigParser()
         self.conf.read(conf_path)
         self.root_dir = self.conf.get(self.section,'root_path').replace('\'','')
@@ -58,7 +59,11 @@ class GetConf(object):
     def GetServerRetryNum(self):
         return int(self.conf.get(self.general,'mysql_check_retry'))
 
+    def GetSockPort(self):
+        return int(self.conf.get(self.socket,'port'))
 
+    def GetBinlogDir(self):
+        return self.Replace(self.conf.get(self.mysqlsection,'binlogdir'))
 
 #print GetConf().GetSlaveSSLCa()
 #print GetConf().GetZKHosts()

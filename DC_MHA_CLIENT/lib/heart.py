@@ -57,3 +57,4 @@ class CreateHear(ZkHandle):
         if self.downed_state and self.__retry_num == 0:
             RollBbinlog()
             self.downed_state = None
+            self.retry_create('server')

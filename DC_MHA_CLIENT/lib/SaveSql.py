@@ -26,7 +26,8 @@ class SaveSql:
     def ToFile(self,sql_list):
         self.__create_file()
         self.__create_file()
-        for sql in sql_list:
-            self.f.write('{}\n'.format(sql))
+        if len(sql_list) > 0:
+            for sql in sql_list:
+                self.f.write('{}\n'.format(sql))
 
         self.f.close()

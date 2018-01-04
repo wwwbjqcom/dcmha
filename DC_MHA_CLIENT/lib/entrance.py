@@ -3,10 +3,11 @@
 @author: xiaozhong
 '''
 import sys
-
+import multiprocessing
 sys.path.append("..")
 from heart import CreateHear
 from Binlog import Metadata
+from Append.Socket import Socket
 
 
 class Entrance(Metadata.TableMetadata):
@@ -24,8 +25,8 @@ class Entrance(Metadata.TableMetadata):
 
     def __enter__(self):
 
-        #p = multiprocessing.Process(target=CheckDB, args=())
-        #p.start()
+        p = multiprocessing.Process(target=Socket().start, args=())
+        p.start()
 
         '''先注释掉'''
         CreateHear().listener()
