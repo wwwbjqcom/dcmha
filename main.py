@@ -4,6 +4,7 @@
 '''
 from lib.entrance import Entrance
 import time
+
 if __name__ == "__main__":
     Entrance().Init()
     while True:

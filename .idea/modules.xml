@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://D:/DC_MHA_CLIENT/.idea/DC_MHA_CLIENT.iml" filepath="D:/DC_MHA_CLIENT/.idea/DC_MHA_CLIENT.iml" />
       <module fileurl="file://D:/BaiduNetdiskDownload/db_manager/.idea/db_manager.iml" filepath="D:/BaiduNetdiskDownload/db_manager/.idea/db_manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mha_server.iml" filepath="$PROJECT_DIR$/.idea/mha_server.iml" />
       <module fileurl="file://D:/redis_scripts/.idea/redis_scripts.iml" filepath="D:/redis_scripts/.idea/redis_scripts.iml" />

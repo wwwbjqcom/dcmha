@@ -15,6 +15,7 @@ class GetConf(object):
         self.section = 'nodepath'
         self.mysqlsection = 'mysqldb'
         self.addition = 'addition'
+        self.client = 'client'
         self.conf = ConfigParser.ConfigParser()
         self.conf.read(conf_path)
         self.root_dir = self.conf.get(self.section,'root_path')
@@ -83,6 +84,8 @@ class GetConf(object):
         else:
             file_name = self.conf.get(self.mysqlsection, name).replace('\'','')
             return self.keys_path+file_name
+    def GetClientPort(self):
+        return int(self.conf.get(self.client,'port'))
 
     def GetUserSSLCa(self):
         return self.GetSSLPath('ca')

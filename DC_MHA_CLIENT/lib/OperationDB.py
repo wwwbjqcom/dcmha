@@ -34,32 +34,58 @@ def GetSQL(_values=None,event_code=None):
         column_list, pk_idex = GetStruct().GetColumn(tmepdata.database_name,tmepdata.table_name)
         tmepdata.table_struct_list[table_struce_key] = column_list
         tmepdata.table_pk_idex_list[table_struce_key] = pk_idex
-    for value in _values:
-        '''获取sql语句'''
-        if event_code == binlog_events.WRITE_ROWS_EVENT:
-            '''delete'''
-            if table_struce_key in tmepdata.table_pk_idex_list:
-                __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
-                pk,pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx],value[__pk_idx]
-                rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+
+    if table_struce_key in tmepdata.table_pk_idex_list:
+        '''获取主键所在index'''
+        __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
+    else:
+        __pk_idx = None
+
+    if event_code == binlog_events.UPDATE_ROWS_EVENT:
+        __values = [_values[i:i + 2] for i in xrange(0, len(_values), 2)]
+        for row_value in __values:
+            if __pk_idx is not None:
+                pk, roll_pk_value, cur_pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], row_value[1][
+                    __pk_idx], row_value[0][__pk_idx]
+                rollback_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                        WhereJoin(row_value[0], table_struce_key), pk,
+                                                                        roll_pk_value)
+                cur_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                   WhereJoin(row_value[1], table_struce_key), pk,
+                                                                   cur_pk_value)
             else:
-                rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
-            cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
-        elif event_code == binlog_events.DELETE_ROWS_EVENT:
-            '''insert'''
-            rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
-            if table_struce_key in tmepdata.table_pk_idex_list:
-                __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
-                pk, pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], value[__pk_idx]
-                cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
-            else:
-                cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
-        elif event_code == binlog_events.UPDATE_ROWS_EVENT:
-            '''update'''
-            __values = [_values[i:i + 2] for i in xrange(0, len(value), 2)]
-            print __values
-        tmepdata.rollback_sql_list.append(rollback_sql)
-        tmepdata.transaction_sql_list.append(cur_sql)
+                rollback_sql = 'UPDATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                     WhereJoin(row_value[0], table_struce_key),
+                                                                     WhereJoin(row_value[1], table_struce_key))
+                cur_sql = 'UPDATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
+                                                               WhereJoin(row_value[1], table_struce_key),
+                                                               WhereJoin(row_value[0], table_struce_key))
+            tmepdata.rollback_sql_list.append(rollback_sql)
+            tmepdata.transaction_sql_list.append(cur_sql)
+    else:
+        for value in _values:
+            '''获取sql语句'''
+            if event_code == binlog_events.WRITE_ROWS_EVENT:
+                '''delete'''
+                if __pk_idx is not None:
+                    rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+                else:
+                    rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
+                cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+                tmepdata.rollback_sql_list.append(rollback_sql)
+                tmepdata.transaction_sql_list.append(cur_sql)
+            elif event_code == binlog_events.DELETE_ROWS_EVENT:
+                '''insert'''
+                rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+                if __pk_idx is not None:
+                    pk, pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], value[__pk_idx]
+                    cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+                else:
+                    cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
+                tmepdata.rollback_sql_list.append(rollback_sql)
+                tmepdata.transaction_sql_list.append(cur_sql)
+
+
 
 def Operation(binlog_stat):
     Logging(msg='this master is old master,rollback transactions now', level='info')
@@ -104,10 +130,13 @@ def ChangeMaster(mysqlconn=None,master_host=None,gtid=None):
             cur.execute('set global gtid_purged="{}"'.format(gtid))
             cur.execute(sql)
             cur.execute('start slave;')
+            cur.execute('set global read_only=1')
         except pymysql.Warning,e:
             Logging(msg=traceback.format_exc(), level='warning')
+            cur.execute('set global read_only=1')
             return True
         except pymysql.Error, e:
             Logging(msg=traceback.format_exc(), level='error')
+            cur.execute('set global read_only=1')
             return False
         return True

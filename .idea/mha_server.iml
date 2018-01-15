@@ -8,5 +8,6 @@
     <orderEntry type="module" module-name="zookeeper" />
     <orderEntry type="module" module-name="scripts" />
     <orderEntry type="module" module-name="db_manager" />
+    <orderEntry type="module" module-name="DC_MHA_CLIENT" />
   </component>
 </module>

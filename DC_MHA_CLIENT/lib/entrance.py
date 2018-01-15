@@ -25,9 +25,9 @@ class Entrance(Metadata.TableMetadata):
 
     def __enter__(self):
 
-        p = multiprocessing.Process(target=Socket().start, args=())
-        p.start()
-
+        #p = multiprocessing.Process(target=Socket().start, args=())
+        #p.start()
+        Socket().start()
         '''先注释掉'''
         CreateHear().listener()
 
