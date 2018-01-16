@@ -57,7 +57,7 @@
                                {'192-168-212-127':{'prot':3316,'ssl':1/0},'192-168-212-128':{}........}
 
 部署流程：
-    1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install psutil kazoo
+    1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel ;pip install psutil kazoo 
     2、部署zookeeper集群
     3、启动server端初始化数据
     4、在所有mysql节点部署mha_client创建心跳
