@@ -62,32 +62,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="read_binlog.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/scripts/read_binlog.py">
+      <file leaf-file-name="dbHandle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="1212" column="64" lean-forward="false" selection-start-line="1212" selection-start-column="56" selection-end-line="1212" selection-end-column="64" />
+            <state relative-caret-position="245">
+              <caret line="69" column="40" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="40" />
               <folding>
-                <marker date="1510815730053" expanded="true" signature="11967:11982" ph="delete from " />
-                <marker date="1510815730053" expanded="true" signature="11967:11990" ph="delete from " />
-                <marker date="1510815730053" expanded="true" signature="12546:12561" ph="insert into missing_value.missing_value... " />
-                <marker date="1510815730053" expanded="true" signature="12546:12567" ph="insert into missing_value.missing_value... " />
-                <marker date="1510815730053" expanded="true" signature="12546:12574" ph="insert into missing_value.missing_value... " />
-                <marker date="1510815730053" expanded="true" signature="12546:12575" ph="insert into missing_value.missing_value... " />
-                <marker date="1510815730053" expanded="true" signature="13708:13733" ph="update missi... " />
-                <marker date="1510815730053" expanded="true" signature="13708:13734" ph="update missi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Connection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Append/Connection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-              <folding>
-                <element signature="e#53#73#0" expanded="true" />
+                <element signature="e#53#88#0" expanded="true" />
+                <marker date="1516160269224" expanded="true" signature="5643:5743" ph="select Maste... slave_master_info" />
+                <marker date="1516160269224" expanded="true" signature="6403:6530" ph="select COLUM... COLUMNS" />
               </folding>
             </state>
           </provider>
@@ -96,30 +79,26 @@
       <file leaf-file-name="AppendValue.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+            <state relative-caret-position="467">
+              <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
               <folding>
-                <element signature="e#54#82#0" expanded="true" />
-                <marker date="1516003354382" expanded="true" signature="3256:3285" ph="UPDATE missi... " />
-                <marker date="1516003354382" expanded="true" signature="4147:4171" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516003354382" expanded="true" signature="4734:4761" ph="DELETE FROM " />
-                <marker date="1516003354382" expanded="true" signature="4967:4991" ph="DELETE FROM " />
-                <marker date="1516003354382" expanded="true" signature="5912:6039" ph="select COLUM... COLUMNS" />
+                <element signature="e#54#74#0" expanded="true" />
+                <marker date="1516174532334" expanded="true" signature="3387:3416" ph="UPDATE missi... " />
+                <marker date="1516174532334" expanded="true" signature="4278:4302" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516174532334" expanded="true" signature="4865:4892" ph="DELETE FROM " />
+                <marker date="1516174532334" expanded="true" signature="5098:5122" ph="DELETE FROM " />
+                <marker date="1516174532334" expanded="true" signature="6043:6170" ph="select COLUM... COLUMNS" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbHandle.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
+      <file leaf-file-name="GetBinlog.py" pinned="false" current-in-tab="true">
+        <entry file="file://D:/DC_MHA_CLIENT/Append/GetBinlog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="81" column="35" lean-forward="true" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
-              <folding>
-                <element signature="e#53#88#0" expanded="true" />
-                <marker date="1516005149352" expanded="true" signature="5193:5293" ph="select Maste... slave_master_info" />
-                <marker date="1516005149352" expanded="true" signature="5953:6080" ph="select COLUM... COLUMNS" />
-              </folding>
+            <state relative-caret-position="570">
+              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,8 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>master</find>
-      <find>putmysql</find>
       <find>chat_group_id</find>
       <find>channel_user</find>
       <find>chat_channel</find>
@@ -165,6 +142,8 @@
       <find>Not Found</find>
       <find>traceback</find>
       <find>client_stat</find>
+      <find>close</find>
+      <find>cur</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -193,13 +172,10 @@
         <option value="D:/DC_MHA_CLIENT/Binlog/ParseEvent.py" />
         <option value="D:/DC_MHA_CLIENT/lib/CheckDB.py" />
         <option value="D:/DC_MHA_CLIENT/lib/heart.py" />
-        <option value="D:/DC_MHA_CLIENT/lib/zkhandle.py" />
         <option value="D:/DC_MHA_CLIENT/lib/SaveSql.py" />
         <option value="D:/DC_MHA_CLIENT/Append/Api.py" />
         <option value="D:/DC_MHA_CLIENT/config/client.conf" />
         <option value="D:/DC_MHA_CLIENT/config/get_config.py" />
-        <option value="D:/DC_MHA_CLIENT/Append/GetBinlog.py" />
-        <option value="D:/DC_MHA_CLIENT/Append/Socket.py" />
         <option value="D:/DC_MHA_CLIENT/Append/socke_test.py" />
         <option value="D:/DC_MHA_CLIENT/lib/entrance.py" />
         <option value="$PROJECT_DIR$/Binlog/ReadPacket.py" />
@@ -214,13 +190,16 @@
         <option value="D:/scripts/alter_haproxy.py" />
         <option value="D:/scripts/import.py" />
         <option value="$PROJECT_DIR$/scripts/router.py" />
-        <option value="D:/scripts/test_tt.py" />
-        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
-        <option value="$PROJECT_DIR$/Append/Connection.py" />
         <option value="$PROJECT_DIR$/config/zk.conf" />
         <option value="$PROJECT_DIR$/lib/get_conf.py" />
-        <option value="$PROJECT_DIR$/Append/AppendValue.py" />
+        <option value="$PROJECT_DIR$/Append/Connection.py" />
+        <option value="D:/scripts/test_tt.py" />
+        <option value="D:/DC_MHA_CLIENT/Append/Socket.py" />
         <option value="$PROJECT_DIR$/db_handle/dbHandle.py" />
+        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
+        <option value="D:/DC_MHA_CLIENT/lib/zkhandle.py" />
+        <option value="D:/DC_MHA_CLIENT/Append/GetBinlog.py" />
+        <option value="$PROJECT_DIR$/Append/AppendValue.py" />
       </list>
     </option>
   </component>
@@ -251,8 +230,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,26 +238,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zookeeper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="DC_MHA_CLIENT" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -295,7 +252,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="Append" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -306,20 +263,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -347,40 +290,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Binlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Append" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -734,7 +651,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19324578" sideWeight="0.6614583" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19324578" sideWeight="0.6614583" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -777,48 +694,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Binlog/Replication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/lib/CheckDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="42" column="60" lean-forward="false" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/read_ibd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="36" column="30" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/lib/InitDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binlog/Metadata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binlog/ParseTypeValue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Binlog/ReadPacket.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6489">
@@ -868,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/lib/entrance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/System.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -900,13 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="722">
           <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/TaskOb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="156" column="35" lean-forward="false" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -998,7 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1006,20 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-513">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1514009208357" expanded="true" signature="910:933" ph="delete from " />
-            <marker date="1514009208357" expanded="true" signature="1004:1028" ph="insert into " />
-            <marker date="1514009208357" expanded="true" signature="1541:1570" ph="insert into missing_value.missing_value... " />
-            <marker date="1514009208357" expanded="true" signature="2700:2726" ph="update missi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/Binlog/ParseEvent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,59 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/t1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1512964310288" expanded="true" signature="274:318" ph="update t4 se... " />
-            <marker date="1512964310288" expanded="true" signature="787:803" ph="select * fro... t4" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/t2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/test_tt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="63" column="57" lean-forward="true" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
-          <folding>
-            <marker date="1515999290669" expanded="true" signature="2128:2157" ph="UPDATE missi... " />
-            <marker date="1515999290669" expanded="true" signature="2446:2475" ph="UPDATE missi... " />
-            <marker date="1515999290669" expanded="true" signature="2776:2802" ph="UPDATE missi... " />
-            <marker date="1515999290669" expanded="true" signature="3109:3135" ph="UPDATE missi... " />
-            <marker date="1515999290669" expanded="true" signature="3754:3781" ph="DELETE FROM " />
-            <marker date="1515999290669" expanded="true" signature="3907:3931" ph="DELETE FROM " />
-            <marker date="1515999290669" expanded="true" signature="4048:4072" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1515999290669" expanded="true" signature="4392:4416" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1515999290669" expanded="true" signature="4664:4691" ph="DELETE FROM " />
-            <marker date="1515999290669" expanded="true" signature="4812:4836" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/DC_MHA_CLIENT/Binlog/PrepareStructure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1514517081729" expanded="true" signature="431:558" ph="select COLUM... COLUMNS" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1099,36 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding>
-            <marker date="1515058557979" expanded="true" signature="423:550" ph="select COLUM... COLUMNS" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/read_binlog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="1212" column="64" lean-forward="false" selection-start-line="1212" selection-start-column="56" selection-end-line="1212" selection-end-column="64" />
-          <folding>
-            <marker date="1510815730053" expanded="true" signature="11967:11982" ph="delete from " />
-            <marker date="1510815730053" expanded="true" signature="11967:11990" ph="delete from " />
-            <marker date="1510815730053" expanded="true" signature="12546:12561" ph="insert into missing_value.missing_value... " />
-            <marker date="1510815730053" expanded="true" signature="12546:12567" ph="insert into missing_value.missing_value... " />
-            <marker date="1510815730053" expanded="true" signature="12546:12574" ph="insert into missing_value.missing_value... " />
-            <marker date="1510815730053" expanded="true" signature="12546:12575" ph="insert into missing_value.missing_value... " />
-            <marker date="1510815730053" expanded="true" signature="13708:13733" ph="update missi... " />
-            <marker date="1510815730053" expanded="true" signature="13708:13734" ph="update missi... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Append/Connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding>
-            <element signature="e#53#73#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1136,7 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1164,26 +929,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding>
-            <element signature="e#54#82#0" expanded="true" />
-            <marker date="1516003354382" expanded="true" signature="3256:3285" ph="UPDATE missi... " />
-            <marker date="1516003354382" expanded="true" signature="4147:4171" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516003354382" expanded="true" signature="4734:4761" ph="DELETE FROM " />
-            <marker date="1516003354382" expanded="true" signature="4967:4991" ph="DELETE FROM " />
-            <marker date="1516003354382" expanded="true" signature="5912:6039" ph="select COLUM... COLUMNS" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/zk.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
           <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1195,15 +944,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/scripts/read_binlog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="1247" column="33" lean-forward="true" selection-start-line="1247" selection-start-column="33" selection-end-line="1247" selection-end-column="33" />
+          <folding>
+            <marker date="1510815730053" expanded="true" signature="11967:11982" ph="delete from " />
+            <marker date="1510815730053" expanded="true" signature="11967:11990" ph="delete from " />
+            <marker date="1510815730053" expanded="true" signature="12546:12561" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12567" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12574" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="12546:12575" ph="insert into missing_value.missing_value... " />
+            <marker date="1510815730053" expanded="true" signature="13708:13733" ph="update missi... " />
+            <marker date="1510815730053" expanded="true" signature="13708:13734" ph="update missi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/TaskOb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="47" column="63" lean-forward="false" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/redis_scripts/t1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="44" column="55" lean-forward="true" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/t1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1512964310288" expanded="true" signature="274:318" ph="update t4 se... " />
+            <marker date="1512964310288" expanded="true" signature="787:803" ph="select * fro... t4" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/t2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/scripts/test_tt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Append/Connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/CheckDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/zkhandle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/heart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/entrance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/Append/Socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="90" column="64" lean-forward="false" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="64" />
+          <folding>
+            <marker date="1516160354186" expanded="true" signature="2128:2157" ph="UPDATE missi... " />
+            <marker date="1516160354186" expanded="true" signature="2446:2475" ph="UPDATE missi... " />
+            <marker date="1516160354186" expanded="true" signature="2776:2802" ph="UPDATE missi... " />
+            <marker date="1516160354186" expanded="true" signature="3109:3135" ph="UPDATE missi... " />
+            <marker date="1516160354186" expanded="true" signature="3754:3781" ph="DELETE FROM " />
+            <marker date="1516160354186" expanded="true" signature="3907:3931" ph="DELETE FROM " />
+            <marker date="1516160354186" expanded="true" signature="4048:4072" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516160354186" expanded="true" signature="4392:4416" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516160354186" expanded="true" signature="4664:4691" ph="DELETE FROM " />
+            <marker date="1516160354186" expanded="true" signature="4812:4836" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/Binlog/ParseEvent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db_handle/dbHandle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="81" column="35" lean-forward="true" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
+        <state relative-caret-position="245">
+          <caret line="69" column="40" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="40" />
           <folding>
             <element signature="e#53#88#0" expanded="true" />
-            <marker date="1516005149352" expanded="true" signature="5193:5293" ph="select Maste... slave_master_info" />
-            <marker date="1516005149352" expanded="true" signature="5953:6080" ph="select COLUM... COLUMNS" />
+            <marker date="1516160269224" expanded="true" signature="5643:5743" ph="select Maste... slave_master_info" />
+            <marker date="1516160269224" expanded="true" signature="6403:6530" ph="select COLUM... COLUMNS" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+          <folding>
+            <element signature="e#54#74#0" expanded="true" />
+            <marker date="1516174532334" expanded="true" signature="3387:3416" ph="UPDATE missi... " />
+            <marker date="1516174532334" expanded="true" signature="4278:4302" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516174532334" expanded="true" signature="4865:4892" ph="DELETE FROM " />
+            <marker date="1516174532334" expanded="true" signature="5098:5122" ph="DELETE FROM " />
+            <marker date="1516174532334" expanded="true" signature="6043:6170" ph="select COLUM... COLUMNS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/Append/GetBinlog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

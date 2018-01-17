@@ -36,12 +36,12 @@ class dbHandle:
                 self.mysql_cur.execute(sql)
             change_sql = 'change master to master_host="%s",master_port=%s,master_user="%s",master_password="%s",master_auto_position=1 for channel "default"' % (host,int(port),repluser,replpassword)
             self.mysql_cur.execute(change_sql)
-            self.mysql_cur.execute('set global read_only=1')
+            self.__set_variables(type='slave')
             return True
         except MySQLdb.Warning,e:
             start_sql = 'start slave'
             self.mysql_cur.execute(start_sql)
-            self.mysql_cur.execute('set global read_only=1;')
+            self.__set_variables(type='slave')
             Logging(msg='Change master to %s   state : Warning' % host,level='warning')
             Logging(msg=traceback.format_exc(),level='warning')
             return True
@@ -66,8 +66,8 @@ class dbHandle:
                 client_stat = zkhander.CheckOnlineClient(master_host)
                 if client_stat:
                     __get_content = {'getbinlog': 10010, 'binlog_file': master_log_file, 'start_position': read_master_log_pos}
-                    Logging(msg='gets the unsynchronized data not.info:{}'.format(__get_content),level='info')
-                    append_stat = Append(connection=self.local_conn,cursor=self.mysql_cur,host=master_host,port=GetConf().GetClientPort()).receive(conn_info=__get_content)
+                    Logging(msg='gets the unsynchronized data not. info:{}'.format(__get_content),level='info')
+                    append_stat = Append(connection=self.local_conn,cursor=self.mysql_cur,host=master_host,port=GetConf().GetClientPort()).receive(conn_info=str(__get_content))
                     if append_stat:
                         Logging(msg='Append OK',level='info')
                     else:
@@ -89,14 +89,14 @@ class dbHandle:
             #self.mysql_cur.execute('set global read_only=0;')
             self.mysql_cur.execute('stop slave')
             self.mysql_cur.execute('reset slave all;')
-            self.mysql_cur.execute('set global read_only=0')
+            self.__set_variables(type='master')
 
         except MySQLdb.Warning,e:
             Logging(msg=traceback.format_exc(),level='warning')
             self.mysql_cur.execute('reset slave all;')
-            self.mysql_cur.execute('set global read_only=0')
+            self.__set_variables(type='master')
         except MySQLdb.Error,e:
-            self.mysql_cur.execute('set global read_only=0')
+            self.__set_variables(type='master')
             Logging(msg=traceback.format_exc(),level='warning')
 
         """附加任务,没有可注销，不注销也无影响，只要zk中不添加对应数据"""
@@ -108,6 +108,15 @@ class dbHandle:
             for region in addition_master:
                 exe_addition.Change(region,addition_master[region])
         """"""
+    def __set_variables(self,type=None):
+        if type == 'slave':
+            self.mysql_cur.execute('set global read_only=1')
+            self.mysql_cur.execute('set global sync_binlog=0')
+            self.mysql_cur.execute('set global innodb_flush_log_at_trx_commit=0')
+        elif type == 'master':
+            self.mysql_cur.execute('set global read_only=0')
+            self.mysql_cur.execute('set global sync_binlog=1')
+            self.mysql_cur.execute('set global innodb_flush_log_at_trx_commit=1')
 
     def RetryConn(self):
         return True if self.state else False

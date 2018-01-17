@@ -131,12 +131,18 @@ def ChangeMaster(mysqlconn=None,master_host=None,gtid=None):
             cur.execute(sql)
             cur.execute('start slave;')
             cur.execute('set global read_only=1')
+            cur.execute('set global sync_binlog=0')
+            cur.execute('set global innodb_flush_log_at_trx_commit=0')
         except pymysql.Warning,e:
             Logging(msg=traceback.format_exc(), level='warning')
             cur.execute('set global read_only=1')
+            cur.execute('set global sync_binlog=0')
+            cur.execute('set global innodb_flush_log_at_trx_commit=0')
             return True
         except pymysql.Error, e:
             Logging(msg=traceback.format_exc(), level='error')
             cur.execute('set global read_only=1')
+            cur.execute('set global sync_binlog=0')
+            cur.execute('set global innodb_flush_log_at_trx_commit=0')
             return False
         return True

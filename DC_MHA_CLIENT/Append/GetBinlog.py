@@ -5,6 +5,7 @@
 
 import sys
 sys.path.append("..")
+from lib.Loging import Logging
 from config.get_config import GetConf
 from Binlog.ParseEvent import ParseEvent
 from Binlog.Metadata import binlog_event_header_len
@@ -24,7 +25,10 @@ class GetBinlog:
         p_event.file_data.seek(p_event.startposition)
         while True:
             code,event_length = p_event.read_header()
+            Logging(msg='code :{}, event_length: {}'.format(code,event_length),level='info')
             if code is None:
+                self.socket.send('{"binlogvalue":10010}')
+                Logging(msg='OK!', level='info')
                 break
             else:
                 p_event.file_data.seek(-binlog_event_header_len,1)

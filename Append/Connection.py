@@ -3,9 +3,6 @@
 @author: xiaozhong
 '''
 from socket import *
-from AppendValue import Append
-import struct
-
 
 class TcpClient(object):
     def __init__(self,host=None,port=None):
@@ -14,6 +11,7 @@ class TcpClient(object):
         self.client = socket(AF_INET, SOCK_STREAM)
         self.client.connect(self.ADDR)
         self.client.settimeout(10)
+
 
 
     def close(self):

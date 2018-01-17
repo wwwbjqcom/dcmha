@@ -73,9 +73,13 @@ class ZkHandle(object):
         if self.zk.exists(binlog_status_node):
             binlog_value,stat = self.zk.get(binlog_status_node)
             gtid_value,stat = self.zk.get(gtid_status_node)
+            return eval(binlog_value), eval(gtid_value)
+        elif self.zk.exists(gtid_status_node):
+            gtid_value, stat = self.zk.get(gtid_status_node)
+            return None,eval(gtid_value)
         else:
             return None,None
-        return eval(binlog_value),eval(gtid_value)
+
 
     def GetMasterHost(self,groupname=None):
         '''返回当前master IP，本身所在系统的IP'''

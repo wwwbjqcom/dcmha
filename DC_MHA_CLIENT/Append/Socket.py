@@ -20,8 +20,9 @@ class Reader(threading.Thread):
             data = self.client.recv(BUFSIZE)
             '''string结构: [getbinglog:10010,binlog_file:'',start_position:11]'''
             string = eval(bytes.decode(data, encoding))
+            Logging(msg='{}'.format(string), level='info')
             if string['getbinlog'] == 10010:
-                Logging(msg='Get binlog to mha server......')
+                Logging(msg='Get binlog to mha server......',level='info')
                 GetBinlog(binlog_file=string['binlog_file'],start_position=int(string['start_position']),socket_client=self.client)
 
 

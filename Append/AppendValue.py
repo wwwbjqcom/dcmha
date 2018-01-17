@@ -3,7 +3,7 @@
 @author: xiaozhong
 '''
 
-import sys,pymysql,traceback
+import sys,traceback
 from Connection import TcpClient
 sys.path.append("..")
 from lib.log import Logging
@@ -29,6 +29,11 @@ class Append(TcpClient):
         self.client.send(conn_info)
         while True:
             data = self.client.recv(self.BUFSIZ)
+            try:
+                if eval(data)['binlogvalue'] == 10010:
+                    break
+            except:
+                pass
             if data:
                 self.packet = data
                 stat = self.start()
@@ -115,13 +120,11 @@ class Append(TcpClient):
 
         sql = 'select COLUMN_NAME,COLUMN_KEY from INFORMATION_SCHEMA.COLUMNS where table_schema=%s and table_name=%s order by ORDINAL_POSITION;'
         self.mysql_cur.execute(sql,args=args)
-        result = self.cur.fetchall()
+        result = self.mysql_cur.fetchall()
         for idex,row in enumerate(result):
             column_list.append(row['COLUMN_NAME'])
             if row['COLUMN_KEY'] == 'PRI':
                 pk_idex = idex
-        self.cur.close()
-        self.connection.close()
         return column_list,pk_idex
 
     def __executesql(self):
@@ -136,6 +139,8 @@ class Append(TcpClient):
                 Logging(msg=traceback.format_exc(),level='error')
                 self.mysql_conn.rollback()
                 return False
+        else:
+            Logging(msg='There is no data to synchronize.', level='info')
         self.mysql_conn.commit()
         return True
 
