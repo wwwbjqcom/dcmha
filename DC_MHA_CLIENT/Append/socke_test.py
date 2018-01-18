@@ -17,6 +17,8 @@ class TcpClient:
         self.client.send(groupname.encode('utf8'))
         while True:
             data=self.client.recv(self.BUFSIZ)
+            recv_stat = {'recv_stat':119}
+            self.client.send(str(recv_stat))
             if data:
                 a = data.read(19)
                 print struct.unpack('=IBIIIH', a)

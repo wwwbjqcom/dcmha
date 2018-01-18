@@ -31,10 +31,13 @@ class Append(TcpClient):
             data = self.client.recv(self.BUFSIZ)
             try:
                 if eval(data)['binlogvalue'] == 10010:
+                    Logging(msg='recv OK!',level='info')
                     break
             except:
                 pass
             if data:
+                recv_stat = {'recv_stat': 119}
+                self.client.send(str(recv_stat).encode('utf8'))
                 self.packet = data
                 stat = self.start()
                 if stat is None:
@@ -84,7 +87,7 @@ class Append(TcpClient):
                                                                    self.__WhereJoin(row_value[1], table_struce_key),
                                                                    self.__WhereJoin(row_value[0], table_struce_key))
                 tmepdata.sql_all_list.append(cur_sql)
-        else:
+        elif event_code in (binlog_events.DELETE_ROWS_EVENT,binlog_events.WRITE_ROWS_EVENT):
             for value in _values:
                 '''获取sql语句'''
                 if event_code == binlog_events.WRITE_ROWS_EVENT:

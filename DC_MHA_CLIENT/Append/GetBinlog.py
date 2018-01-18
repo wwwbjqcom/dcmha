@@ -33,4 +33,10 @@ class GetBinlog:
             else:
                 p_event.file_data.seek(-binlog_event_header_len,1)
                 self.socket.send(p_event.file_data.read(event_length))
+                while True:
+                    stat = self.socket.recv(100)
+                    if stat and int(eval(stat)['recv_stat']) == 119:
+                        break
+                    else:
+                        self.socket.send(p_event.file_data.read(event_length))
 

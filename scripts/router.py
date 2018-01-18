@@ -211,9 +211,10 @@ class Reader(threading.Thread):
                 '''修改配置'''
                 if AlterConf(groupname=str, new_conf=conf):
                     logging.info('%s : %s Changed  State: OK' % (now_time, str))
+                    break
                 else:
                     logging.info('%s : %s Changed  State: Failed' % (now_time, str))
-
+                    break
         logging.info("close:", self.client.getpeername())
 
 

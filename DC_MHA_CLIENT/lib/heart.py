@@ -43,8 +43,8 @@ class CreateHear(ZkHandle):
 
     def __checkdb(self):
         '''mysql服务检查'''
-        self.__retry_num = self.__retry_num + 1 if DBHandle().check() is None else 0
-        if self.__retry_num == GetConf().GetServerRetryNum():
+        self.retry_num = self.retry_num + 1 if DBHandle().check() is None else 0
+        if self.retry_num == GetConf().GetServerRetryNum():
             delete_sate = self.delete('server')
             while True:
                 if delete_sate:
@@ -54,7 +54,7 @@ class CreateHear(ZkHandle):
 
             self.downed_state = True
 
-        if self.downed_state and self.__retry_num == 0:
+        if self.downed_state and self.retry_num == 0:
             RollBbinlog()
             self.downed_state = None
             self.retry_create('server')

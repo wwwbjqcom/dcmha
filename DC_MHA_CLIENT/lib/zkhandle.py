@@ -17,7 +17,7 @@ class ZkHandle(object):
         self.zk = KazooClient(hosts=zk_host)
         self.zk.start()
         self.retry_state = ""
-        self.__retry_num = 0
+        self.retry_num = 0
         self.downed_state = None
 
 
