@@ -38,6 +38,7 @@ def GetSQL(_values=None,event_code=None):
     if table_struce_key in tmepdata.table_pk_idex_list:
         '''获取主键所在index'''
         __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
+        pk = tmepdata.table_struct_list[table_struce_key][__pk_idx]
     else:
         __pk_idx = None
 
@@ -45,8 +46,7 @@ def GetSQL(_values=None,event_code=None):
         __values = [_values[i:i + 2] for i in xrange(0, len(_values), 2)]
         for row_value in __values:
             if __pk_idx is not None:
-                pk, roll_pk_value, cur_pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], row_value[1][
-                    __pk_idx], row_value[0][__pk_idx]
+                roll_pk_value, cur_pk_value =  row_value[1][__pk_idx], row_value[0][__pk_idx]
                 rollback_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
                                                                         WhereJoin(row_value[0], table_struce_key), pk,
                                                                         roll_pk_value)
@@ -68,18 +68,38 @@ def GetSQL(_values=None,event_code=None):
             if event_code == binlog_events.WRITE_ROWS_EVENT:
                 '''delete'''
                 if __pk_idx is not None:
-                    rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+                    rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,value[__pk_idx])
                 else:
                     rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
-                cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+
+                if len(value) > 1:
+                    cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                   tuple(value))
+                else:
+                    if isinstance(value[0], int):
+                        cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                         value[0])
+                    else:
+                        cur_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
+                                                                           tmepdata.table_name,
+                                                                           value[0])
+
                 tmepdata.rollback_sql_list.append(rollback_sql)
                 tmepdata.transaction_sql_list.append(cur_sql)
             elif event_code == binlog_events.DELETE_ROWS_EVENT:
                 '''insert'''
-                rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+                if len(value) > 1:
+                    rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+                else:
+                    if isinstance(value[0], int):
+                        rollback_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                            value[0])
+                    else:
+                        rollback_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
+                                                                              tmepdata.table_name,
+                                                                              value[0])
                 if __pk_idx is not None:
-                    pk, pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], value[__pk_idx]
-                    cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,pk_value)
+                    cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,value[__pk_idx])
                 else:
                     cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
                 tmepdata.rollback_sql_list.append(rollback_sql)

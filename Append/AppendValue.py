@@ -83,7 +83,7 @@ class Append(TcpClient):
                                                                        self.__WhereJoin(row_value[1], table_struce_key),
                                                                        pk, cur_pk_value)
                 else:
-                    cur_sql = 'UPATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
+                    cur_sql = 'UPDATE  {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
                                                                    self.__WhereJoin(row_value[1], table_struce_key),
                                                                    self.__WhereJoin(row_value[0], table_struce_key))
                 tmepdata.sql_all_list.append(cur_sql)
@@ -91,8 +91,17 @@ class Append(TcpClient):
             for value in _values:
                 '''获取sql语句'''
                 if event_code == binlog_events.WRITE_ROWS_EVENT:
-                    cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
+                    if len(value) > 1:
+                        cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
                                                                    tuple(value))
+                    else:
+                        if isinstance(value[0],int):
+                            cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                           value[0])
+                        else:
+                            cur_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
+                                                                             tmepdata.table_name,
+                                                                             value[0])
                     tmepdata.sql_all_list.append(cur_sql)
                 elif event_code == binlog_events.DELETE_ROWS_EVENT:
                     if table_struce_key in tmepdata.table_pk_idex_list:
@@ -125,8 +134,8 @@ class Append(TcpClient):
         self.mysql_cur.execute(sql,args=args)
         result = self.mysql_cur.fetchall()
         for idex,row in enumerate(result):
-            column_list.append(row['COLUMN_NAME'])
-            if row['COLUMN_KEY'] == 'PRI':
+            column_list.append(row[0])
+            if row[1] == 'PRI':
                 pk_idex = idex
         return column_list,pk_idex
 
