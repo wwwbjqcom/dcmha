@@ -135,7 +135,9 @@ def Operation(binlog_stat):
                 Logging(msg=traceback.format_exc(),level='error')
                 ReplConn.close()
                 break
-        return tmepdata.transaction_sql_list,tmepdata.rollback_sql_list
+        transaction_sql_list,rollback_sql_list = tmepdata.transaction_sql_list,tmepdata.rollback_sql_list
+        tmepdata.transaction_sql_list, tmepdata.rollback_sql_list = [],[]
+        return transaction_sql_list,rollback_sql_list
     else:
         Logging(msg='replication failed................', level='error')
 

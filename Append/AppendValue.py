@@ -32,6 +32,7 @@ class Append(TcpClient):
             try:
                 if eval(data)['binlogvalue'] == 10010:
                     Logging(msg='recv OK!',level='info')
+                    self.client.close()
                     break
             except:
                 pass
@@ -42,7 +43,6 @@ class Append(TcpClient):
                 stat = self.start()
                 if stat is None:
                     break
-        self.close()
         return self.__executesql()
 
 
@@ -154,5 +154,6 @@ class Append(TcpClient):
         else:
             Logging(msg='There is no data to synchronize.', level='info')
         self.mysql_conn.commit()
+        tmepdata.sql_all_list = []
         return True
 
