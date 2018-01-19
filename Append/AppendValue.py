@@ -93,7 +93,7 @@ class Append(TcpClient):
                 if event_code == binlog_events.WRITE_ROWS_EVENT:
                     if len(value) > 1:
                         cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   tuple(value))
+                                                                   self.__ValueJoin(value,table_struce_key))
                     else:
                         if isinstance(value[0],int):
                             cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
@@ -121,10 +121,37 @@ class Append(TcpClient):
             if tmepdata.cloums_type_id_list[idex] not in (
             column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG, column_type_dict.MYSQL_TYPE_SHORT,
             column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-                __tmp.append('{}="{}"'.format(col, values[idex]))
+                if 'Null' == values[idex]:
+                    __tmp.append('{}={}'.format(col, values[idex]))
+                else:
+                    __tmp.append('{}="{}"'.format(col, values[idex]))
             else:
                 __tmp.append('{}={}'.format(col, values[idex]))
         return ','.join(__tmp)
+
+    def __ValueJoin(self,values,table_struce_key):
+        __tmp = '('
+        for idex,value in enumerate(tmepdata.table_struct_list[table_struce_key]):
+            if tmepdata.cloums_type_id_list[idex] in (
+                    column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
+                    column_type_dict.MYSQL_TYPE_SHORT,
+                    column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
+                if idex < len(values) -1:
+                    __tmp += '{},'.format(value)
+                else:
+                    __tmp += '{})'.format(value)
+            else:
+                if 'Null' == value:
+                    if idex < len(values) - 1:
+                        __tmp += 'Null,'
+                    else:
+                        __tmp += 'Null)'
+                else:
+                    if idex < len(values) - 1:
+                        __tmp += '"{}",'.format(value)
+                    else:
+                        __tmp += '"{}")'.format(value)
+        return __tmp
 
     def __GetColumn(self,*args):
         column_list = []
@@ -156,4 +183,5 @@ class Append(TcpClient):
         self.mysql_conn.commit()
         tmepdata.sql_all_list = []
         return True
+
 

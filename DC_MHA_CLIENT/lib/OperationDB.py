@@ -28,6 +28,30 @@ def WhereJoin(values,table_struce_key):
             __tmp.append('{}={}'.format(col,values[idex]))
     return ','.join(__tmp)
 
+def ValueJoin(values,table_struce_key):
+    __tmp = '('
+    for idex,value in enumerate(tmepdata.table_struct_list[table_struce_key]):
+        if tmepdata.cloums_type_id_list[idex] in (
+                column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
+                column_type_dict.MYSQL_TYPE_SHORT,
+                column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
+            if idex < len(values) -1:
+                __tmp += '{},'.format(value)
+            else:
+                __tmp += '{})'.format(value)
+        else:
+            if 'Null' == value:
+                if idex < len(values) - 1:
+                    __tmp += 'Null,'
+                else:
+                    __tmp += 'Null)'
+            else:
+                if idex < len(values) - 1:
+                    __tmp += '"{}",'.format(value)
+                else:
+                    __tmp += '"{}")'.format(value)
+    return __tmp
+
 def GetSQL(_values=None,event_code=None):
     table_struce_key = '{}:{}'.format(tmepdata.database_name,tmepdata.table_name)
     if table_struce_key not in tmepdata.table_struct_list:
@@ -74,7 +98,7 @@ def GetSQL(_values=None,event_code=None):
 
                 if len(value) > 1:
                     cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   tuple(value))
+                                                                   ValueJoin(value,table_struce_key))
                 else:
                     if isinstance(value[0], int):
                         cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
@@ -89,7 +113,7 @@ def GetSQL(_values=None,event_code=None):
             elif event_code == binlog_events.DELETE_ROWS_EVENT:
                 '''insert'''
                 if len(value) > 1:
-                    rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,tuple(value))
+                    rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,ValueJoin(value,table_struce_key))
                 else:
                     if isinstance(value[0], int):
                         rollback_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,

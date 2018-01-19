@@ -22,7 +22,7 @@
     <SUITE FILE_PATH="coverage/DC_MHA$t2__1_.coverage" NAME="t2 (1) Coverage Results" MODIFIED="1506669091010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$pg_to_mysql.coverage" NAME="pg_to_mysql Coverage Results" MODIFIED="1514439818043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$ttt.coverage" NAME="ttt Coverage Results" MODIFIED="1511494941883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
-    <SUITE FILE_PATH="coverage/DC_MHA$test_tt.coverage" NAME="test_tt Coverage Results" MODIFIED="1515996019065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
+    <SUITE FILE_PATH="coverage/DC_MHA$test_tt.coverage" NAME="test_tt Coverage Results" MODIFIED="1516330614740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$mysql_to_pg.coverage" NAME="mysql_to_pg Coverage Results" MODIFIED="1511177684017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$get_config.coverage" NAME="get_config Coverage Results" MODIFIED="1513761754974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/DC_MHA_CLIENT/config" />
     <SUITE FILE_PATH="coverage/mha_server$t5.coverage" NAME="t5 Coverage Results" MODIFIED="1500343303728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
@@ -62,22 +62,58 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppendValue.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppendValue.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="127" column="0" lean-forward="true" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state relative-caret-position="1083">
+              <caret line="126" column="69" lean-forward="true" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
               <folding>
                 <element signature="e#54#74#0" expanded="true" />
-                <marker date="1516270509955" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
-                <marker date="1516270509955" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
-                <marker date="1516270509955" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516270509955" expanded="true" signature="4869:4897" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516270509955" expanded="true" signature="5106:5136" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516270509955" expanded="true" signature="5780:5807" ph="DELETE FROM " />
-                <marker date="1516270509955" expanded="true" signature="6013:6037" ph="DELETE FROM " />
-                <marker date="1516270509955" expanded="true" signature="6958:7085" ph="select COLUM... COLUMNS" />
+                <marker date="1516330818661" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
+                <marker date="1516330818661" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
+                <marker date="1516330818661" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516330818661" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516330818661" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516330818661" expanded="true" signature="5808:5835" ph="DELETE FROM " />
+                <marker date="1516330818661" expanded="true" signature="6041:6065" ph="DELETE FROM " />
+                <marker date="1516330818661" expanded="true" signature="8167:8294" ph="select COLUM... COLUMNS" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperationDB.py" pinned="false" current-in-tab="true">
+        <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="185" column="70" lean-forward="true" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
+              <folding>
+                <element signature="e#53#81#0" expanded="true" />
+                <marker date="1516331196633" expanded="true" signature="3061:3090" ph="UPDATE missi... " />
+                <marker date="1516331196633" expanded="true" signature="3379:3408" ph="UPDATE missi... " />
+                <marker date="1516331196633" expanded="true" signature="3709:3735" ph="UPDATE missi... " />
+                <marker date="1516331196633" expanded="true" signature="4042:4068" ph="UPDATE missi... " />
+                <marker date="1516331196633" expanded="true" signature="4687:4714" ph="DELETE FROM " />
+                <marker date="1516331196633" expanded="true" signature="4847:4871" ph="DELETE FROM " />
+                <marker date="1516331196633" expanded="true" signature="5028:5052" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="5318:5346" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="5545:5575" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="6081:6105" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="6307:6335" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="6542:6572" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516331196633" expanded="true" signature="6865:6892" ph="DELETE FROM " />
+                <marker date="1516331196633" expanded="true" signature="7020:7044" ph="DELETE FROM " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_tt.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/scripts/test_tt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="654">
+              <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,7 +204,6 @@
         <option value="$PROJECT_DIR$/config/zk.conf" />
         <option value="$PROJECT_DIR$/lib/get_conf.py" />
         <option value="$PROJECT_DIR$/Append/Connection.py" />
-        <option value="D:/scripts/test_tt.py" />
         <option value="D:/DC_MHA_CLIENT/Append/Socket.py" />
         <option value="$PROJECT_DIR$/db_handle/dbHandle.py" />
         <option value="D:/DC_MHA_CLIENT/lib/zkhandle.py" />
@@ -177,8 +212,9 @@
         <option value="D:/DC_MHA_CLIENT/Append/GetBinlog.py" />
         <option value="$PROJECT_DIR$/scripts/router.py" />
         <option value="D:/scripts/t1.py" />
-        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
+        <option value="D:/scripts/test_tt.py" />
         <option value="$PROJECT_DIR$/Append/AppendValue.py" />
+        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
       </list>
     </option>
   </component>
@@ -209,42 +245,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="DC_MHA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zk_handle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
@@ -257,11 +263,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db_handle" />
+              <option name="myItemId" value="DC_MHA_CLIENT" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -271,30 +273,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
+              <option name="myItemId" value="DC_MHA_CLIENT" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Binlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DC_MHA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Append" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,7 +319,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.t1">
+  <component name="RunManager" selected="Python.test_tt">
     <configuration default="false" name="password" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -582,8 +572,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.t1" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test_tt" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test_tt" />
+        <item index="1" class="java.lang.String" itemvalue="Python.t1" />
         <item index="2" class="java.lang.String" itemvalue="Python.import" />
         <item index="3" class="java.lang.String" itemvalue="Python.alter_haproxy" />
         <item index="4" class="java.lang.String" itemvalue="Python.password" />
@@ -640,18 +630,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16822916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19324578" sideWeight="0.34114584" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19324578" sideWeight="0.34375" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19324578" sideWeight="0.65625" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19324578" sideWeight="0.6588542" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29174483" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -848,7 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1507">
           <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,7 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1577">
           <caret line="87" column="53" lean-forward="false" selection-start-line="87" selection-start-column="53" selection-end-line="87" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,15 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binlog/Metadata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -926,7 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="716" column="8" lean-forward="false" selection-start-line="716" selection-start-column="8" selection-end-line="716" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -942,17 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="673">
           <caret line="216" column="25" lean-forward="false" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="25" />
-          <folding>
-            <element signature="e#54#90#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/scripts/test_tt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -960,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1254">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,10 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding>
-            <marker date="1516262068628" expanded="true" signature="274:318" ph="update t4 se... " />
-            <marker date="1516262068628" expanded="true" signature="757:884" ph="select * fro... t4" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -987,7 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,11 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="128" column="46" lean-forward="false" selection-start-line="128" selection-start-column="45" selection-end-line="128" selection-end-column="46" />
-          <folding>
-            <element signature="e#53#88#0" expanded="true" />
-            <marker date="1516160269224" expanded="true" signature="5643:5743" ph="select Maste... slave_master_info" />
-            <marker date="1516160269224" expanded="true" signature="6403:6530" ph="select COLUM... COLUMNS" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,7 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,31 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
           <caret line="34" column="18" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="122" column="65" lean-forward="true" selection-start-line="122" selection-start-column="65" selection-end-line="122" selection-end-column="65" />
-          <folding>
-            <element signature="e#53#81#0" expanded="true" />
-            <marker date="1516270223652" expanded="true" signature="2116:2145" ph="UPDATE missi... " />
-            <marker date="1516270223652" expanded="true" signature="2434:2463" ph="UPDATE missi... " />
-            <marker date="1516270223652" expanded="true" signature="2764:2790" ph="UPDATE missi... " />
-            <marker date="1516270223652" expanded="true" signature="3097:3123" ph="UPDATE missi... " />
-            <marker date="1516270223652" expanded="true" signature="3742:3769" ph="DELETE FROM " />
-            <marker date="1516270223652" expanded="true" signature="3902:3926" ph="DELETE FROM " />
-            <marker date="1516270223652" expanded="true" signature="4083:4107" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="4352:4380" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="4579:4609" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="5115:5139" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="5320:5348" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="5555:5585" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270223652" expanded="true" signature="5878:5905" ph="DELETE FROM " />
-            <marker date="1516270223652" expanded="true" signature="6033:6057" ph="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,7 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,9 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="654">
           <caret line="57" column="18" lean-forward="false" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding>
-            <element signature="e#53#82#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,9 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="42" column="62" lean-forward="false" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
-          <folding>
-            <element signature="e#54#69#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1111,20 +1033,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/scripts/test_tt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Binlog/Metadata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="36" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="127" column="0" lean-forward="true" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        <state relative-caret-position="1083">
+          <caret line="126" column="69" lean-forward="true" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
           <folding>
             <element signature="e#54#74#0" expanded="true" />
-            <marker date="1516270509955" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
-            <marker date="1516270509955" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
-            <marker date="1516270509955" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270509955" expanded="true" signature="4869:4897" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270509955" expanded="true" signature="5106:5136" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516270509955" expanded="true" signature="5780:5807" ph="DELETE FROM " />
-            <marker date="1516270509955" expanded="true" signature="6013:6037" ph="DELETE FROM " />
-            <marker date="1516270509955" expanded="true" signature="6958:7085" ph="select COLUM... COLUMNS" />
+            <marker date="1516330818661" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
+            <marker date="1516330818661" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
+            <marker date="1516330818661" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516330818661" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516330818661" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516330818661" expanded="true" signature="5808:5835" ph="DELETE FROM " />
+            <marker date="1516330818661" expanded="true" signature="6041:6065" ph="DELETE FROM " />
+            <marker date="1516330818661" expanded="true" signature="8167:8294" ph="select COLUM... COLUMNS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="185" column="70" lean-forward="true" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
+          <folding>
+            <element signature="e#53#81#0" expanded="true" />
+            <marker date="1516331196633" expanded="true" signature="3061:3090" ph="UPDATE missi... " />
+            <marker date="1516331196633" expanded="true" signature="3379:3408" ph="UPDATE missi... " />
+            <marker date="1516331196633" expanded="true" signature="3709:3735" ph="UPDATE missi... " />
+            <marker date="1516331196633" expanded="true" signature="4042:4068" ph="UPDATE missi... " />
+            <marker date="1516331196633" expanded="true" signature="4687:4714" ph="DELETE FROM " />
+            <marker date="1516331196633" expanded="true" signature="4847:4871" ph="DELETE FROM " />
+            <marker date="1516331196633" expanded="true" signature="5028:5052" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="5318:5346" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="5545:5575" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="6081:6105" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="6307:6335" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="6542:6572" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516331196633" expanded="true" signature="6865:6892" ph="DELETE FROM " />
+            <marker date="1516331196633" expanded="true" signature="7020:7044" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
