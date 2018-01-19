@@ -131,26 +131,26 @@ class Append(TcpClient):
 
     def __ValueJoin(self,values,table_struce_key):
         __tmp = '('
-        for idex,value in enumerate(tmepdata.table_struct_list[table_struce_key]):
+        for idex,col in enumerate(tmepdata.table_struct_list[table_struce_key]):
             if tmepdata.cloums_type_id_list[idex] in (
                     column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
                     column_type_dict.MYSQL_TYPE_SHORT,
                     column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
                 if idex < len(values) -1:
-                    __tmp += '{},'.format(value)
+                    __tmp += '{},'.format(values[idex])
                 else:
-                    __tmp += '{})'.format(value)
+                    __tmp += '{})'.format(values[idex])
             else:
-                if 'Null' == value:
+                if 'Null' == values[idex]:
                     if idex < len(values) - 1:
                         __tmp += 'Null,'
                     else:
                         __tmp += 'Null)'
                 else:
                     if idex < len(values) - 1:
-                        __tmp += '"{}",'.format(value)
+                        __tmp += '"{}",'.format(values[idex])
                     else:
-                        __tmp += '"{}")'.format(value)
+                        __tmp += '"{}")'.format(values[idex])
         return __tmp
 
     def __GetColumn(self,*args):
@@ -177,6 +177,7 @@ class Append(TcpClient):
                 Logging(msg='state failed',level='error')
                 Logging(msg=traceback.format_exc(),level='error')
                 self.mysql_conn.rollback()
+                tmepdata.sql_all_list = []
                 return False
         else:
             Logging(msg='There is no data to synchronize.', level='info')

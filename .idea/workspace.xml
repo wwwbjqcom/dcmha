@@ -22,7 +22,7 @@
     <SUITE FILE_PATH="coverage/DC_MHA$t2__1_.coverage" NAME="t2 (1) Coverage Results" MODIFIED="1506669091010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
     <SUITE FILE_PATH="coverage/DC_MHA$pg_to_mysql.coverage" NAME="pg_to_mysql Coverage Results" MODIFIED="1514439818043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$ttt.coverage" NAME="ttt Coverage Results" MODIFIED="1511494941883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
-    <SUITE FILE_PATH="coverage/DC_MHA$test_tt.coverage" NAME="test_tt Coverage Results" MODIFIED="1516330614740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
+    <SUITE FILE_PATH="coverage/DC_MHA$test_tt.coverage" NAME="test_tt Coverage Results" MODIFIED="1516340286939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$mysql_to_pg.coverage" NAME="mysql_to_pg Coverage Results" MODIFIED="1511177684017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/scripts" />
     <SUITE FILE_PATH="coverage/DC_MHA$get_config.coverage" NAME="get_config Coverage Results" MODIFIED="1513761754974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/DC_MHA_CLIENT/config" />
     <SUITE FILE_PATH="coverage/mha_server$t5.coverage" NAME="t5 Coverage Results" MODIFIED="1500343303728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/zookeeper" />
@@ -62,47 +62,47 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppendValue.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AppendValue.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1083">
-              <caret line="126" column="69" lean-forward="true" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
+            <state relative-caret-position="559">
+              <caret line="180" column="28" lean-forward="true" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
               <folding>
                 <element signature="e#54#74#0" expanded="true" />
-                <marker date="1516330818661" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
-                <marker date="1516330818661" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
-                <marker date="1516330818661" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516330818661" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516330818661" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516330818661" expanded="true" signature="5808:5835" ph="DELETE FROM " />
-                <marker date="1516330818661" expanded="true" signature="6041:6065" ph="DELETE FROM " />
-                <marker date="1516330818661" expanded="true" signature="8167:8294" ph="select COLUM... COLUMNS" />
+                <marker date="1516341137270" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
+                <marker date="1516341137270" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
+                <marker date="1516341137270" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516341137270" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516341137270" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516341137270" expanded="true" signature="5808:5835" ph="DELETE FROM " />
+                <marker date="1516341137270" expanded="true" signature="6041:6065" ph="DELETE FROM " />
+                <marker date="1516341137270" expanded="true" signature="8200:8327" ph="select COLUM... COLUMNS" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperationDB.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperationDB.py" pinned="false" current-in-tab="false">
         <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="185" column="70" lean-forward="true" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
+            <state relative-caret-position="627">
+              <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
               <folding>
                 <element signature="e#53#81#0" expanded="true" />
-                <marker date="1516331196633" expanded="true" signature="3061:3090" ph="UPDATE missi... " />
-                <marker date="1516331196633" expanded="true" signature="3379:3408" ph="UPDATE missi... " />
-                <marker date="1516331196633" expanded="true" signature="3709:3735" ph="UPDATE missi... " />
-                <marker date="1516331196633" expanded="true" signature="4042:4068" ph="UPDATE missi... " />
-                <marker date="1516331196633" expanded="true" signature="4687:4714" ph="DELETE FROM " />
-                <marker date="1516331196633" expanded="true" signature="4847:4871" ph="DELETE FROM " />
-                <marker date="1516331196633" expanded="true" signature="5028:5052" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="5318:5346" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="5545:5575" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="6081:6105" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="6307:6335" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="6542:6572" ph="INSERT INTO missing_value.missing_value... " />
-                <marker date="1516331196633" expanded="true" signature="6865:6892" ph="DELETE FROM " />
-                <marker date="1516331196633" expanded="true" signature="7020:7044" ph="DELETE FROM " />
+                <marker date="1516333258957" expanded="true" signature="3098:3127" ph="UPDATE missi... " />
+                <marker date="1516333258957" expanded="true" signature="3416:3445" ph="UPDATE missi... " />
+                <marker date="1516333258957" expanded="true" signature="3746:3772" ph="UPDATE missi... " />
+                <marker date="1516333258957" expanded="true" signature="4079:4105" ph="UPDATE missi... " />
+                <marker date="1516333258957" expanded="true" signature="4724:4751" ph="DELETE FROM " />
+                <marker date="1516333258957" expanded="true" signature="4884:4908" ph="DELETE FROM " />
+                <marker date="1516333258957" expanded="true" signature="5065:5089" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="5355:5383" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="5582:5612" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="6118:6142" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="6344:6372" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="6579:6609" ph="INSERT INTO missing_value.missing_value... " />
+                <marker date="1516333258957" expanded="true" signature="6902:6929" ph="DELETE FROM " />
+                <marker date="1516333258957" expanded="true" signature="7057:7081" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -111,8 +111,8 @@
       <file leaf-file-name="test_tt.py" pinned="false" current-in-tab="false">
         <entry file="file://D:/scripts/test_tt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="578">
+              <caret line="76" column="50" lean-forward="true" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -212,9 +212,9 @@
         <option value="D:/DC_MHA_CLIENT/Append/GetBinlog.py" />
         <option value="$PROJECT_DIR$/scripts/router.py" />
         <option value="D:/scripts/t1.py" />
+        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
         <option value="D:/scripts/test_tt.py" />
         <option value="$PROJECT_DIR$/Append/AppendValue.py" />
-        <option value="D:/DC_MHA_CLIENT/lib/OperationDB.py" />
       </list>
     </option>
   </component>
@@ -1033,14 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/scripts/test_tt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Binlog/Metadata.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1049,44 +1041,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
+    <entry file="file://D:/scripts/test_tt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1083">
-          <caret line="126" column="69" lean-forward="true" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
-          <folding>
-            <element signature="e#54#74#0" expanded="true" />
-            <marker date="1516330818661" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
-            <marker date="1516330818661" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
-            <marker date="1516330818661" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516330818661" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516330818661" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516330818661" expanded="true" signature="5808:5835" ph="DELETE FROM " />
-            <marker date="1516330818661" expanded="true" signature="6041:6065" ph="DELETE FROM " />
-            <marker date="1516330818661" expanded="true" signature="8167:8294" ph="select COLUM... COLUMNS" />
-          </folding>
+        <state relative-caret-position="578">
+          <caret line="76" column="50" lean-forward="true" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/DC_MHA_CLIENT/lib/OperationDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="185" column="70" lean-forward="true" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
+        <state relative-caret-position="627">
+          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding>
             <element signature="e#53#81#0" expanded="true" />
-            <marker date="1516331196633" expanded="true" signature="3061:3090" ph="UPDATE missi... " />
-            <marker date="1516331196633" expanded="true" signature="3379:3408" ph="UPDATE missi... " />
-            <marker date="1516331196633" expanded="true" signature="3709:3735" ph="UPDATE missi... " />
-            <marker date="1516331196633" expanded="true" signature="4042:4068" ph="UPDATE missi... " />
-            <marker date="1516331196633" expanded="true" signature="4687:4714" ph="DELETE FROM " />
-            <marker date="1516331196633" expanded="true" signature="4847:4871" ph="DELETE FROM " />
-            <marker date="1516331196633" expanded="true" signature="5028:5052" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="5318:5346" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="5545:5575" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="6081:6105" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="6307:6335" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="6542:6572" ph="INSERT INTO missing_value.missing_value... " />
-            <marker date="1516331196633" expanded="true" signature="6865:6892" ph="DELETE FROM " />
-            <marker date="1516331196633" expanded="true" signature="7020:7044" ph="DELETE FROM " />
+            <marker date="1516333258957" expanded="true" signature="3098:3127" ph="UPDATE missi... " />
+            <marker date="1516333258957" expanded="true" signature="3416:3445" ph="UPDATE missi... " />
+            <marker date="1516333258957" expanded="true" signature="3746:3772" ph="UPDATE missi... " />
+            <marker date="1516333258957" expanded="true" signature="4079:4105" ph="UPDATE missi... " />
+            <marker date="1516333258957" expanded="true" signature="4724:4751" ph="DELETE FROM " />
+            <marker date="1516333258957" expanded="true" signature="4884:4908" ph="DELETE FROM " />
+            <marker date="1516333258957" expanded="true" signature="5065:5089" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="5355:5383" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="5582:5612" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="6118:6142" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="6344:6372" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="6579:6609" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516333258957" expanded="true" signature="6902:6929" ph="DELETE FROM " />
+            <marker date="1516333258957" expanded="true" signature="7057:7081" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Append/AppendValue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="180" column="28" lean-forward="true" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
+          <folding>
+            <element signature="e#54#74#0" expanded="true" />
+            <marker date="1516341137270" expanded="true" signature="3574:3603" ph="UPDATE missi... " />
+            <marker date="1516341137270" expanded="true" signature="3922:3949" ph="UPDATE missi... " />
+            <marker date="1516341137270" expanded="true" signature="4589:4613" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516341137270" expanded="true" signature="4897:4925" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516341137270" expanded="true" signature="5134:5164" ph="INSERT INTO missing_value.missing_value... " />
+            <marker date="1516341137270" expanded="true" signature="5808:5835" ph="DELETE FROM " />
+            <marker date="1516341137270" expanded="true" signature="6041:6065" ph="DELETE FROM " />
+            <marker date="1516341137270" expanded="true" signature="8200:8327" ph="select COLUM... COLUMNS" />
           </folding>
         </state>
       </provider>
