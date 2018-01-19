@@ -8,11 +8,7 @@ from zk_handle.zkHandler import zkHander
 from contextlib import closing
 from TaskOb import TaskCh
 from lib.SlaveNodeCheck import Run as SlaveCheckRun
-import logging
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+
 
 class Watch:
     def __init__(self):

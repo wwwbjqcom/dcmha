@@ -4,7 +4,7 @@
 '''
 import datetime
 import struct
-import time,sys
+import sys
 sys.path.append("..")
 from Binlog import Metadata,ReadPacket
 

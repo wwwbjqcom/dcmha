@@ -7,12 +7,9 @@ from contextlib import closing
 from dbHandle import dbHandle
 from zk_handle.zkHandler import zkHander
 from lib.get_conf import GetConf
-import logging,time,traceback
-import MySQLdb
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+from lib.log import Logging
+import time,traceback
+import pymysql
 
 
 class Addition:
@@ -66,10 +63,10 @@ class Addition:
                                'ssl': reg_value_dict[_reg_online[0]]['ssl']}
                     return _to_reg
                 else:
-                    logging.WARNING('This group has replication task ,But all region not online')
+                    Logging(msg='This group has replication task ,But all region not online',level='warning')
                     return None
             else:
-                logging.WARNING('This group has replication task ,But not region value')
+                Logging(msg='This group has replication task ,But not region value',level='warning')
                 return None
 
     def GetRepl(self):
@@ -101,7 +98,7 @@ class Addition:
                 self.__up_watch_master(region=region,groupname=groupname)
             return True
         except:
-            logging.error('addition task failed!')
+            Logging(msg='addition task failed!',level='error')
             return False
 
     def __change_new_master(self,region,groupname):
@@ -131,7 +128,7 @@ class ExecuteAdditionTask:
         self.ssl_set = {'ca': GetConf().GetUserSSLCa(), 'cert': GetConf().GetUserSSLCert(),
                         'key': GetConf().GetUserSSLKey()}
 
-        self.conn = MySQLdb.connect(host=self.host, user=self.mysqluser, passwd=self.mysqlpasswd, port=self.port, db='',
+        self.conn = pymysql.connect(host=self.host, user=self.mysqluser, passwd=self.mysqlpasswd, port=self.port, db='',
                                     charset="utf8", ssl=self.ssl_set)
 
     def Change(self, region, host_content):
@@ -157,13 +154,13 @@ class ExecuteAdditionTask:
             try:
                 cur.execute(sql)
                 self.__set_group_region(region,host_content)
-            except MySQLdb.Warning,e:
-                logging.error(traceback.format_exc())
+            except pymysql.Warning,e:
+                Logging(msg=traceback.format_exc(),level='error')
                 cur.execute('start slave;')
                 self.__set_group_region(region, host_content)
-            except MySQLdb.Error,e:
-                logging.error(traceback.format_exc())
-                logging.error('addition task for %s failed,master to %s in region %s ! ! !' % (self.host, host_content['host'], region))
+            except pymysql.Error,e:
+                Logging(msg=traceback.format_exc(),level='error')
+                Logging(msg='addition task for {} failed,master to {} in region {} ! ! !'.format(self.host, host_content['host'], region),level='error')
                 return False
             return True
     def __set_group_region(self, region, host_content):

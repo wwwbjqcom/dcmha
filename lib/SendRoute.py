@@ -7,11 +7,7 @@ from contextlib import closing
 sys.path.append("..")
 from socket import *
 from zk_handle.zkHandler import zkHander
-import logging
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+from lib.log import Logging
 
 
 def SendRoute(group_name,slavedown=None):
@@ -24,7 +20,7 @@ def SendRoute(group_name,slavedown=None):
                     with closing(TcpClient(_content)) as tcpclient:
                         send_stat = tcpclient.Send(group_name)
                 except Exception,e:
-                    logging.ERROR(traceback.format_exc())
+                    Logging(msg=traceback.format_exc(),level='error')
 
                 if not send_stat:
                     if slavedown:

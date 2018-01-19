@@ -9,11 +9,7 @@ from db_handle.dbHandle import dbHandle
 from SendRoute import SendRoute
 from contextlib import closing
 from lib.get_conf import GetConf
-import logging
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+from lib.log import Logging
 
 
 
@@ -121,7 +117,7 @@ class TaskClassify:
             return True
         else:                                                                  #宕机重选master
             now_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-            logging.error(' %s : group %s  the current master %s  state: down' % (now_time,groupname,cur_master))
+            Logging(msg=' {} : group {}  the current master {}  state: down'.format(now_time,groupname,cur_master),level='error')
             return self.TaskChange(groupname,type='change')
 
 
@@ -153,12 +149,12 @@ class TaskCh:
                     zkhander.DeleteTask(taskname)                                             #删除已执行的任务
                 else:
                     now_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-                    logging.error(' %s : this task %s failed' % (now_time,taskname))
-                logging.info('sleep time 3S ,waiting other server create watch')
+                    Logging(msg=' {} : this task {} failed'.format(now_time,taskname),level='error')
+                Logging(msg='sleep time 3S ,waiting other server create watch',level='info')
                 time.sleep(3)
                 zkhander.DeleteLockTask(taskname)
         else:
-            logging.info('task : %s  elsewhere in the execution' % taskname)
+            Logging(msg='task : {}  elsewhere in the execution'.format(taskname),level='info')
             zkHander().CreateLockWatch(taskname)
 
 
@@ -179,7 +175,7 @@ def TaskOb(task_name):
             '''宕机需判断是否在白名单列表'''
             with closing(zkHander()) as zkhander:
                 if zkhander.GetWhite(_task_value[0]):
-                    logging.info('this master %s has been down,but it in whitelist!!' % _task_value[0])
+                    Logging(msg='this master {} has been down,but it in whitelist!!'.format(_task_value[0]),level='info')
                     return True
                 else:
                     return TaskClassify().TaskDown(_task_value[0])
@@ -189,6 +185,6 @@ def TaskOb(task_name):
             return AdditionTask.Addition().ChangeRepl(_task_value)
 
         else:
-            logging.error('task failed  state: type error')
+            Logging(msg='task failed  state: type error',level='error')
             return False
 

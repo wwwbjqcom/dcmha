@@ -9,11 +9,7 @@ from lib.get_conf import GetConf
 from lib.System import Replace
 from db_handle.dbHandle import dbHandle
 from lib.SendRoute import SendRoute
-import logging
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+from lib.log import Logging
 
 class SlaveCheck:
     def __init__(self,zkhander=None):
@@ -30,12 +26,12 @@ class SlaveCheck:
                 status = self.zkhander.Exists('{}/{}'.format(self.online_node,Replace(__host)))
                 if status is None:
                     time.sleep(random.uniform(0, 0.5))
-                    logging.warning('This Group Server {} has slave node:{} is down '.format(groupname, __host))
+                    Logging(msg='This Group Server {} has slave node:{} is down '.format(groupname, __host),level='warning')
                     __status = self.zkhander.Exists('{}/{}'.format(self.slave_down_path,Replace(__host)))
                     if __status is None:
                         self.zkhander.Create(path='{}/{}'.format(self.slave_down_path,Replace(__host)), value=str({'groupname':groupname,'port':__port}),seq=False)              #slave节点不在线创建slavedown节点
                     else:
-                        logging.warning('This host:{} outage task is being '.format(__host))
+                        Logging(msg='This host:{} outage task is being '.format(__host),level='warning')
 
     """获取haproxy状态信息进行slave筛选"""
     def WhileCheckSLave(self):
@@ -58,7 +54,7 @@ class SlaveCheck:
                         time.sleep(1)
                     if mysqlstate:
                         zkhander.DeleteSlaveDown(host)
-                        logging.warning('Groupname:{} slave host:{} is online,but python client server is not online!'.format(groupname,Replace(host)))
+                        Logging(msg='Groupname:{} slave host:{} is online,but python client server is not online!'.format(groupname,Replace(host)),level='warning')
                     else:
                         alter_state = self.AlterHaproxy(groupname=groupname,delete_host=Replace(host),port=port)
                         if alter_state:
@@ -70,7 +66,7 @@ class SlaveCheck:
                 else:
                     zkhander.DeleteSlaveDown(host)
             else:
-                logging.warning('slave:{} outage task  elsewhere in the execution'.format(Replace(host)))
+                Logging(msg='slave:{} outage task  elsewhere in the execution'.format(Replace(host)),level='warning')
 
     """修改路由状态"""
     def AlterHaproxy(self,groupname,delete_host,port):

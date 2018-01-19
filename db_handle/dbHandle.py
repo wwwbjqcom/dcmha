@@ -3,11 +3,11 @@
 @author: xiaozhong
 '''
 from warnings import filterwarnings
-import MySQLdb,sys,traceback
+import pymysql,sys,traceback
 sys.path.append("..")
 from lib.get_conf import GetConf
 from lib.log import Logging
-filterwarnings('error', category = MySQLdb.Warning)
+filterwarnings('error', category = pymysql.Warning)
 
 class dbHandle:
     def __init__(self,host,port):
@@ -15,11 +15,11 @@ class dbHandle:
         self.mysqluser,self.mysqlpasswd = GetConf().GetMysqlAcount()
         ssl_set = {'ca':GetConf().GetUserSSLCa(),'cert':GetConf().GetUserSSLCert(),'key':GetConf().GetUserSSLKey()}
         try:
-            self.local_conn = MySQLdb.connect(host=self.host, user=self.mysqluser, passwd=self.mysqlpasswd, port=self.port, db='',
+            self.local_conn = pymysql.connect(host=self.host, user=self.mysqluser, passwd=self.mysqlpasswd, port=self.port, db='',
                                          charset="utf8",ssl=ssl_set)
             self.mysql_cur = self.local_conn.cursor()
             self.state = True
-        except MySQLdb.Error,e:
+        except pymysql.Error,e:
             Logging(msg=traceback.format_exc(),level='error')
             self.state = False
 
@@ -38,15 +38,15 @@ class dbHandle:
             self.mysql_cur.execute(change_sql)
             self.__set_variables(type='slave')
             return True
-        except MySQLdb.Warning,e:
+        except pymysql.Warning,e:
             start_sql = 'start slave'
             self.mysql_cur.execute(start_sql)
             self.__set_variables(type='slave')
-            Logging(msg='Change master to %s   state : Warning' % host,level='warning')
+            Logging(msg='Change master to {}   state : Warning'.format(host),level='warning')
             Logging(msg=traceback.format_exc(),level='warning')
             return True
-        except MySQLdb.Error,e:
-            Logging(msg='Change master to %s   state : Error' % host,level='error')
+        except pymysql.Error,e:
+            Logging(msg='Change master to {}   state : Error'.format(host),level='error')
             Logging(msg=traceback.format_exc(),level='error')
             return False
 
@@ -91,11 +91,11 @@ class dbHandle:
             self.mysql_cur.execute('reset slave all;')
             self.__set_variables(type='master')
 
-        except MySQLdb.Warning,e:
+        except pymysql.Warning,e:
             Logging(msg=traceback.format_exc(),level='warning')
             self.mysql_cur.execute('reset slave all;')
             self.__set_variables(type='master')
-        except MySQLdb.Error,e:
+        except pymysql.Error,e:
             self.__set_variables(type='master')
             Logging(msg=traceback.format_exc(),level='warning')
 

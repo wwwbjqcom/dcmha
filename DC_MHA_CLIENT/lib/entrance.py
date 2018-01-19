@@ -3,7 +3,6 @@
 @author: xiaozhong
 '''
 import sys
-import multiprocessing
 sys.path.append("..")
 from heart import CreateHear
 from Binlog import Metadata

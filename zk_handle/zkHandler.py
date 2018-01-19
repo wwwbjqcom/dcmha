@@ -7,11 +7,7 @@ import sys,traceback,time,random
 sys.path.append("..")
 from lib.get_conf import GetConf
 from lib.System import Replace
-import logging
-logging.basicConfig(filename='mha_server.log',
-                    level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
-                    datefmt='%Y-%m-%d %A %H:%M:%S')
+from lib.log import Logging
 
 
 class zkHander(object):
@@ -77,9 +73,9 @@ class zkHander(object):
                 else:
                     self.Create(path=task_path,value=str([groupname,'down']),seq=False)
             except:
-                logging.info('Existing outage task for  %s' % groupname)
+                Logging(msg='Existing outage task for  {}'.format(groupname),level='info')
         else:
-            logging.info('Existing outage task for  %s' % groupname)
+            Logging(msg='Existing outage task for  {}'.format(groupname),level='info')
 
     def CreateWatch(self,host,addition=None,region=None,region_for_groupname=None):
         '''创建watch,触发时写入task节点'''
@@ -87,18 +83,18 @@ class zkHander(object):
         _group_name = self.GetMeta(type='host', name=host)
         group_name = eval(_group_name)['group'] if _group_name else  region_for_groupname
         online_state = self.zk.exists('{}/{}'.format(online_host_path , host))
-        logging.info("master watch : %s" % host)
+        Logging(msg='master watch :{}'.format(host),level='info')
         if online_state is not None:
             @self.zk.DataWatch('{}/{}'.format(online_host_path , host))
             def my_func(data, stat):
                 if data is None:
                     self.CreateDownTask(group_name,addition=addition,region=region)
-                    logging.error('master(%s) has been down!' % (host))
+                    Logging(msg='master({}) has been down!'.format(host),level='error')
                     self.zk.stop()
                     sys.exit()
         else:
             _name = group_name + '_' + region if region else group_name
-            logging.error("this master %s node not exists" % host)
+            Logging(msg="this master {} node not exists".format(host),level='error')
             state = self.Exists('{}/{}'.format(GetConf().GetWatchDown(),_name))
             self.Create(path='{}/{}'.format(GetConf().GetWatchDown(),_name),value="master not online",seq=False) if state is None else None
             self.zk.stop()
@@ -162,7 +158,7 @@ class zkHander(object):
             node_path = '{}/{}'.format(GetConf().GetMetaHost() , kwargs['name'])
             return self.Get(node_path) if self.Exists(node_path) != None else False
         else:
-            logging.error("type is error ,only 【group ,host】")
+            Logging(msg="type is error ,only 【group ,host】",level='error')
             raise "type is error ,only 【group ,host】"
 
     def CreateMasterMeta(self,name,host):
@@ -273,7 +269,7 @@ class zkHander(object):
                 self.zk.create(path='{}/{}'.format(path,taskname),value=b'',ephemeral=False)
                 return True
             except Exception,e:
-                logging.error(traceback.format_exc())
+                Logging(msg=traceback.format_exc(),level='error')
                 return False
         else:
             return False

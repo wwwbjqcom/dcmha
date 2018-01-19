@@ -5,7 +5,6 @@
 
 import sys
 sys.path.append("..")
-from config.get_config import GetConf
 from lib.InitDB import InitMyDB
 
 class GetStruct:
