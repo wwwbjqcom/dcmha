@@ -129,7 +129,7 @@ class ExecuteAdditionTask:
                         'key': GetConf().GetUserSSLKey()}
 
         self.conn = pymysql.connect(host=self.host, user=self.mysqluser, passwd=self.mysqlpasswd, port=self.port, db='',
-                                    charset="utf8", ssl=self.ssl_set)
+                                    charset="utf8mb4", ssl=self.ssl_set)
 
     def Change(self, region, host_content):
         repluser, replpassword, ssl_ca, ssl_cert, ssl_key = GetConf().GetReplAcount(rg=True)

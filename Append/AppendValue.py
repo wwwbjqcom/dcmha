@@ -84,7 +84,7 @@ class Append(TcpClient):
                                                                        pk, cur_pk_value)
                 else:
                     cur_sql = 'UPDATE  {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   self.__WhereJoin(row_value[1], table_struce_key),
+                                                                   self.__ValueJoin(row_value[1], table_struce_key),
                                                                    self.__WhereJoin(row_value[0], table_struce_key))
                 tmepdata.sql_all_list.append(cur_sql)
         elif event_code in (binlog_events.DELETE_ROWS_EVENT,binlog_events.WRITE_ROWS_EVENT):
@@ -114,19 +114,39 @@ class Append(TcpClient):
                                                                        self.__WhereJoin(value, table_struce_key))
                     tmepdata.sql_all_list.append(cur_sql)
 
-
-    def __WhereJoin(self,values, table_struce_key):
+    def __WhereJoin(values, table_struce_key):
         __tmp = []
         for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
             if tmepdata.cloums_type_id_list[idex] not in (
             column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG, column_type_dict.MYSQL_TYPE_SHORT,
             column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
                 if 'Null' == values[idex]:
-                    __tmp.append('{}={}'.format(col, values[idex]))
+                    __tmp.append('{} is null'.format(col))
                 else:
                     __tmp.append('{}="{}"'.format(col, values[idex]))
             else:
-                __tmp.append('{}={}'.format(col, values[idex]))
+                if 'Null' == values[idex]:
+                    __tmp.append('{} is null'.format(col))
+                else:
+                    __tmp.append('{}={}'.format(col, values[idex]))
+        return 'AND'.join(__tmp)
+
+    def __SetJoin(values, table_struce_key):
+        __tmp = []
+        for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
+            if tmepdata.cloums_type_id_list[idex] not in (
+                    column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
+                    column_type_dict.MYSQL_TYPE_SHORT,
+                    column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
+                if 'Null' == values[idex]:
+                    __tmp.append('{}=null'.format(col))
+                else:
+                    __tmp.append('{}="{}"'.format(col, values[idex]))
+            else:
+                if 'Null' == values[idex]:
+                    __tmp.append('{}=null'.format(col))
+                else:
+                    __tmp.append('{}={}'.format(col, values[idex]))
         return ','.join(__tmp)
 
     def __ValueJoin(self,values,table_struce_key):
