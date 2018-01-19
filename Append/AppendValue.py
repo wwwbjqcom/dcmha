@@ -80,11 +80,11 @@ class Append(TcpClient):
                     pk, roll_pk_value, cur_pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], \
                                                       row_value[1][__pk_idx], row_value[0][__pk_idx]
                     cur_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                       self.__WhereJoin(row_value[1], table_struce_key),
+                                                                       self.__SetJoin(row_value[1], table_struce_key),
                                                                        pk, cur_pk_value)
                 else:
                     cur_sql = 'UPDATE  {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   self.__ValueJoin(row_value[1], table_struce_key),
+                                                                   self.__SetJoin(row_value[1], table_struce_key),
                                                                    self.__WhereJoin(row_value[0], table_struce_key))
                 tmepdata.sql_all_list.append(cur_sql)
         elif event_code in (binlog_events.DELETE_ROWS_EVENT,binlog_events.WRITE_ROWS_EVENT):
@@ -114,7 +114,7 @@ class Append(TcpClient):
                                                                        self.__WhereJoin(value, table_struce_key))
                     tmepdata.sql_all_list.append(cur_sql)
 
-    def __WhereJoin(values, table_struce_key):
+    def __WhereJoin(self,values, table_struce_key):
         __tmp = []
         for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
             if tmepdata.cloums_type_id_list[idex] not in (
@@ -131,7 +131,7 @@ class Append(TcpClient):
                     __tmp.append('{}={}'.format(col, values[idex]))
         return 'AND'.join(__tmp)
 
-    def __SetJoin(values, table_struce_key):
+    def __SetJoin(self,values, table_struce_key):
         __tmp = []
         for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
             if tmepdata.cloums_type_id_list[idex] not in (
