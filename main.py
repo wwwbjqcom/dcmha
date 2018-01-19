@@ -2,11 +2,10 @@
 '''
 @author: xiaozhong
 '''
-from lib.entrance import Entrance
-import time
+
+from lib import entrance
+
 
 if __name__ == "__main__":
-    Entrance().Init()
-    while True:
-        time.sleep(5)
-        print "ok"
+    with entrance.Entrance():
+        pass

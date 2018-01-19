@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DC_MHA_CLIENT.iml" filepath="$PROJECT_DIR$/.idea/DC_MHA_CLIENT.iml" />
-      <module fileurl="file://D:\mha_server\.idea\mha_server.iml" filepath="D:\mha_server\.idea\mha_server.iml" />
-    </modules>
-  </component>
-</project>

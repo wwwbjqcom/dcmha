@@ -16,7 +16,6 @@ class Read(object):
         self.packet = pack
         self.file_data = open(filename, 'rb') if filename else None
         self.startposition = startposition if filename and startposition else None
-        self.readcount = 0
 
     def read_int_be_by_size(self, size, bytes=None):
         '''Read a big endian integer values based on byte number'''
@@ -99,8 +98,7 @@ class Read(object):
 
     def read_bytes(self, count):
         try:
-            self.readcount += count
-            return self.file_data.read(count) if self.packet is None else self.packet[self.readcount-count:self.readcount]
+            return self.file_data.read(count) if self.packet is None else self.packet.read(count)
         except:
             return None
 
