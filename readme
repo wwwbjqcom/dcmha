@@ -61,7 +61,7 @@
     1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install psutil kazoo
     2、部署zookeeper集群
     3、启动server端初始化数据
-    4、在所有mysql节点部署mha_client创建心跳
+    4、在所有mysql节点部署dcmha_client分之创建心跳
     5、部署mysqlrouter并开启router.py打开端口
     6、执行my_mha中的各项
 
