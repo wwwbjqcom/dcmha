@@ -8,12 +8,12 @@
     理配置的高可用管理框架，就是这套系统，目前在我们系统正常跑着暂无问题
 
 功能：
-    1、前端使用haproxy做路由端，后端切换是业务层无感知
+    1、前端使用haproxy做路由端，后端切换使业务层无感知
     2、通过zk同步配置文件，在路由端启动一个client实时监听路由变化
     3、master宕机切换可实现未同步数据追加及回滚，回滚的数据记录到本地目录已备人为判断是否需要
     4、因网络波动造成的心跳丢失会连续尝试数据库服务连接，如正常将不会发生切换并发出告警信息通知管理员
     5、服务端、路由端都可以集群化避免单点故障
-    6、haproxy通过配置不同的机群组名称辨别，统一配置文件通过read、write实现读写的端口分离
+    6、haproxy通过配置不同的集群组名称辨别，配置文件中通过read、write实现读写的端口分离
     7、检测slave是否在线，如不在线将从读列表中去除，后期将加入延迟检测，超过阈值剔除
 		
 操作实现：
@@ -64,4 +64,24 @@
     4、在所有mysql节点部署dcmha_client分之创建心跳
     5、部署mysqlrouter并开启router.py打开端口
     6、执行my_mha中的各项
-
+haproxy配置示例：
+	global
+	    maxconn 4096
+	    daemon
+	    pidfile /tmp/hkmsg.pid
+	defaults
+	    mode                tcp
+	    timeout connect     20s
+	    timeout client      1m
+	    timeout server      1m
+	listen write
+	    bind :3598
+	    mode tcp
+	    balance roundrobin
+	    server hkmsg 192.168.1.1:3306 check
+	listen read
+	    bind :3599
+	    mode tcp
+	    balance roundrobin
+	    server hkmsg1 192.168.1.1:3306 check
+	    server hkmsg2 192.168.1.2:3306 check
