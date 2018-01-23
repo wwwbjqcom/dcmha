@@ -64,6 +64,7 @@
     4、在所有mysql节点部署dcmha_client分之创建心跳
     5、部署mysqlrouter并开启router.py打开端口
     6、执行my_mha中的各项
+    
 haproxy配置示例：
 	global
 	    maxconn 4096
