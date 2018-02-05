@@ -74,11 +74,13 @@ class TaskClassify:
                     zkhander.SetMasterHost(groupname, master_host)
                     _host_list.append(master_host)
                     zkhander.SetHaproxyMeta(groupname,_host_list,master_host)
-                    SendRoute(groupname)
+                    #SendRoute(groupname)
 
                 zkHander().CreateWatch(master_host)
                 with closing(dbHandle(master_host.replace('-','.'),master_port)) as resetmaster:
                     resetmaster.ResetMaster(groupname)
+
+                SendRoute(groupname)
                 return True
             else:
                 return False
