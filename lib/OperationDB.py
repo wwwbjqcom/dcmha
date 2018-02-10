@@ -18,69 +18,22 @@ class tmepdata:
     table_pk_idex_list = {}
     rollback_sql_list = []
     transaction_sql_list = []
+    table_struct_type_list = {}  # 字段类型列表
 
-def WhereJoin(values,table_struce_key):
-    __tmp = []
-    for idex,col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-        if tmepdata.cloums_type_id_list[idex] not in (column_type_dict.MYSQL_TYPE_LONGLONG,column_type_dict.MYSQL_TYPE_LONG,column_type_dict.MYSQL_TYPE_SHORT,column_type_dict.MYSQL_TYPE_TINY,column_type_dict.MYSQL_TYPE_INT24):
-            if 'Null' == values[idex]:
-                __tmp.append('{} is null'.format(col))
-            else:
-                __tmp.append('{}="{}"'.format(col, values[idex]))
-        else:
-            if 'Null' == values[idex]:
-                __tmp.append('{} is null'.format(col))
-            else:
-                __tmp.append('{}={}'.format(col,values[idex]))
-    return 'AND'.join(__tmp)
 
-def SetJoin(values,table_struce_key):
-    __tmp = []
-    for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-        if tmepdata.cloums_type_id_list[idex] not in (
-        column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG, column_type_dict.MYSQL_TYPE_SHORT,
-        column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-            if 'Null' == values[idex]:
-                __tmp.append('{}=null'.format(col))
-            else:
-                __tmp.append('{}="{}"'.format(col, values[idex]))
-        else:
-            if 'Null' == values[idex]:
-                __tmp.append('{}=null'.format(col))
-            else:
-                __tmp.append('{}={}'.format(col, values[idex]))
-    return ','.join(__tmp)
+def WhereJoin(table_struce_key):
+    return ' AND '.join(['{}=%s'.format(col) for col in tmepdata.table_struct_list[table_struce_key]])
 
-def ValueJoin(values, table_struce_key):
-    __tmp = '('
-    for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-        if tmepdata.cloums_type_id_list[idex] in (
-                column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
-                column_type_dict.MYSQL_TYPE_SHORT,
-                column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-            if idex < len(values) - 1:
-                __tmp += '{},'.format(values[idex])
-            else:
-                __tmp += '{})'.format(values[idex])
-        else:
-            if 'Null' == values[idex]:
-                if idex < len(values) - 1:
-                    __tmp += 'Null,'
-                else:
-                    __tmp += 'Null)'
-            else:
-                if idex < len(values) - 1:
-                    __tmp += '"{}",'.format(values[idex])
-                else:
-                    __tmp += '"{}")'.format(values[idex])
-    return __tmp
+
+def SetJoin(table_struce_key):
+    return ','.join(['{}=%s'.format(col) for col in tmepdata.table_struct_list[table_struce_key]])
+
+
+def ValueJoin(table_struce_key):
+    return '({})'.format(','.join(['%s' for i in range(len(tmepdata.table_struct_list[table_struce_key]))]))
 
 def GetSQL(_values=None,event_code=None):
     table_struce_key = '{}:{}'.format(tmepdata.database_name,tmepdata.table_name)
-    if table_struce_key not in tmepdata.table_struct_list:
-        column_list, pk_idex = GetStruct().GetColumn(tmepdata.database_name,tmepdata.table_name)
-        tmepdata.table_struct_list[table_struce_key] = column_list
-        tmepdata.table_pk_idex_list[table_struce_key] = pk_idex
 
     if table_struce_key in tmepdata.table_pk_idex_list:
         '''获取主键所在index'''
@@ -94,63 +47,56 @@ def GetSQL(_values=None,event_code=None):
         for row_value in __values:
             if __pk_idx is not None:
                 roll_pk_value, cur_pk_value =  row_value[1][__pk_idx], row_value[0][__pk_idx]
-                rollback_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                        SetJoin(row_value[0], table_struce_key), pk,
-                                                                        roll_pk_value)
-                cur_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   SetJoin(row_value[1], table_struce_key), pk,
-                                                                   cur_pk_value)
+                rollback_sql = 'UPDATE {}.{} SET {} WHERE {}=%s'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                        SetJoin(table_struce_key), pk)
+                cur_sql = 'UPDATE {}.{} SET {} WHERE {}=%s'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                   SetJoin(table_struce_key), pk)
+
+                rollback_args = row_value[0] + [roll_pk_value]
+                cur_args = row_value[1] + [cur_pk_value]
             else:
                 rollback_sql = 'UPDATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                     SetJoin(row_value[0], table_struce_key),
-                                                                     WhereJoin(row_value[1], table_struce_key))
+                                                                     SetJoin(table_struce_key),
+                                                                     WhereJoin(table_struce_key))
                 cur_sql = 'UPDATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                               SetJoin(row_value[1], table_struce_key),
-                                                               WhereJoin(row_value[0], table_struce_key))
-            tmepdata.rollback_sql_list.append(rollback_sql)
-            tmepdata.transaction_sql_list.append(cur_sql)
+                                                               SetJoin(table_struce_key),
+                                                               WhereJoin(table_struce_key))
+                rollback_args = row_value[0] + row_value[1]
+                cur_args = row_value[1] + row_value[0]
+
+            tmepdata.rollback_sql_list.append([rollback_sql,rollback_args])
+            tmepdata.transaction_sql_list.append([cur_sql,cur_args])
     else:
         for value in _values:
             '''获取sql语句'''
             if event_code == binlog_events.WRITE_ROWS_EVENT:
                 '''delete'''
                 if __pk_idx is not None:
-                    rollback_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,value[__pk_idx])
+                    rollback_sql = 'DELETE FROM {}.{} WHERE {}=%s;'.format(tmepdata.database_name,tmepdata.table_name,pk)
+                    rollback_args = [value[__pk_idx]]
                 else:
-                    rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
+                    rollback_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(table_struce_key))
+                    rollback_args = value
 
-                if len(value) > 1:
-                    cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   ValueJoin(value,table_struce_key))
-                else:
-                    if isinstance(value[0], int):
-                        cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                         value[0])
-                    else:
-                        cur_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
-                                                                           tmepdata.table_name,
-                                                                           value[0])
+                cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                   ValueJoin(table_struce_key))
+                cur_args = value
 
-                tmepdata.rollback_sql_list.append(rollback_sql)
-                tmepdata.transaction_sql_list.append(cur_sql)
+                tmepdata.rollback_sql_list.append([rollback_sql,rollback_args])
+                tmepdata.transaction_sql_list.append([cur_sql,cur_args])
             elif event_code == binlog_events.DELETE_ROWS_EVENT:
                 '''insert'''
-                if len(value) > 1:
-                    rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name,tmepdata.table_name,ValueJoin(value,table_struce_key))
-                else:
-                    if isinstance(value[0], int):
-                        rollback_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                            value[0])
-                    else:
-                        rollback_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
-                                                                              tmepdata.table_name,
-                                                                              value[0])
+                rollback_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                    ValueJoin(table_struce_key))
+                rollback_args = value
                 if __pk_idx is not None:
-                    cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name,tmepdata.table_name,pk,value[__pk_idx])
+                    cur_sql = 'DELETE FROM {}.{} WHERE {}=%s;'.format(tmepdata.database_name,tmepdata.table_name,pk)
+                    cur_args = [value[__pk_idx]]
                 else:
-                    cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(value,table_struce_key))
-                tmepdata.rollback_sql_list.append(rollback_sql)
-                tmepdata.transaction_sql_list.append(cur_sql)
+                    cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name,tmepdata.table_name,WhereJoin(table_struce_key))
+                    cur_args = value
+                tmepdata.rollback_sql_list.append([rollback_sql,rollback_args])
+                tmepdata.transaction_sql_list.append([cur_sql,cur_args])
 
 
 
@@ -173,10 +119,17 @@ def Operation(binlog_stat):
                     ReplConn.close()
                     break
                 if event_code in (binlog_events.WRITE_ROWS_EVENT,binlog_events.UPDATE_ROWS_EVENT,binlog_events.DELETE_ROWS_EVENT):
-                     _values = _parse_event.GetValue(type_code=event_code, event_length=event_length,cloums_type_id_list=tmepdata.cloums_type_id_list,metadata_dict=tmepdata.metadata_dict)
+                     _values = _parse_event.GetValue(type_code=event_code, event_length=event_length,cloums_type_id_list=tmepdata.cloums_type_id_list,
+                                                     metadata_dict=tmepdata.metadata_dict,unsigned_list=tmepdata.table_struct_type_list[table_struce_key])
                      GetSQL(_values=_values,event_code=event_code)
                 elif event_code == binlog_events.TABLE_MAP_EVENT:
                     tmepdata.database_name, tmepdata.table_name, tmepdata.cloums_type_id_list, tmepdata.metadata_dict=_parse_event.GetValue(type_code=event_code,event_length=event_length)  # 获取event数据
+                    table_struce_key = '{}:{}'.format(tmepdata.database_name, tmepdata.table_name)
+                    if table_struce_key not in tmepdata.table_struct_list:
+                        column_list, pk_idex,column_type_list = GetStruct().GetColumn(tmepdata.database_name, tmepdata.table_name)
+                        tmepdata.table_struct_list[table_struce_key] = column_list
+                        tmepdata.table_pk_idex_list[table_struce_key] = pk_idex
+                        tmepdata.table_struct_type_list[table_struce_key] = column_type_list
 
             except Exception,e:
                 Logging(msg=traceback.format_exc(),level='error')

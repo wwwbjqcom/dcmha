@@ -38,7 +38,7 @@ class InitMyDB(object):
             try:
                 for sql in sql_list[::-1]:
                     Logging(msg='Rollback statement: {}'.format(sql),level='info')
-                    cur.execute(sql)
+                    cur.execute(sql[0],sql[1])
             except pymysql.Error:
                 return False
                 Logging(msg=traceback.format_exc(),level='error')
