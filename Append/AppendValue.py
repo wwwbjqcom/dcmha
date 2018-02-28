@@ -133,9 +133,9 @@ class Append(TcpClient):
         self.mysql_cur.execute(sql,args=args)
         result = self.mysql_cur.fetchall()
         for idex,row in enumerate(result):
-            column_list.append(row['COLUMN_NAME'])
-            column_type_list.append(row['COLUMN_TYPE'])
-            if row['COLUMN_KEY'] == 'PRI':
+            column_list.append(row[0])
+            column_type_list.append(row[2])
+            if row[1] == 'PRI':
                 pk_idex = idex
         return column_list, pk_idex, column_type_list
 
