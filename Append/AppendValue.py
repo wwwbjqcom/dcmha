@@ -155,7 +155,16 @@ class Append(TcpClient):
         else:
             Logging(msg='There is no data to synchronize.', level='info')
         self.mysql_conn.commit()
-        tmepdata.sql_all_list = []
+        self.__init_tmepdata()
+
         return True
+
+    def __init_tmepdata(self):
+        tmepdata.database_name, tmepdata.table_name, tmepdata.cloums_type_id_list, tmepdata.metadata_dict = None, None, None, None
+        tmepdata.table_struct_list = {}
+        tmepdata.table_pk_idex_list = {}
+        tmepdata.sql_all_list = []
+        tmepdata.table_struct_type_list = {}  # 字段类型列表
+        tmepdata.table_struce_key = None
 
 
