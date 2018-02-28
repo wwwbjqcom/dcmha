@@ -8,7 +8,7 @@ sys.path.append("..")
 from lib.InitDB import InitMyDB
 class GetStruct:
     def __init__(self,host=None,port=None,user=None,passwd=None,socket=None):
-        self.connection = InitMyDB(mysql_host=host,mysql_port=port,mysql_user=user,mysql_password=passwd,unix_scoket=socket).Init()
+        self.connection = InitMyDB(mysql_host=host).Init()
         self.cur = self.connection.cursor()
 
     def GetColumn(self,*args):

@@ -20,6 +20,13 @@ class tmepdata:
     transaction_sql_list = []
     table_struct_type_list = {}  # 字段类型列表
 
+def inittmpdata():
+    tmepdata.database_name, tmepdata.table_name, tmepdata.cloums_type_id_list, tmepdata.metadata_dict = None, None, None, None
+    tmepdata.table_struct_list = {}
+    tmepdata.table_pk_idex_list = {}
+    tmepdata.rollback_sql_list = []
+    tmepdata.transaction_sql_list = []
+    tmepdata.table_struct_type_list = {}  # 字段类型列表
 
 def WhereJoin(table_struce_key):
     return ' AND '.join(['{}=%s'.format(col) for col in tmepdata.table_struct_list[table_struce_key]])
@@ -136,7 +143,7 @@ def Operation(binlog_stat):
                 ReplConn.close()
                 break
         transaction_sql_list,rollback_sql_list = tmepdata.transaction_sql_list,tmepdata.rollback_sql_list
-        tmepdata.transaction_sql_list, tmepdata.rollback_sql_list = [],[]
+        inittmpdata()   #重置临时变量
         return transaction_sql_list,rollback_sql_list
     else:
         Logging(msg='replication failed................', level='error')
