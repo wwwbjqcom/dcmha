@@ -9,4 +9,3 @@ if __name__ == "__main__":
     Entrance().Init()
     while True:
         time.sleep(5)
-        print "ok"

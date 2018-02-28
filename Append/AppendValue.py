@@ -15,6 +15,8 @@ class tmepdata:
     table_struct_list = {}
     table_pk_idex_list = {}
     sql_all_list = []
+    table_struct_type_list = {}  # 字段类型列表
+    table_struce_key = None
 
 
 class Append(TcpClient):
@@ -56,142 +58,93 @@ class Append(TcpClient):
         if event_code in (binlog_events.WRITE_ROWS_EVENT, binlog_events.UPDATE_ROWS_EVENT, binlog_events.DELETE_ROWS_EVENT):
             _values = _parse_event.GetValue(type_code=event_code, event_length=event_length,
                                             cloums_type_id_list=tmepdata.cloums_type_id_list,
-                                            metadata_dict=tmepdata.metadata_dict)
+                                            metadata_dict=tmepdata.metadata_dict,
+                                            unsigned_list=tmepdata.table_struct_type_list[tmepdata.table_struce_key])
             self.__GetSQL(_values=_values, event_code=event_code)
         elif event_code == binlog_events.TABLE_MAP_EVENT:
             tmepdata.database_name, tmepdata.table_name, tmepdata.cloums_type_id_list, tmepdata.metadata_dict = _parse_event.GetValue(
                 type_code=event_code, event_length=event_length)  # 获取event数据
+            tmepdata.table_struce_key = '{}:{}'.format(tmepdata.database_name, tmepdata.table_name)
+            if tmepdata.table_struce_key not in tmepdata.table_struct_list:
+                column_list, pk_idex, column_type_list = self.__GetColumn(tmepdata.database_name,tmepdata.table_name)
+                tmepdata.table_struct_list[tmepdata.table_struce_key] = column_list
+                tmepdata.table_pk_idex_list[tmepdata.table_struce_key] = pk_idex
+                tmepdata.table_struct_type_list[tmepdata.table_struce_key] = column_type_list
+
         return True
 
     def __GetSQL(self,_values=None, event_code=None):
-        table_struce_key = '{}:{}'.format(tmepdata.database_name, tmepdata.table_name)
-        if table_struce_key not in tmepdata.table_struct_list:
-            column_list, pk_idex = self.__GetColumn(tmepdata.database_name, tmepdata.table_name)
-            tmepdata.table_struct_list[table_struce_key] = column_list
-            tmepdata.table_pk_idex_list[table_struce_key] = pk_idex
-
         if event_code == binlog_events.UPDATE_ROWS_EVENT:
             '''update'''
             __values = [_values[i:i + 2] for i in xrange(0, len(_values), 2)]
-            if table_struce_key in tmepdata.table_pk_idex_list:
-                __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
+            if tmepdata.table_struce_key in tmepdata.table_pk_idex_list:
+                __pk_idx = tmepdata.table_pk_idex_list[tmepdata.table_struce_key]
             for row_value in __values:
                 if __pk_idx is not None:
-                    pk, roll_pk_value, cur_pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], \
-                                                      row_value[1][__pk_idx], row_value[0][__pk_idx]
-                    cur_sql = 'UPDATE {}.{} SET {} WHERE {}={}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                       self.__SetJoin(row_value[1], table_struce_key),
-                                                                       pk, cur_pk_value)
+                    pk, cur_pk_value = tmepdata.table_struct_list[tmepdata.table_struce_key][__pk_idx],row_value[0][__pk_idx]
+                    cur_sql = 'UPDATE {}.{} SET {} WHERE {}=%s'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                       self.__SetJoin(), pk)
+
+                    cur_args = row_value[1] + [cur_pk_value]
                 else:
-                    cur_sql = 'UPDATE  {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   self.__SetJoin(row_value[1], table_struce_key),
-                                                                   self.__WhereJoin(row_value[0], table_struce_key))
-                tmepdata.sql_all_list.append(cur_sql)
+                    cur_sql = 'UPDATE {}.{} SET {} WHERE {}'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                    self.__SetJoin(),
+                                                                    self.__WhereJoin())
+                    cur_args = row_value[1] + row_value[0]
+                tmepdata.sql_all_list.append([cur_sql, cur_args])
         elif event_code in (binlog_events.DELETE_ROWS_EVENT,binlog_events.WRITE_ROWS_EVENT):
             for value in _values:
                 '''获取sql语句'''
                 if event_code == binlog_events.WRITE_ROWS_EVENT:
-                    if len(value) > 1:
-                        cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                   self.__ValueJoin(value,table_struce_key))
-                    else:
-                        if isinstance(value[0],int):
-                            cur_sql = 'INSERT INTO {}.{} VALUES({});'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                           value[0])
-                        else:
-                            cur_sql = 'INSERT INTO {}.{} VALUES("{}");'.format(tmepdata.database_name,
-                                                                             tmepdata.table_name,
-                                                                             value[0])
-                    tmepdata.sql_all_list.append(cur_sql)
+                    cur_sql = 'INSERT INTO {}.{} VALUES{};'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                   self.__ValueJoin())
+                    cur_args = value
+
+                    tmepdata.sql_all_list.append([cur_sql, cur_args])
                 elif event_code == binlog_events.DELETE_ROWS_EVENT:
-                    if table_struce_key in tmepdata.table_pk_idex_list:
-                        __pk_idx = tmepdata.table_pk_idex_list[table_struce_key]
-                        pk, pk_value = tmepdata.table_struct_list[table_struce_key][__pk_idx], value[__pk_idx]
-                        cur_sql = 'DELETE FROM {}.{} WHERE {}={};'.format(tmepdata.database_name, tmepdata.table_name, pk,
-                                                                          pk_value)
+                    if tmepdata.table_struce_key in tmepdata.table_pk_idex_list:
+                        __pk_idx = tmepdata.table_pk_idex_list[tmepdata.table_struce_key]
+                        pk, pk_value = tmepdata.table_struct_list[tmepdata.table_struce_key][__pk_idx], value[__pk_idx]
+                        cur_sql = 'DELETE FROM {}.{} WHERE {}=%s;'.format(tmepdata.database_name, tmepdata.table_name,
+                                                                          pk)
+                        cur_args = [value[__pk_idx]]
                     else:
                         cur_sql = 'DELETE FROM {}.{} WHERE {};'.format(tmepdata.database_name, tmepdata.table_name,
-                                                                       self.__WhereJoin(value, table_struce_key))
-                    tmepdata.sql_all_list.append(cur_sql)
+                                                                       self.__WhereJoin())
+                        cur_args = value
 
-    def __WhereJoin(self,values, table_struce_key):
-        __tmp = []
-        for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-            if tmepdata.cloums_type_id_list[idex] not in (
-            column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG, column_type_dict.MYSQL_TYPE_SHORT,
-            column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-                if 'Null' == values[idex]:
-                    __tmp.append('{} is null'.format(col))
-                else:
-                    __tmp.append('{}="{}"'.format(col, values[idex]))
-            else:
-                if 'Null' == values[idex]:
-                    __tmp.append('{} is null'.format(col))
-                else:
-                    __tmp.append('{}={}'.format(col, values[idex]))
-        return 'AND'.join(__tmp)
+                    tmepdata.sql_all_list.append([cur_sql, cur_args])
 
-    def __SetJoin(self,values, table_struce_key):
-        __tmp = []
-        for idex, col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-            if tmepdata.cloums_type_id_list[idex] not in (
-                    column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
-                    column_type_dict.MYSQL_TYPE_SHORT,
-                    column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-                if 'Null' == values[idex]:
-                    __tmp.append('{}=null'.format(col))
-                else:
-                    __tmp.append('{}="{}"'.format(col, values[idex]))
-            else:
-                if 'Null' == values[idex]:
-                    __tmp.append('{}=null'.format(col))
-                else:
-                    __tmp.append('{}={}'.format(col, values[idex]))
-        return ','.join(__tmp)
+    def __WhereJoin(self):
+        return ' AND '.join(['{}=%s'.format(col) for col in tmepdata.table_struct_list[tmepdata.table_struce_key]])
 
-    def __ValueJoin(self,values,table_struce_key):
-        __tmp = '('
-        for idex,col in enumerate(tmepdata.table_struct_list[table_struce_key]):
-            if tmepdata.cloums_type_id_list[idex] in (
-                    column_type_dict.MYSQL_TYPE_LONGLONG, column_type_dict.MYSQL_TYPE_LONG,
-                    column_type_dict.MYSQL_TYPE_SHORT,
-                    column_type_dict.MYSQL_TYPE_TINY, column_type_dict.MYSQL_TYPE_INT24):
-                if idex < len(values) -1:
-                    __tmp += '{},'.format(values[idex])
-                else:
-                    __tmp += '{})'.format(values[idex])
-            else:
-                if 'Null' == values[idex]:
-                    if idex < len(values) - 1:
-                        __tmp += 'Null,'
-                    else:
-                        __tmp += 'Null)'
-                else:
-                    if idex < len(values) - 1:
-                        __tmp += '"{}",'.format(values[idex])
-                    else:
-                        __tmp += '"{}")'.format(values[idex])
-        return __tmp
+    def __SetJoin(self):
+        return ','.join(['{}=%s'.format(col) for col in tmepdata.table_struct_list[tmepdata.table_struce_key]])
+
+    def __ValueJoin(self):
+        return '({})'.format(','.join(['%s' for i in range(len(tmepdata.table_struct_list[tmepdata.table_struce_key]))]))
 
     def __GetColumn(self,*args):
         column_list = []
+        column_type_list = []
         pk_idex = None
 
-        sql = 'select COLUMN_NAME,COLUMN_KEY from INFORMATION_SCHEMA.COLUMNS where table_schema=%s and table_name=%s order by ORDINAL_POSITION;'
+        sql = 'select COLUMN_NAME,COLUMN_KEY,COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where table_schema=%s and table_name=%s order by ORDINAL_POSITION;'
         self.mysql_cur.execute(sql,args=args)
         result = self.mysql_cur.fetchall()
         for idex,row in enumerate(result):
-            column_list.append(row[0])
-            if row[1] == 'PRI':
+            column_list.append(row['COLUMN_NAME'])
+            column_type_list.append(row['COLUMN_TYPE'])
+            if row['COLUMN_KEY'] == 'PRI':
                 pk_idex = idex
-        return column_list,pk_idex
+        return column_list, pk_idex, column_type_list
 
     def __executesql(self):
         Logging(msg='Additional unsynchronized data now',level='info')
         for sql in tmepdata.sql_all_list:
             Logging(msg='execute sql -- {}'.format(sql),level='info')
             try:
-                self.mysql_cur.execute(sql)
+                self.mysql_cur.execute(sql[0],sql[1])
                 Logging(msg='state OK!', level='info')
             except Exception,e:
                 Logging(msg='state failed',level='error')
