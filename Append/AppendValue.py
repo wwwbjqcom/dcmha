@@ -147,7 +147,7 @@ class Append(TcpClient):
                 self.mysql_cur.execute(sql[0],sql[1])
                 Logging(msg='state OK!', level='info')
             except MySQLdb.Warning:
-                pass
+                Logging(msg=traceback.format_exc(), level='warning')
             except Exception,e:
                 Logging(msg='state failed',level='error')
                 Logging(msg=traceback.format_exc(),level='error')
