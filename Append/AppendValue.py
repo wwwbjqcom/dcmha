@@ -3,7 +3,7 @@
 @author: xiaozhong
 '''
 
-import sys,traceback
+import sys,traceback,MySQLdb
 from Connection import TcpClient
 sys.path.append("..")
 from lib.log import Logging
@@ -146,6 +146,8 @@ class Append(TcpClient):
             try:
                 self.mysql_cur.execute(sql[0],sql[1])
                 Logging(msg='state OK!', level='info')
+            except MySQLdb.Warning:
+                pass
             except Exception,e:
                 Logging(msg='state failed',level='error')
                 Logging(msg=traceback.format_exc(),level='error')
