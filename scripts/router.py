@@ -18,7 +18,7 @@ import socket
 encoding = 'utf-8'
 BUFSIZE = 1024
 
-zk_hosts = '10.5.9.14:2288,10.5.9.15:2288,10.5.9.16:2288'
+zk_hosts = '192.168.1.1:2288,192.168.1.2:2288,192.168.1.3:2288'
 ha_path = '/mysql/haproxy'
 listen_port = 9011
 
@@ -30,8 +30,8 @@ class _hb:
 """
 普通登录用户，检测服务是否可用
 """
-mysql_user = 'login_test'
-mysql_password = 'xswert123'
+mysql_user = ''
+mysql_password = ''
 
 
 class CheckSer:

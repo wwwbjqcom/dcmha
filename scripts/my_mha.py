@@ -259,39 +259,7 @@ if __name__ == "__main__":
     main(sys.argv)
 
 
-#example SetHa
-#SetHa('test-2','192.168.212.205')
 
-#example AddRoute
-#AddRoute('test-2','192.168.212.204:9011')
-
-#example AddMeta
-#AddMeta('test-2','192.168.212.127:3306')
-
-#example InsertClusterMeta
-#hosts = '192.168.212.205:3306,192.168.212.206:3306,192.168.212.208:3306'
-#InsertClusterMeta('test-2',hosts)
-
-#example set white
-#White().SetWhite('test-2')
-
-#example:  set watch for new master after manual switching
-#master_host = '192.168.212.205'
-#White().SetMaster('test-2',master_host)
-#White().SetMaster('test-2',master_host,True)  not restart routing
-
-#example: Add empty group
-#Add('test-2')
-
-#all test-2 is groupname
-
-#AddRoute('test-2','192.168.212.204:9011')
-#hosts = '192.168.212.205:3306,192.168.212.206:3306,192.168.212.208:3306'
-#InsertClusterMeta('test-2',hosts)
-#master_host = '192.168.212.206'
-#White().SetMaster('test-2',master_host)
-#SetHa('test-2','192.168.212.206')
-#zk.stop()
 
 
 

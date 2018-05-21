@@ -53,9 +53,9 @@
                       失败的情况，以集群名称加send后缀命名
         addition   ： 节点下有replication、region两个节点
             replication/groupanme/regionname：如果集群组有附加的主从同步任务将在groupname创建对应节点，需要同步到那些位置的regionname会创建对应节点
-                                              regionname下记录当前指向的IP信息，格式如{'host':'192.168.212.127','port':3316,'ssl':1/0}
+                                              regionname下记录当前指向的IP信息，格式如{'host':'192.168.1.1','port':3316,'ssl':1/0}
             region/regionname: region节点下记录所有分区同步接口元数据，每个regionname下记录元数据，元数据可以为多个供高可用随机选择，记录格式如下
-                               {'192-168-212-127':{'prot':3316,'ssl':1/0},'192-168-212-128':{}........}
+                               {'192-168-1-1':{'prot':3316,'ssl':1/0},'192-168-1-2':{}........}
 
 部署流程：
     1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install pymysql psutil kazoo
