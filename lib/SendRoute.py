@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 import time,sys,traceback
 from contextlib import closing

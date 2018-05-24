@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 import time,random
 from zk_handle.zkHandler import zkHander

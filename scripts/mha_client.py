@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 import psutil,time,MySQLdb
 from kazoo.client import KazooClient

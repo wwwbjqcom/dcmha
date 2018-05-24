@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 from kazoo.client import KazooClient
 import sys,traceback,time,random

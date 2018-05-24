@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 from warnings import filterwarnings
 import sys,traceback,MySQLdb
