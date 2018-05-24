@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@author: xiaozhong
+@author: Great God
 '''
 from zkhandle import ZkHandle
 from kazoo.client import KazooState
