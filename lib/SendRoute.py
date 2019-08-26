@@ -16,18 +16,24 @@ def SendRoute(group_name,slavedown=None):
         if route_content:
             _route_content = route_content.split(',')
             for _content in _route_content:
-                try:
-                    with closing(TcpClient(_content)) as tcpclient:
-                        send_stat = tcpclient.Send(group_name)
-                except Exception,e:
-                    Logging(msg=traceback.format_exc(),level='error')
+                send_stat = None
+                if zkhander.OnlineExists(str(_content.split(':')[0]).replace('.','-')):
+                    try:
+                        Logging('send ha info to router({})'.format(_content),level='info')
+                        with closing(TcpClient(_content)) as tcpclient:
+                            send_stat = tcpclient.Send(group_name)
+                    except Exception,e:
+                        Logging(msg=traceback.format_exc(),level='error')
 
-                if not send_stat:
-                    if slavedown:
-                        return False
-                    else:
-                        with closing(zkHander()) as zkhander:
-                            zkhander.SetWatchDown(group_name, 'failed')
+                    if send_stat is None:
+                        if slavedown:
+                            #return False
+                            pass
+                        else:
+                            with closing(zkHander()) as _zkhander:
+                                _zkhander.SetWatchDown(group_name, 'failed')
+                else:
+                    Logging('router({}) not online !!!'.format(_content),level='error')
     return True
 
 

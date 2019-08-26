@@ -8,7 +8,8 @@ from kazoo.client import KazooState
 import threading, time, os, psutil
 import traceback
 import logging, MySQLdb
-
+import ConfigParser
+import MySQLdb.cursors
 logging.basicConfig(filename='ha_client.log',
                     level=logging.INFO,
                     format='%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
@@ -18,10 +19,15 @@ import socket
 encoding = 'utf-8'
 BUFSIZE = 1024
 
-zk_hosts = '192.168.1.1:2288,192.168.1.2:2288,192.168.1.3:2288'
+zk_hosts = '10.6.1.19:2181,10.6.10.2:2181,10.6.10.2:2181'
 ha_path = '/mysql/haproxy'
 listen_port = 9011
 
+'''cetus目录配置'''
+cetus_dir = '/usr/local/cetus'
+cetus_conf_dir = '/usr/local/cetus/conf/shard.conf'
+cetus_proxy = True  #如果使用的haprox请设置为False，如果使用cetus请设置为True
+''''''
 
 class _hb:
     retry_state = ''
@@ -34,15 +40,140 @@ mysql_user = ''
 mysql_password = ''
 
 
+class AlterCetus:
+    def __init__(self, groupname, conf):
+        '''
+        cetus修改
+        :param groupname:
+        :param conf:
+        '''
+        self.groupname = groupname.split('_')[1]
+        self._new_conf = conf if type(conf) == dict else eval(conf)
+        self.write_info = self._new_conf['write']
+        self.read_info = self._new_conf['write'] if type(self._new_conf['read']) == list else eval(
+            self._new_conf['read'])
+
+        for addr in self.read_info:
+            if addr == self.write_info:
+                self.read_info.remove(addr)
+
+    def star(self):
+        '''
+        cetus配置修改
+        new_conf格式{"write":"host:port","read":"["host:port","host:port"]"}
+        '''
+        cur,conn = self.__cetus_conn()
+        if cur is None:
+            return None
+        logging.info('connection to db success')
+        backends = self.__get_all_backends(cur=cur)
+        logging.info('backends:{}'.format(backends))
+        master_new_info = None
+        if backends is None:
+            return None
+        '''修改master节点指向'''
+        for row in backends:
+            if row['type'] == 'rw' and row['address'] != self.write_info:
+                cur.execute('delete from backends where backend_ndx={};'.format(row['back_index']))
+        _tmp_stats = None
+        for row in backends:
+            if row['address'] == self.write_info:
+                cur.execute('update backends set state="up",type="rw" where backend_ndx={};'.format(row['back_index']))
+                master_new_info = self.write_info
+                _tmp_stats = True
+        if _tmp_stats is None:
+            cur.execute('add master "{}@{}" '.format(self.write_info,self.groupname))
+            cur.execute('update backends set state="up",type="rw" where address="{}";'.format(self.write_info))
+            master_new_info = self.write_info
+        '''修改slave节点指向,不在新的可读节点中直接删除'''
+        _back_read_list = [backend['address'] for backend in backends if backend['type'] in ('ro','unknown')]
+        if self.read_info:
+            #_back_read_list = [backend['address'] for backend in backends if backend['type'] == 'ro']
+            logging.info('{}:{}'.format(_back_read_list,self.read_info))
+            for addr in _back_read_list:
+                if addr not in self.read_info:
+                    cur.execute('delete from backends where address="{}";'.format(addr))
+                    _back_read_list.remove(addr)
+
+            for addr in self.read_info:
+                if addr in _back_read_list:
+                    cur.execute('update backends set state="up",type="ro" where address="{}";'.format(addr))
+                else:
+                    cur.execute('add slave "{}@{}"'.format(addr,self.groupname))
+                    cur.execute('update backends set state="up",type="ro" where address="{}";'.format(addr))
+        else:
+            for addr in _back_read_list:
+                if master_new_info and master_new_info == addr:
+                    continue
+                cur.execute('delete from backends where address="{}";'.format(addr))
+        cur.execute('save settings')
+        try:
+            cur.close()
+            conn.close()
+        except:
+            pass
+        return True
+
+    def __get_all_backends(self,cur):
+        '''
+        获取cetus中所有的后端节点
+        :param cur:
+        :return:
+        '''
+        try:
+            cur.execute('select * from backends;')
+            result = cur.fetchall()
+            rows = []
+            for row in result:
+                if row['group'] == self.groupname:
+                    rows.append({'address': row['address'], 'state': row['state'], 'type': row['type'], 'back_index': row['backend_ndx']})
+            return rows
+        except MySQLdb.Error:
+            logging.error(traceback.format_list())
+            return None
+
+    def __cetus_conn(self):
+        '''
+        创建管理端口的链接信息
+        :return:
+        '''
+        try:
+            admin_user, admin_passwd, admin_port = self.__get_config()
+            logging.info('{}:{}:{}'.format(admin_user, admin_passwd, admin_port))
+            conn = MySQLdb.connect(host='127.0.0.1', port=admin_port, user=admin_user, passwd=admin_passwd,cursorclass=MySQLdb.cursors.DictCursor)
+            cur = conn.cursor()
+            return cur,conn
+        except:
+            logging.error(traceback.format_list())
+            return None,None
+    def __get_config(self):
+        '''
+        获取cetus配置文件目录中对应groupname的配置文件的管理地址信息
+        :return:
+        '''
+        self.conf = ConfigParser.ConfigParser()
+        #self.conf.read('{}/{}.conf'.format(cetus_conf_dir, self.groupname))
+        self.conf.read(cetus_conf_dir)
+        admin_address = self.conf.get('cetus', 'admin-address')
+        address_port = int(admin_address.split(':')[1])
+        admin_username = self.conf.get('cetus', 'admin-username')
+        admin_passwd = self.conf.get('cetus', 'admin-password')
+        return admin_username, admin_passwd, address_port
+
+
+
+
 class CheckSer:
     """mysqlrouter服务检测，故障重启
-       对只读端口进行连接检测    
+       对只读端口进行连接检测
     """
 
     def __init__(self):
         pass
 
     def run(self):
+        if cetus_proxy:
+            return
         while True:
             group_list = zkHandle()
             for groupname in group_list:
@@ -188,6 +319,7 @@ def zkHandle(groupname=None):
         if __zk.exists(path=ha_path):
             group_list = __zk.get_children(path=ha_path)
             result = group_list
+    __zk.stop()
     return result
 
 
@@ -209,13 +341,18 @@ class Reader(threading.Thread):
             if conf:
                 logging.info('%s : %s Start Changed' % (now_time, str))
                 '''修改配置'''
-                if AlterConf(groupname=str, new_conf=conf):
+                if cetus_proxy:
+                    state = AlterCetus(groupname=str,conf=conf).star()
+                else:
+                    state = AlterConf(groupname=str, new_conf=conf)
+
+                if state:
                     logging.info('%s : %s Changed  State: OK' % (now_time, str))
                     break
                 else:
                     logging.info('%s : %s Changed  State: Failed' % (now_time, str))
                     break
-        logging.info("close:", self.client.getpeername())
+        logging.info("close:{}".format(self.client.getpeername()))
 
 
 class Listener(threading.Thread):
@@ -246,7 +383,7 @@ class heartbeat(threading.Thread):
         info = psutil.net_if_addrs()
         for k, v in info.items():
             for item in v:
-                if item[0] == 2 and not item[1] == '127.0.0.1' and ':' not in k and '10.' not in item[1]:
+                if item[0] == 2 and not item[1] == '127.0.0.1' and ':' not in k :
                     netcard_info = item[1]
         return netcard_info.replace('.', '-')
 
@@ -286,3 +423,4 @@ if __name__ == "__main__":
     p.start()
     lst = Listener(listen_port)
     lst.start()
+

@@ -5,7 +5,7 @@
 import logging
 logging.basicConfig(filename='mha_server.log',
                     level=logging.INFO,
-                    format  = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    format  = '%(asctime)s %(levelname)s : %(message)s',
                     datefmt='%Y-%m-%d %A %H:%M:%S')
 
 def Logging(msg,level):
