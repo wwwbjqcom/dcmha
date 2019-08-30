@@ -1,11 +1,11 @@
 
 功能：
-    1、前端使用haproxy做路由端，后端切换使业务层无感知
+    1、前端使用haproxy/cetus做路由端，后端切换使业务层无感知
     2、通过zk同步配置文件，在路由端启动一个client实时监听路由变化
     3、master宕机切换可实现未同步数据追加及回滚，回滚的数据记录到本地目录已备人为判断是否需要
     4、因网络波动造成的心跳丢失会连续尝试数据库服务连接，如正常将不会发生切换并发出告警信息通知管理员
     5、服务端、路由端都可以集群化避免单点故障
-    6、haproxy通过配置不同的集群组名称辨别，配置文件中通过read、write实现读写的端口分离
+    6、haproxy/cetus通过配置不同的集群组名称辨别，配置文件中通过read、write实现读写的端口分离
     7、检测slave是否在线，如不在线将从读列表中去除，后期将加入延迟检测，超过阈值剔除
 		
 操作实现：
@@ -48,7 +48,7 @@
                                               regionname下记录当前指向的IP信息，格式如{'host':'192.168.1.1','port':3316,'ssl':1/0}
             region/regionname: region节点下记录所有分区同步接口元数据，每个regionname下记录元数据，元数据可以为多个供高可用随机选择，记录格式如下
                                {'192-168-1-1':{'prot':3316,'ssl':1/0},'192-168-1-2':{}........}
-
+        slave_down :  slave宕机节点信息
 部署流程：
     1、安装依赖 yum -y install epel-release gcc gcc-c++;yum -y install python-pip python-devel mysql-devel MySQL-python;pip install pymysql psutil kazoo
     2、部署zookeeper集群
